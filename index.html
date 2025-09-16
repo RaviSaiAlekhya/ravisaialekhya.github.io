@@ -1,32 +1,796 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome | Washy Washy World</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Washy Washy World Laundromat - New Bedford, MA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c7ac9;
+            --secondary: #ff9900;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--primary);
+            background-color: #f0f5ff;
+        }
+        
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background: var(--primary);
+            margin-bottom: 5px;
+            border-radius: 2px;
+        }
+        
+        /* Page Content */
+        .page-content {
+            display: none;
+            animation: fadeIn 0.5s;
+            flex: 1;
+        }
+        
+        .page-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1576618148400-fb768fa88551?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #e58a00;
+        }
+        
+        /* Sections */
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary);
+        }
+        
+        /* Locations */
+        .locations {
+            background-color: white;
+        }
+        
+        .location-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .location-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+        
+        .card-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 20px;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .status-open {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .status-coming {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        /* Hours & Payment */
+        .info-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .info-box {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .payment-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .payment-option {
+            background-color: var(--light);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+        
+        /* Price List */
+        .pricing {
+            background-color: white;
+        }
+        
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .price-table th, .price-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .price-table th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .price-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        /* Contact */
+        .contact {
+            background-color: white;
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-right: 15px;
+            min-width: 30px;
+            text-align: center;
+        }
+        
+        /* About Page */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .menu-toggle {
+                display: flex;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            nav {
+                width: 100%;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                margin-top: 15px;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <img src="images/logo.png" alt="Laundromat Logo" class="logo">
-      <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Washy Washy World Logo">
+                <h1>Washy Washy World</h1>
+            </div>
+            
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <nav id="nav">
+                <ul>
+                    <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                    <li><a href="#" class="nav-link" data-page="services">Services</a></li>
+                    <li><a href="#" class="nav-link" data-page="locations">Locations</a></li>
+                    <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  <section class="hero">
-    <h1>Fresh & Clean Laundry, Every Time</h1>
-    <p>Self-service, drop-off, and pickup & delivery.</p>
-    <a href="services.html" class="btn">See Services</a>
-  </section>
+    <!-- Home Page -->
+    <div id="home" class="page-content active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h2>Professional Laundry Services in New Bedford</h2>
+                <p>Fast, affordable, and convenient laundry solutions for the community</p>
+                <a href="#" class="btn nav-link" data-page="services">Our Services</a>
+            </div>
+        </section>
 
-  <footer>
-    <p>© 2025 Washy Washy World • Open Daily 7AM – 9PM</p>
-  </footer>
+        <!-- Services Preview -->
+        <section class="services">
+            <div class="container">
+                <h2 class="section-title">Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-tshirt service-icon"></i>
+                        <h3>Self-Service Laundry</h3>
+                        <p>State-of-the-art washers and dryers available for your use</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-truck service-icon"></i>
+                        <h3>Drop-off Service</h3>
+                        <p>Only $1.50/lb with same day pick-up available</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-box service-icon"></i>
+                        <h3>Pick-up & Delivery</h3>
+                        <p>$1.50/lb with free delivery for orders over $25</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Locations Preview -->
+        <section class="locations">
+            <div class="container">
+                <h2 class="section-title">Our Locations</h2>
+                <div class="location-cards">
+                    <div class="location-card">
+                        <div class="card-header">
+                            <h3>Purchase Street Location</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="status status-open">Now Open</span>
+                            <p><i class="fas fa-map-marker-alt"></i> 1877 Purchase St, New Bedford, MA</p>
+                        </div>
+                    </div>
+                    <div class="location-card">
+                        <div class="card-header">
+                            <h3>Acushnet Avenue Location</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="status status-coming">Coming Soon</span>
+                            <p><i class="fas fa-map-marker-alt"></i> 1301 Acushnet Ave, New Bedford, MA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page-content">
+        <section class="hero">
+            <div class="container">
+                <h2>About Washy Washy World</h2>
+                <p>Your trusted laundry service in New Bedford</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2 class="section-title">Our Story</h2>
+                        <p>Washy Washy World was founded with a simple mission: to provide the New Bedford community with clean, affordable, and convenient laundry services. We understand that laundry is a chore that everyone has to do, but nobody really enjoys.</p>
+                        <p>That's why we've created a welcoming environment with state-of-the-art equipment to make your laundry experience as pleasant and efficient as possible. Our friendly staff is always available to assist you, and we offer multiple service options to fit your busy lifestyle.</p>
+                        <p>Whether you prefer to do your own laundry using our self-service machines, drop it off for our expert team to handle, or have us pick it up and deliver it to your doorstep, Washy Washy World is here to serve you.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1587271636243-d4c3170a7c9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Clean laundry">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Services Page -->
+    <div id="services" class="page-content">
+        <section class="hero">
+            <div class="container">
+                <h2>Our Services</h2>
+                <p>Multiple options to meet your laundry needs</p>
+            </div>
+        </section>
+
+        <section class="services">
+            <div class="container">
+                <h2 class="section-title">Service Options</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-tshirt service-icon"></i>
+                        <h3>Self-Service Laundry</h3>
+                        <p>Use our state-of-the-art washers and dryers at your convenience. Multiple machine sizes available to handle any load.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-truck service-icon"></i>
+                        <h3>Drop-off Service</h3>
+                        <p>Leave your laundry with us and we'll take care of everything. Only $1.50/lb with same day pick-up available.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-box service-icon"></i>
+                        <h3>Pick-up & Delivery</h3>
+                        <p>We'll pick up your laundry and deliver it fresh and clean. $1.50/lb with free delivery for orders over $25.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing">
+            <div class="container">
+                <h2 class="section-title">Service Pricing</h2>
+                <table class="price-table">
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Price</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Self-Service Washing</td>
+                            <td>Varies by machine size</td>
+                            <td>Multiple machine sizes available</td>
+                        </tr>
+                        <tr>
+                            <td>Self-Service Drying</td>
+                            <td>Varies by drying time</td>
+                            <td>Quarter-operated dryers</td>
+                        </tr>
+                        <tr>
+                            <td>Drop-off Service</td>
+                            <td>$1.50/lb</td>
+                            <td>Same day pick-up available</td>
+                        </tr>
+                        <tr>
+                            <td>Pick-up & Delivery</td>
+                            <td>$1.50/lb</td>
+                            <td>Free delivery for orders over $25</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <!-- Locations Page -->
+    <div id="locations" class="page-content">
+        <section class="hero">
+            <div class="container">
+                <h2>Our Locations</h2>
+                <p>Conveniently located throughout New Bedford</p>
+            </div>
+        </section>
+
+        <section class="locations">
+            <div class="container">
+                <h2 class="section-title">Visit Us</h2>
+                <div class="location-cards">
+                    <div class="location-card">
+                        <div class="card-header">
+                            <h3>Purchase Street Location</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="status status-open">Now Open</span>
+                            <p><i class="fas fa-map-marker-alt"></i> 1877 Purchase St, New Bedford, MA</p>
+                            <p><i class="fas fa-clock"></i> Open Daily: 7AM – 9PM</p>
+                            <p><i class="fas fa-user"></i> Attendant on-site: 9AM – 9PM</p>
+                        </div>
+                    </div>
+                    <div class="location-card">
+                        <div class="card-header">
+                            <h3>Acushnet Avenue Location</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="status status-coming">Coming Soon</span>
+                            <p><i class="fas fa-map-marker-alt"></i> 1301 Acushnet Ave, New Bedford, MA</p>
+                            <p>We're excited to announce our second location opening soon! Follow us for updates on our grand opening.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="hours-payment">
+            <div class="container">
+                <h2 class="section-title">Hours & Payment</h2>
+                <div class="info-container">
+                    <div class="info-box">
+                        <h3>Business Hours</h3>
+                        <p><strong>Open Daily:</strong> 7AM – 9PM</p>
+                        <p><strong>Attendant on-site:</strong> 9AM – 9PM</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>Payment Options</h3>
+                        <p>We accept various payment methods for your convenience:</p>
+                        <div class="payment-options">
+                            <span class="payment-option">Square</span>
+                            <span class="payment-option">Apple Pay</span>
+                            <span class="payment-option">Visa</span>
+                            <span class="payment-option">Cash App</span>
+                            <span class="payment-option">Cash</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page-content">
+        <section class="hero">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p>We're here to help with all your laundry needs</p>
+            </div>
+        </section>
+
+        <section class="contact">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone contact-icon"></i>
+                            <div>
+                                <p><strong>Phone Number</strong></p>
+                                <p>(774) 202-1427</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt contact-icon"></i>
+                            <div>
+                                <p><strong>Main Location</strong></p>
+                                <p>1877 Purchase St, New Bedford, MA</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-clock contact-icon"></i>
+                            <div>
+                                <p><strong>Business Hours</strong></p>
+                                <p>7AM – 9PM Daily</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope contact-icon"></i>
+                            <div>
+                                <p><strong>Email</strong></p>
+                                <p>info@washywashyworld.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Washy Washy World</h3>
+                    <p>Quality laundry services for the New Bedford community</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#" class="nav-link" data-page="home">Home</a></p>
+                    <p><a href="#" class="nav-link" data-page="about">About</a></p>
+                    <p><a href="#" class="nav-link" data-page="services">Services</a></p>
+                    <p><a href="#" class="nav-link" data-page="locations">Locations</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-phone"></i> (774) 202-1427</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 1877 Purchase St, New Bedford, MA</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Washy Washy World Laundromat. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.getElementById('nav').classList.toggle('active');
+        });
+        
+        // Multi-page navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetPage = this.getAttribute('data-page');
+                
+                // Hide all pages
+                document.querySelectorAll('.page-content').forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Show target page
+                document.getElementById(targetPage).classList.add('active');
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Close mobile menu if open
+                document.getElementById('nav').classList.remove('active');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+        });
+    </script>
 </body>
 </html>
