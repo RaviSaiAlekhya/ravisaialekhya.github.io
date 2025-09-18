@@ -1,209 +1,1164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Washy Washy World Laundromat - New Bedford, MA</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    /* --- keep your existing CSS --- */
-    /* Add simple styling for reviews */
-    .reviews {
-      background-color: #fff;
-      padding: 60px 0;
-    }
-    .reviews h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: var(--primary);
-    }
-    .review-list {
-      max-width: 800px;
-      margin: 0 auto 30px auto;
-      background: #f9f9f9;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .review-item {
-      border-bottom: 1px solid #ddd;
-      padding: 10px 0;
-    }
-    .review-item:last-child {
-      border-bottom: none;
-    }
-    .review-form {
-      max-width: 800px;
-      margin: 0 auto;
-      background: #f9f9f9;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .review-form input, .review-form textarea, .review-form button {
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1rem;
-    }
-    .review-form button {
-      background-color: var(--secondary);
-      color: #fff;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .review-form button:hover {
-      background-color: #e58a00;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Washy Washy World Laundromat - New Bedford, MA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c7ac9;
+            --secondary: #ff9900;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--primary);
+            background-color: #f0f5ff;
+        }
+        
+        /* Language Toggle */
+        .language-toggle {
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .language-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: 500;
+            color: var(--dark);
+            transition: all 0.3s;
+        }
+        
+        .language-btn.active {
+            color: var(--primary);
+            background-color: #f0f5ff;
+        }
+        
+        .language-btn:hover {
+            color: var(--primary);
+        }
+        
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background: var(--primary);
+            margin-bottom: 5px;
+            border-radius: 2px;
+        }
+        
+        /* Page Content */
+        .page-content {
+            display: none;
+            animation: fadeIn 0.5s;
+            flex: 1;
+        }
+        
+        .page-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1576618148400-fb768fa88551?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #e58a00;
+        }
+        
+        /* Sections */
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary);
+        }
+        
+        /* Locations */
+        .locations {
+            background-color: white;
+        }
+        
+        .location-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .location-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+        
+        .card-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 20px;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .status-open {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .status-coming {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        /* Hours & Payment */
+        .info-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .info-box {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .payment-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .payment-option {
+            background-color: var(--light);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+        
+        /* Price List */
+        .pricing {
+            background-color: white;
+        }
+        
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .price-table th, .price-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .price-table th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .price-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        /* Contact */
+        .contact {
+            background-color: white;
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-right: 15px;
+            min-width: 30px;
+            text-align: center;
+        }
+        
+        /* Instagram Feed */
+        .instagram-feed {
+            margin-top: 30px;
+        }
+        
+        .instagram-feed h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .instagram-posts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .instagram-post {
+            width: calc(33.333% - 10px);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .instagram-post img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s;
+        }
+        
+        .instagram-post:hover img {
+            transform: scale(1.05);
+        }
+        
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 15px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .instagram-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* About Page */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .menu-toggle {
+                display: flex;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            nav {
+                width: 100%;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                margin-top: 15px;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .language-toggle {
+                margin: 15px 0 0 0;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .instagram-post {
+                width: calc(50% - 10px);
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .instagram-post {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="container header-container">
-      <div class="logo">
-        <img src="logo.png" alt="Washy Washy World Logo">
-        <h1>Washy Washy World</h1>
-      </div>
-      <div class="menu-toggle">
-        <span></span><span></span><span></span>
-      </div>
-      <nav id="nav">
-        <ul>
-          <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
-          <li><a href="#" class="nav-link" data-page="about">About</a></li>
-          <li><a href="#" class="nav-link" data-page="services">Services</a></li>
-          <li><a href="#" class="nav-link" data-page="locations">Locations</a></li>
-          <li><a href="#" class="nav-link" data-page="reviews">Reviews</a></li>
-          <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
-        </ul>
-        <div class="language-toggle">
-          <button class="language-btn active" data-lang="en">EN</button>
-          <span style="color:#ccc;margin:0 5px;">|</span>
-          <button class="language-btn" data-lang="es">ES</button>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="logo.png" alt="Washy Washy World Logo">
+                <h1>Washy Washy World</h1>
+            </div>
+            
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <nav id="nav">
+                <ul>
+                    <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                    <li><a href="#" class="nav-link" data-page="services">Services</a></li>
+                    <li><a href="#" class="nav-link" data-page="locations">Locations</a></li>
+                    <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+                </ul>
+                <div class="language-toggle">
+                    <button class="language-btn active" data-lang="en">EN</button>
+                    <span style="color: #ccc; margin: 0 5px;">|</span>
+                    <button class="language-btn" data-lang="es">ES</button>
+                </div>
+            </nav>
         </div>
-      </nav>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home" class="page-content active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h2 data-translate="hero_title">Professional Laundry Services in New Bedford</h2>
+                <p data-translate="hero_subtitle">Fast, affordable, and convenient laundry solutions for the community</p>
+                <a href="#" class="btn nav-link" data-page="services" data-translate="hero_button">Our Services</a>
+            </div>
+        </section>
+
+        <!-- Services Preview -->
+        <section class="services">
+            <div class="container">
+                <h2 class="section-title" data-translate="services_title">Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-tshirt service-icon"></i>
+                        <h3 data-translate="service1_title">Self-Service Laundry</h3>
+                        <p data-translate="service1_desc">State-of-the-art washers and dryers available for your use</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-truck service-icon"></i>
+                        <h3 data-translate="service2_title">Drop-off Service</h3>
+                        <p data-translate="service2_desc">Only $1.50/lb with same day pick-up available</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-box service-icon"></i>
+                        <h3 data-translate="service3_title">Pick-up & Delivery</h3>
+                        <p data-translate="service3_desc">$1.50/lb with free delivery for orders over $25</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Locations Preview -->
+        <section class="locations">
+            <div class="container">
+                <h2 class="section-title" data-translate="locations_title">Our Locations</h2>
+                <div class="location-cards">
+                    <div class="location-card">
+                        <div class="card-header">
+                            <h3 data-translate="location1_name">Purchase Street Location</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="status status-open" data-translate="status_open">Now Open</span>
+                            <p><i class="fas fa-map-marker-alt"></i> <span data-translate="location1_address">1877 Purchase St, New Bedford, MA</span></p>
+                        </div>
+                    </div>
+                    <div class="location-card">
+                        <div class="card-header">
+                            <h3 data-translate="location2_name">Acushnet Avenue Location</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="status status-coming" data-translate="status_coming">Coming Soon</span>
+                            <p><i class="fas fa-map-marker-alt"></i> <span data-translate="location2_address">1301 Acushnet Ave, New Bedford, MA</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-  </header>
 
-  <!-- Home, About, Services, Locations (your existing content remains unchanged) -->
+    <!-- About Page -->
+    <div id="about" class="page-content">
+        <section class="hero">
+            <div class="container">
+                <h2 data-translate="about_title">About Washy Washy World</h2>
+                <p data-translate="about_subtitle">Your trusted laundry service in New Bedford</p>
+            </div>
+        </section>
 
-  <!-- Reviews Page -->
-  <div id="reviews" class="page-content">
-    <section class="reviews">
-      <div class="container">
-        <h2>Customer Reviews</h2>
-        <div class="review-list" id="reviewList">
-          <div class="review-item"><strong>Maria:</strong> Great service! Fast and friendly staff.</div>
-          <div class="review-item"><strong>John:</strong> Very clean and convenient location.</div>
+        <section>
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2 class="section-title" data-translate="story_title">Our Story</h2>
+                        <p data-translate="story_p1">Washy Washy World was founded with a simple mission: to provide the New Bedford community with clean, affordable, and convenient laundry services. We understand that laundry is a chore that everyone has to do, but nobody really enjoys.</p>
+                        <p data-translate="story_p2">That's why we've created a welcoming environment with state-of-the-art equipment to make your laundry experience as pleasant and efficient as possible. Our friendly staff is always available to assist you, and we offer multiple service options to fit your busy lifestyle.</p>
+                        <p data-translate="story_p3">Whether you prefer to do your own laundry using our self-service machines, drop it off for our expert team to handle, or have us pick it up and deliver it to your doorstep, Washy Washy World is here to serve you.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="about.PNG" alt="Clean laundry">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Services Page -->
+    <div id="services" class="page-content">
+        <section class="hero">
+            <div class="container">
+                <h2 data-translate="services_title">Our Services</h2>
+                <p data-translate="services_subtitle">Multiple options to meet your laundry needs</p>
+            </div>
+        </section>
+
+        <section class="services">
+            <div class="container">
+                <h2 class="section-title" data-translate="services_options">Service Options</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-tshirt service-icon"></i>
+                        <h3 data-translate="service1_title">Self-Service Laundry</h3>
+                        <p data-translate="service1_full_desc">Use our state-of-the-art washers and dryers at your convenience. Multiple machine sizes available to handle any load.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-truck service-icon"></i>
+                        <h3 data-translate="service2_title">Drop-off Service</h3>
+                        <p data-translate="service2_full_desc">Leave your laundry with us and we'll take care of everything. Only $1.50/lb with same day pick-up available.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-box service-icon"></i>
+                        <h3 data-translate="service3_title">Pick-up & Delivery</h3>
+                        <p data-translate="service3_full_desc">We'll pick up your laundry and deliver it fresh and clean. $1.50/lb with free delivery for orders over $25.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing">
+            <div class="container">
+                <h2 class="section-title" data-translate="pricing_title">Service Pricing</h2>
+                <table class="price-table">
+                    <thead>
+                        <tr>
+                            <th data-translate="service_col">Service</th>
+                            <th data-translate="price_col">Price</th>
+                            <th data-translate="details_col">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-translate="service1_name">Self-Service Washing</td>
+                            <td data-translate="service1_price">Varies by machine size</td>
+                            <td data-translate="service1_details">Multiple machine sizes available</td>
+                        </tr>
+                        <tr>
+                            <td data-translate="service2_name">Self-Service Drying</td>
+                            <td data-translate="service2_price">Varies by drying time</td>
+                            <td data-translate="service2_details">Quarter-operated dryers</td>
+                        </tr>
+                        <tr>
+                            <td data-translate="service3_name">Drop-off Service</td>
+                            <td data-translate="service3_price">$1.50/lb</td>
+                            <td data-translate="service3_details">Same day pick-up available</td>
+                        </tr>
+                        <tr>
+                            <td data-translate="service4_name">Pick-up & Delivery</td>
+                            <td data-translate="service4_price">$1.50/lb</td>
+                            <td data-translate="service4_details">Free delivery for orders over $25</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <!-- Locations Page -->
+    <div id="locations" class="page-content">
+        <section class="hero">
+            <div class="container">
+                <h2 data-translate="locations_title">Our Locations</h2>
+                <p data-translate="locations_subtitle">Conveniently located throughout New Bedford</p>
+            </div>
+        </section>
+
+        <section class="locations">
+            <div class="container">
+                <h2 class="section-title" data-translate="visit_title">Visit Us</h2>
+                <div class="location-cards">
+                    <div class="location-card">
+                        <div class="card-header">
+                            <h3 data-translate="location1_name">Purchase Street Location</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="status status-open" data-translate="status_open">Now Open</span>
+                            <p><i class="fas fa-map-marker-alt"></i> <span data-translate="location1_address">1877 Purchase St, New Bedford, MA</span></p>
+                            <p><i class="fas fa-clock"></i> <span data-translate="open_daily">Open Daily:</span> 7AM – 9PM</p>
+                            <p><i class="fas fa-user"></i> <span data-translate="attendant_hours">Attendant on-site:</span> 9AM – 9PM</p>
+                        </div>
+                    </div>
+                    <div class="location-card">
+                        <div class="card-header">
+                            <h3 data-translate="location2_name">Acushnet Avenue Location</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="status status-coming" data-translate="status_coming">Coming Soon</span>
+                            <p><i class="fas fa-map-marker-alt"></i> <span data-translate="location2_address">1301 Acushnet Ave, New Bedford, MA</span></p>
+                            <p data-translate="coming_soon_msg">We're excited to announce our second location opening soon! Follow us for updates on our grand opening.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="hours-payment">
+            <div class="container">
+                <h2 class="section-title" data-translate="hours_payment_title">Hours & Payment</h2>
+                <div class="info-container">
+                    <div class="info-box">
+                        <h3 data-translate="business_hours">Business Hours</h3>
+                        <p><strong data-translate="open_daily">Open Daily:</strong> 7AM – 9PM</p>
+                        <p><strong data-translate="attendant_hours">Attendant on-site:</strong> 9AM – 9PM</p>
+                    </div>
+                    <div class="info-box">
+                        <h3 data-translate="payment_options">Payment Options</h3>
+                        <p data-translate="payment_desc">We accept various payment methods for your convenience:</p>
+                        <div class="payment-options">
+                            <span class="payment-option">Square</span>
+                            <span class="payment-option">Apple Pay</span>
+                            <span class="payment-option">Visa</span>
+                            <span class="payment-option">Cash App</span>
+                            <span class="payment-option" data-translate="cash">Cash</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page-content">
+        <section class="hero">
+            <div class="container">
+                <h2 data-translate="contact_title">Contact Us</h2>
+                <p data-translate="contact_subtitle">We're here to help with all your laundry needs</p>
+            </div>
+        </section>
+
+        <section class="contact">
+            <div class="container">
+                <h2 class="section-title" data-translate="get_in_touch">Get In Touch</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3 data-translate="contact_info">Contact Information</h3>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone contact-icon"></i>
+                            <div>
+                                <p><strong data-translate="phone">Phone Number</strong></p>
+                                <p>(774) 202-1427</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt contact-icon"></i>
+                            <div>
+                                <p><strong data-translate="main_location">Main Location</strong></p>
+                                <p>1877 Purchase St, New Bedford, MA</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-clock contact-icon"></i>
+                            <div>
+                                <p><strong data-translate="business_hours">Business Hours</strong></p>
+                                <p>7AM – 9PM Daily</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope contact-icon"></i>
+                            <div>
+                                <p><strong>Email</strong></p>
+                                <p>washywashyworldlaundromat@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fab fa-facebook contact-icon"></i>
+                            <div>
+                                <p><strong data-translate="facebook">Facebook Page</strong></p>
+                                <p><a href="https://www.facebook.com/WashyWashyWorld" target="_blank" style="color: #2c7ac9;">Washy Washy World</a></p>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Media Feed -->
+                        <div class="social-feed">
+                            <h3 data-translate="follow_us_social">Follow Us on Social Media</h3>
+                            <div class="social-buttons" style="display: flex; gap: 15px; margin-bottom: 20px;">
+                                <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="btn" style="background: #E1306C;">
+                                    <i class="fab fa-instagram"></i> Instagram
+                                </a>
+                                <a href="https://www.facebook.com/WashyWashyWorld" target="_blank" class="btn" style="background: #3b5998;">
+                                    <i class="fab fa-facebook-f"></i> Facebook
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Instagram Feed -->
+                        <div class="instagram-feed">
+                            <h3 data-translate="follow_us">Follow Us on Instagram</h3>
+                            <div class="instagram-posts">
+                                <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="instagram-post">
+                                    <img src="https://placehold.co/300x300/2c7ac9/white?text=Washy+Post+1" alt="Instagram post">
+                                </a>
+                                <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="instagram-post">
+                                    <img src="https://placehold.co/300x300/2c7ac9/white?text=Washy+Post+2" alt="Instagram post">
+                                </a>
+                                <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="instagram-post">
+                                    <img src="https://placehold.co/300x300/2c7ac9/white?text=Washy+Post+3" alt="Instagram post">
+                                </a>
+                            </div>
+                            <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="instagram-link">
+                                <i class="fab fa-instagram"></i>
+                                <span style="margin-left: 8px;" data-translate="view_profile">@washywashyworld</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Google Reviews Section -->
+        <section class="reviews">
+            <div class="container">
+                <h2 class="section-title" data-translate="reviews_title">Customer Reviews</h2>
+                <div class="google-reviews">
+                    <div class="review-placeholder" style="text-align: center; padding: 30px; background: #f8f9fa; border-radius: 8px;">
+                        <i class="fab fa-google" style="font-size: 3rem; color: #34A853; margin-bottom: 15px;"></i>
+                        <h3 data-translate="see_reviews">See what our customers are saying</h3>
+                        <p data-translate="reviews_desc">Check out our reviews on Google</p>
+                        <a href="https://search.google.com/local/reviews?placeid=[YOUR_GOOGLE_PLACE_ID]" 
+                           target="_blank" class="btn" style="background: #34A853;">
+                            <i class="fab fa-google"></i> 
+                            <span data-translate="view_reviews">View Google Reviews</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Washy Washy World</h3>
+                    <p data-translate="footer_desc">Quality laundry services for the New Bedford community</p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-translate="quick_links">Quick Links</h3>
+                    <p><a href="#" class="nav-link" data-page="home" data-translate="home_link">Home</a></p>
+                    <p><a href="#" class="nav-link" data-page="about" data-translate="about_link">About</a></p>
+                    <p><a href="#" class="nav-link" data-page="services" data-translate="services_link">Services</a></p>
+                    <p><a href="#" class="nav-link" data-page="locations" data-translate="locations_link">Locations</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-translate="contact_link">Contact</h3>
+                    <p><i class="fas fa-phone"></i> (774) 202-1427</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 1877 Purchase St, New Bedford, MA</p>
+                    <div class="social-links" style="margin-top: 15px;">
+                        <a href="https://www.instagram.com/washywashyworld/" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/WashyWashyWorld" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Washy Washy World Laundromat. All rights reserved.</p>
+            </div>
         </div>
-        <form class="review-form" id="reviewForm">
-          <input type="text" id="reviewName" placeholder="Your Name" required>
-          <textarea id="reviewText" placeholder="Write your review here..." required></textarea>
-          <button type="submit">Submit Review</button>
-        </form>
-      </div>
-    </section>
-  </div>
+    </footer>
 
-  <!-- Contact Page -->
-  <div id="contact" class="page-content">
-    <section class="hero">
-      <div class="container">
-        <h2>Contact Us</h2>
-        <p>We're here to help with all your laundry needs</p>
-      </div>
-    </section>
-    <section class="contact">
-      <div class="container">
-        <h2 class="section-title">Get In Touch</h2>
-        <div class="contact-container">
-          <div class="contact-info">
-            <h3>Contact Information</h3>
-            <div class="contact-detail">
-              <i class="fas fa-phone contact-icon"></i>
-              <div>
-                <p><strong>Phone Number</strong></p>
-                <p>(774) 202-1427</p>
-              </div>
-            </div>
-            <div class="contact-detail">
-              <i class="fas fa-map-marker-alt contact-icon"></i>
-              <div>
-                <p><strong>Main Location</strong></p>
-                <p>1877 Purchase St, New Bedford, MA</p>
-              </div>
-            </div>
-            <div class="contact-detail">
-              <i class="fas fa-envelope contact-icon"></i>
-              <div>
-                <p><strong>Email</strong></p>
-                <p>washywashyworldlaundromat@gmail.com</p>
-              </div>
-            </div>
-
-            <!-- Instagram Feed -->
-            <div class="instagram-feed">
-              <h3>Follow Us on Instagram</h3>
-              <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="instagram-link">
-                <i class="fab fa-instagram"></i>
-                <span style="margin-left:8px;">@washywashyworld</span>
-              </a>
-            </div>
-
-            <!-- Facebook Link -->
-            <div class="facebook-feed" style="margin-top:20px;">
-              <h3>Follow Us on Facebook</h3>
-              <a href="https://www.facebook.com/washywashyworld" target="_blank" class="instagram-link">
-                <i class="fab fa-facebook"></i>
-                <span style="margin-left:8px;">Washy Washy World</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- Footer (same as yours) -->
-
-  <script>
-    // Mobile menu toggle
-    document.querySelector('.menu-toggle').addEventListener('click', () => {
-      document.getElementById('nav').classList.toggle('active');
-    });
-
-    // Navigation
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetPage = this.getAttribute('data-page');
-        document.querySelectorAll('.page-content').forEach(page => page.classList.remove('active'));
-        document.getElementById(targetPage).classList.add('active');
-        document.querySelectorAll('.nav-link').forEach(navLink => navLink.classList.remove('active'));
-        this.classList.add('active');
-        window.scrollTo(0,0);
-      });
-    });
-
-    // Review form handling
-    const reviewForm = document.getElementById('reviewForm');
-    const reviewList = document.getElementById('reviewList');
-    reviewForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const name = document.getElementById('reviewName').value.trim();
-      const text = document.getElementById('reviewText').value.trim();
-      if(name && text) {
-        const newReview = document.createElement('div');
-        newReview.classList.add('review-item');
-        newReview.innerHTML = `<strong>${name}:</strong> ${text}`;
-        reviewList.appendChild(newReview);
-        reviewForm.reset();
-      }
-    });
-  </script>
+    <script>
+        // Simple JavaScript for mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.getElementById('nav').classList.toggle('active');
+        });
+        
+        // Multi-page navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetPage = this.getAttribute('data-page');
+                
+                // Hide all pages
+                document.querySelectorAll('.page-content').forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Show target page
+                document.getElementById(targetPage).classList.add('active');
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Close mobile menu if open
+                document.getElementById('nav').classList.remove('active');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+        });
+        
+        // Language toggle functionality
+        const languageButtons = document.querySelectorAll('.language-btn');
+        let currentLanguage = 'en';
+        
+        // Language translations
+        const translations = {
+            'en': {
+                'hero_title': 'Professional Laundry Services in New Bedford',
+                'hero_subtitle': 'Fast, affordable, and convenient laundry solutions for the community',
+                'hero_button': 'Our Services',
+                'services_title': 'Our Services',
+                'service1_title': 'Self-Service Laundry',
+                'service1_desc': 'State-of-the-art washers and dryers available for your use',
+                'service2_title': 'Drop-off Service',
+                'service2_desc': 'Only $1.50/lb with same day pick-up available',
+                'service3_title': 'Pick-up & Delivery',
+                'service3_desc': '$1.50/lb with free delivery for orders over $25',
+                'locations_title': 'Our Locations',
+                'location1_name': 'Purchase Street Location',
+                'location1_address': '1877 Purchase St, New Bedford, MA',
+                'location2_name': 'Acushnet Avenue Location',
+                'location2_address': '1301 Acushnet Ave, New Bedford, MA',
+                'status_open': 'Now Open',
+                'status_coming': 'Coming Soon',
+                'about_title': 'About Washy Washy World',
+                'about_subtitle': 'Your trusted laundry service in New Bedford',
+                'story_title': 'Our Story',
+                'story_p1': 'Washy Washy World was founded with a simple mission: to provide the New Bedford community with clean, affordable, and convenient laundry services. We understand that laundry is a chore that everyone has to do, but nobody really enjoys.',
+                'story_p2': "That's why we've created a welcoming environment with state-of-the-art equipment to make your laundry experience as pleasant and efficient as possible. Our friendly staff is always available to assist you, and we offer multiple service options to fit your busy lifestyle.",
+                'story_p3': 'Whether you prefer to do your own laundry using our self-service machines, drop it off for our expert team to handle, or have us pick it up and deliver it to your doorstep, Washy Washy World is here to serve you.',
+                'services_subtitle': 'Multiple options to meet your laundry needs',
+                'services_options': 'Service Options',
+                'service1_full_desc': 'Use our state-of-the-art washers and dryers at your convenience. Multiple machine sizes available to handle any load.',
+                'service2_full_desc': "Leave your laundry with us and we'll take care of everything. Only $1.50/lb with same day pick-up available.",
+                'service3_full_desc': "We'll pick up your laundry and deliver it fresh and clean. $1.50/lb with free delivery for orders over $25.",
+                'pricing_title': 'Service Pricing',
+                'service_col': 'Service',
+                'price_col': 'Price',
+                'details_col': 'Details',
+                'service1_name': 'Self-Service Washing',
+                'service1_price': 'Varies by machine size',
+                'service1_details': 'Multiple machine sizes available',
+                'service2_name': 'Self-Service Drying',
+                'service2_price': 'Varies by drying time',
+                'service2_details': 'Quarter-operated dryers',
+                'service3_name': 'Drop-off Service',
+                'service3_price': '$1.50/lb',
+                'service3_details': 'Same day pick-up available',
+                'service4_name': 'Pick-up & Delivery',
+                'service4_price': '$1.50/lb',
+                'service4_details': 'Free delivery for orders over $25',
+                'locations_subtitle': 'Conveniently located throughout New Bedford',
+                'visit_title': 'Visit Us',
+                'open_daily': 'Open Daily',
+                'attendant_hours': 'Attendant on-site',
+                'coming_soon_msg': "We're excited to announce our second location opening soon! Follow us for updates on our grand opening.",
+                'hours_payment_title': 'Hours & Payment',
+                'business_hours': 'Business Hours',
+                'payment_options': 'Payment Options',
+                'payment_desc': 'We accept various payment methods for your convenience:',
+                'cash': 'Cash',
+                'contact_title': 'Contact Us',
+                'contact_subtitle': "We're here to help with all your laundry needs",
+                'get_in_touch': 'Get In Touch',
+                'contact_info': 'Contact Information',
+                'phone': 'Phone Number',
+                'main_location': 'Main Location',
+                'follow_us': 'Follow Us on Instagram',
+                'view_profile': '@washywashyworld',
+                'footer_desc': 'Quality laundry services for the New Bedford community',
+                'quick_links': 'Quick Links',
+                'home_link': 'Home',
+                'about_link': 'About',
+                'services_link': 'Services',
+                'locations_link': 'Locations',
+                'contact_link': 'Contact',
+                'facebook': 'Facebook Page',
+                'follow_us_social': 'Follow Us on Social Media',
+                'reviews_title': 'Customer Reviews',
+                'see_reviews': 'See what our customers are saying',
+                'reviews_desc': 'Check out our reviews on Google',
+                'view_reviews': 'View Google Reviews'
+            },
+            'es': {
+                'hero_title': 'Servicios Profesionales de Lavandería en New Bedford',
+                'hero_subtitle': 'Soluciones de lavandería rápidas, económicas y convenientes para la comunidad',
+                'hero_button': 'Nuestros Servicios',
+                'services_title': 'Nuestros Servicios',
+                'service1_title': 'Lavandería de Autoservicio',
+                'service1_desc': 'Lavadoras y secadoras de última generación disponibles para su uso',
+                'service2_title': 'Servicio de Dejar y Recoger',
+                'service2_desc': 'Solo $1.50/libra con recogida el mismo día disponible',
+                'service3_title': 'Recogida y Entrega a Domicilio',
+                'service3_desc': '$1.50/libra con entrega gratuita para pedidos superiores a $25',
+                'locations_title': 'Nuestras Ubicaciones',
+                'location1_name': 'Ubicación en Purchase Street',
+                'location1_address': '1877 Purchase St, New Bedford, MA',
+                'location2_name': 'Ubicación en Acushnet Avenue',
+                'location2_address': '1301 Acushnet Ave, New Bedford, MA',
+                'status_open': 'Abierto Ahora',
+                'status_coming': 'Próximamente',
+                'about_title': 'Acerca de Washy Washy World',
+                'about_subtitle': 'Su servicio de lavandería de confianza en New Bedford',
+                'story_title': 'Nuestra Historia',
+                'story_p1': 'Washy Washy World fue fundada con una misión simple: proporcionar a la comunidad de New Bedford servicios de lavandería limpios, asequibles y convenientes. Entendemos que la lavandería es una tarea que todos tienen que hacer, pero a nadie le gusta realmente.',
+                'story_p2': 'Es por eso que hemos creado un ambiente acogedor con equipos de última generación para que su experiencia de lavandería sea lo más agradable y eficiente posible. Nuestro personal amable siempre está disponible para ayudarlo y ofrecemos múltiples opciones de servicio para adaptarse a su estilo de vida ocupado.',
+                'story_p3': 'Ya sea que prefiera hacer su propia lavandería usando nuestras máquinas de autoservicio, dejarla para que nuestro equipo experto la maneje o que la recojamos y la entreguemos en su puerta, Washy Washy World está aquí para servirle.',
+                'services_subtitle': 'Múltiples opciones para satisfacer sus necesidades de lavandería',
+                'services_options': 'Opciones de Servicio',
+                'service1_full_desc': 'Utilice nuestras lavadoras y secadoras de última generación a su conveniencia. Múltiples tamaños de máquinas disponibles para manejar cualquier carga.',
+                'service2_full_desc': 'Deje su lavandería con nosotros y nos encargaremos de todo. Solo $1.50/libra con recogida el mismo día disponible.',
+                'service3_full_desc': 'Recogeremos su lavandería y la entregaremos fresca y limpia. $1.50/libra con entrega gratuita para pedidos superiores a $25.',
+                'pricing_title': 'Precios de Servicios',
+                'service_col': 'Servicio',
+                'price_col': 'Precio',
+                'details_col': 'Detalles',
+                'service1_name': 'Lavado de Autoservicio',
+                'service1_price': 'Varía según el tamaño de la máquina',
+                'service1_details': 'Múltiples tamaños de máquinas disponibles',
+                'service2_name': 'Secado de Autoservicio',
+                'service2_price': 'Varía según el tiempo de secado',
+                'service2_details': 'Secadoras operadas con monedas',
+                'service3_name': 'Servicio de Dejar y Recoger',
+                'service3_price': '$1.50/libra',
+                'service3_details': 'Recogida el mismo día disponible',
+                'service4_name': 'Recogida y Entrega',
+                'service4_price': '$1.50/libra',
+                'service4_details': 'Entrega gratuita para pedidos superiores a $25',
+                'locations_subtitle': 'Convenientemente ubicado en todo New Bedford',
+                'visit_title': 'Visítenos',
+                'open_daily': 'Abierto Todos los Días',
+                'attendant_hours': 'Personal en el lugar',
+                'coming_soon_msg': '¡Estamos emocionados de anunciar que nuestra segunda ubicación abrirá pronto! Síganos para obtener actualizaciones sobre nuestra gran inauguración.',
+                'hours_payment_title': 'Horario y Pagos',
+                'business_hours': 'Horario Comercial',
+                'payment_options': 'Opciones de Pago',
+                'payment_desc': 'Aceptamos varios métodos de pago para su conveniencia:',
+                'cash': 'Efectivo',
+                'contact_title': 'Contáctenos',
+                'contact_subtitle': 'Estamos aquí para ayudar con todas sus necesidades de lavandería',
+                'get_in_touch': 'Póngase en Contacto',
+                'contact_info': 'Información de Contacto',
+                'phone': 'Número de Teléfono',
+                'main_location': 'Ubicación Principal',
+                'follow_us': 'Síganos en Instagram',
+                'view_profile': '@washywashyworld',
+                'footer_desc': 'Servicios de lavandería de calidad para la comunidad de New Bedford',
+                'quick_links': 'Enlaces Rápidos',
+                'home_link': 'Inicio',
+                'about_link': 'Acerca de',
+                'services_link': 'Servicios',
+                'locations_link': 'Ubicaciones',
+                'contact_link': 'Contacto',
+                'facebook': 'Página de Facebook',
+                'follow_us_social': 'Síganos en Redes Sociales',
+                'reviews_title': 'Reseñas de Clientes',
+                'see_reviews': 'Vea lo que dicen nuestros clientes',
+                'reviews_desc': 'Consulte nuestras reseñas en Google',
+                'view_reviews': 'Ver Reseñas de Google'
+            }
+        };
+        
+        languageButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                
+                // Update button states
+                languageButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Change language
+                changeLanguage(lang);
+            });
+        });
+        
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update all translatable elements
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Update page title based on language
+            if (lang === 'es') {
+                document.title = 'Washy Washy World Lavandería - New Bedford, MA';
+            } else {
+                document.title = 'Washy Washy World Laundromat - New Bedford, MA';
+            }
+        }
+        
+        // Load Instagram feed (this would typically use the Instagram API)
+        // For demonstration, we're using placeholder images
+        // In a real implementation, you would fetch actual posts from Instagram
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial language
+            changeLanguage('en');
+        });
+    </script>
 </body>
 </html>
