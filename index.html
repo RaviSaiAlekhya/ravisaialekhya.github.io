@@ -1856,7 +1856,7 @@
             <div class="container">
                 <h2 class="section-title" data-translate="reviews_title">Customer Reviews</h2>
                 <div class="google-reviews">
-                    <div class="review-placeholder" style="text-align: center; padding: 30px; background: #f8f9fa; border-radius: 8px;">
+                    <div class="review-placeholder fade-in" style="text-align: center; padding: 30px; background: #f8f9fa; border-radius: 8px;">
                         <i class="fab fa-google" style="font-size: 3rem; color: #34A853; margin-bottom: 15px;"></i>
                         <h3 data-translate="see_reviews">See what our customers are saying</h3>
                         <p data-translate="reviews_desc">Check out our reviews on Google</p>
@@ -1890,7 +1890,7 @@
                     <h3 data-translate="contact_link">Contact</h3>
                     <p><i class="fas fa-phone"></i> (774) 202-1427</p>
                     <p><i class="fas fa-map-marker-alt"></i> 1877 Purchase St, New Bedford, MA</p>
-                    <div class="social-links" style="margin-top: 15px;">
+                    <div class="social-links">
                         <a href="https://www.instagram.com/washywashyworld/" target="_blank" aria-label="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
@@ -1912,6 +1912,7 @@
     <script>
         // Simple JavaScript for mobile menu toggle
         document.querySelector('.menu-toggle').addEventListener('click', function() {
+            this.classList.toggle('active');
             document.getElementById('nav').classList.toggle('active');
         });
         
@@ -1937,6 +1938,7 @@
                 this.classList.add('active');
                 
                 // Close mobile menu if open
+                document.querySelector('.menu-toggle').classList.remove('active');
                 document.getElementById('nav').classList.remove('active');
                 
                 // Scroll to top
@@ -2226,10 +2228,30 @@
             }
         }
         
+        // Scroll animations
+        function checkScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
             // Set initial language
             changeLanguage('en');
+            
+            // Check scroll position on load
+            checkScroll();
+            
+            // Add scroll event listener
+            window.addEventListener('scroll', checkScroll);
         });
     </script>
 </body>
