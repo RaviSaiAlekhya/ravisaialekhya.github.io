@@ -485,7 +485,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTIwMCA4MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTIwMCAwSDB2ODBoMTIwMFYweiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEpIi8+PHBhdGggZD0iTTEyMDAgMTYwSDB2ODBoMTIwMHYtODB6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDgpIi8+PHBhdGggZD0iTTEyMDAgMzIwSDB2ODBoMTIwMHYtODB6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDYpIi8+PHBhdGggZD0iTTEyMDAgNDgwSDB2ODBoMTIwMHYtODB6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDQpIi8+PHBhdGggZD0iTTEyMDAgNjQwSDB2ODBoMTIwMHYtODB6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDIpIi8+PC9nPjwvc3ZnPg==');
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTIwMCA4MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZilleHRlcm5hbC1ocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuL2NzczI/ZmFtaWx5PUludGVyOjMwMCw0MDAsNTAwLDYwMCw3MDAmZGlzcGxheT1zd2FwIi8+PC9zdmc+');
             opacity: 0.1;
         }
         
@@ -1178,16 +1178,48 @@
             font-size: 1.2rem;
         }
         
-        /* Animations for elements on scroll */
-        .fade-in {
+        /* Apple-Style Scroll Animations */
+        .scroll-element {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
-        .fade-in.visible {
+        .scroll-element.scale-in {
+            transform: scale(0.8) translateY(50px);
+        }
+        
+        .scroll-element.slide-left {
+            transform: translateX(-100px);
+        }
+        
+        .scroll-element.slide-right {
+            transform: translateX(100px);
+        }
+        
+        .scroll-element.rotate-in {
+            transform: rotate(-5deg) translateY(50px);
+        }
+        
+        .scroll-element.stagger-1 {
+            transition-delay: 0.1s;
+        }
+        
+        .scroll-element.stagger-2 {
+            transition-delay: 0.2s;
+        }
+        
+        .scroll-element.stagger-3 {
+            transition-delay: 0.3s;
+        }
+        
+        .scroll-element.stagger-4 {
+            transition-delay: 0.4s;
+        }
+        
+        .scroll-element.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1) rotate(0);
         }
         
         /* Responsive */
@@ -1333,19 +1365,19 @@
         <!-- Services Preview -->
         <section class="services">
             <div class="container">
-                <h2 class="section-title" data-translate="services_title">Our Services</h2>
+                <h2 class="section-title scroll-element" data-translate="services_title">Our Services</h2>
                 <div class="services-grid">
-                    <div class="service-card fade-in">
+                    <div class="service-card scroll-element slide-left stagger-1">
                         <i class="fas fa-tshirt service-icon"></i>
                         <h3 data-translate="service1_title">Self-Service Laundry</h3>
                         <p data-translate="service1_desc">State-of-the-art washers and dryers available for your use</p>
                     </div>
-                    <div class="service-card fade-in">
+                    <div class="service-card scroll-element scale-in stagger-2">
                         <i class="fas fa-truck service-icon"></i>
                         <h3 data-translate="service2_title">Drop-off Service</h3>
                         <p data-translate="service2_desc">Only $1.50/lb with same day pick-up available</p>
                     </div>
-                    <div class="service-card fade-in">
+                    <div class="service-card scroll-element slide-right stagger-3">
                         <i class="fas fa-box service-icon"></i>
                         <h3 data-translate="service3_title">Pick-up & Delivery</h3>
                         <p data-translate="service3_desc">$1.50/lb with free delivery for orders over $25</p>
@@ -1357,9 +1389,9 @@
         <!-- Locations Preview -->
         <section class="locations">
             <div class="container">
-                <h2 class="section-title" data-translate="locations_title">Our Locations</h2>
+                <h2 class="section-title scroll-element" data-translate="locations_title">Our Locations</h2>
                 <div class="location-cards">
-                    <div class="location-card fade-in">
+                    <div class="location-card scroll-element slide-left stagger-1">
                         <div class="card-header">
                             <h3 data-translate="location1_name">Purchase Street Location</h3>
                         </div>
@@ -1368,7 +1400,7 @@
                             <p><i class="fas fa-map-marker-alt"></i> <span data-translate="location1_address">1877 Purchase St, New Bedford, MA</span></p>
                         </div>
                     </div>
-                    <div class="location-card fade-in">
+                    <div class="location-card scroll-element slide-right stagger-2">
                         <div class="card-header">
                             <h3 data-translate="location2_name">Acushnet Avenue Location</h3>
                         </div>
@@ -1396,13 +1428,13 @@
         <section>
             <div class="container">
                 <div class="about-content">
-                    <div class="about-text fade-in">
+                    <div class="about-text scroll-element slide-left">
                         <h2 class="section-title" data-translate="story_title">Our Story</h2>
                         <p data-translate="story_p1">Washy Washy World was founded with a simple mission: to provide the New Bedford community with clean, affordable, and convenient laundry services. We understand that laundry is a chore that everyone has to do, but nobody really enjoys.</p>
                         <p data-translate="story_p2">That's why we've created a welcoming environment with state-of-the-art equipment to make your laundry experience as pleasant and efficient as possible. Our friendly staff is always available to assist you, and we offer multiple service options to fit your busy lifestyle.</p>
                         <p data-translate="story_p3">Whether you prefer to do your own laundry using our self-service machines, drop it off for our expert team to handle, or have us pick it up and deliver it to your doorstep, Washy Washy World is here to serve you.</p>
                     </div>
-                    <div class="about-image fade-in">
+                    <div class="about-image scroll-element slide-right">
                         <img src="about.PNG" alt="Clean laundry">
                     </div>
                 </div>
@@ -1412,29 +1444,29 @@
         <!-- NEW CONTENT: Amenities Section -->
         <section class="amenities">
             <div class="container">
-                <h2 class="section-title" data-translate="amenities_title">Our Amenities</h2>
-                <p class="text-center" style="max-width: 800px; margin: 0 auto 30px;" data-translate="amenities_desc">We provide everything you need for a comfortable and convenient laundry experience</p>
+                <h2 class="section-title scroll-element" data-translate="amenities_title">Our Amenities</h2>
+                <p class="text-center scroll-element" style="max-width: 800px; margin: 0 auto 30px;" data-translate="amenities_desc">We provide everything you need for a comfortable and convenient laundry experience</p>
                 
                 <div class="amenities-grid">
-                    <div class="amenity-card fade-in">
+                    <div class="amenity-card scroll-element stagger-1">
                         <i class="fas fa-money-bill-wave amenity-icon"></i>
                         <h3 data-translate="atm_title">ATM Available</h3>
                         <p data-translate="atm_desc">Need cash? We have an ATM on-site for your convenience.</p>
                     </div>
                     
-                    <div class="amenity-card fade-in">
+                    <div class="amenity-card scroll-element stagger-2">
                         <i class="fas fa-coins amenity-icon"></i>
                         <h3 data-translate="hoppers_title">Quarter Hoppers</h3>
                         <p data-translate="hoppers_desc">Two hoppers available to exchange bills for quarters for our washers and dryers.</p>
                     </div>
                     
-                    <div class="amenity-card fade-in">
+                    <div class="amenity-card scroll-element stagger-3">
                         <i class="fas fa-cookie-bite amenity-icon"></i>
                         <h3 data-translate="snacks_title">Snack Vending Machine</h3>
                         <p data-translate="snacks_desc">Enjoy a variety of snacks including chips, candy, chocolate bars, soda, water, energy drinks, and cookies.</p>
                     </div>
                     
-                    <div class="amenity-card fade-in">
+                    <div class="amenity-card scroll-element stagger-4">
                         <i class="fas fa-pump-soap amenity-icon"></i>
                         <h3 data-translate="laundry_vending_title">Laundry Supplies Vending</h3>
                         <p data-translate="laundry_vending_desc">Forgot your supplies? We have small bottles of detergent, bleach, softeners, and laundry bags available.</p>
@@ -1446,11 +1478,11 @@
         <!-- NEW CONTENT: Products Section -->
         <section class="products">
             <div class="container">
-                <h2 class="section-title" data-translate="products_title">Laundry Products for Sale</h2>
-                <p class="text-center" style="max-width: 800px; margin: 0 auto 30px;" data-translate="products_desc">Visit our front office for these larger laundry products at great prices</p>
+                <h2 class="section-title scroll-element" data-translate="products_title">Laundry Products for Sale</h2>
+                <p class="text-center scroll-element" style="max-width: 800px; margin: 0 auto 30px;" data-translate="products_desc">Visit our front office for these larger laundry products at great prices</p>
                 
                 <div class="products-grid">
-                    <div class="product-card fade-in">
+                    <div class="product-card scroll-element stagger-1">
                         <div class="product-image">
                             <img src="Odor defense.jpg" alt="Gain Odor Defense Detergent">
                         </div>
@@ -1461,7 +1493,7 @@
                         </div>
                     </div>
                     
-                    <div class="product-card fade-in">
+                    <div class="product-card scroll-element stagger-2">
                         <div class="product-image">
                             <img src="Gain Original.avif" alt="Gain Original Detergent">
                         </div>
@@ -1472,7 +1504,7 @@
                         </div>
                     </div>
                     
-                    <div class="product-card fade-in">
+                    <div class="product-card scroll-element stagger-3">
                         <div class="product-image">
                             <img src="Tide Original.avif" alt="Tide Original Detergent">
                         </div>
@@ -1483,7 +1515,7 @@
                         </div>
                     </div>
                     
-                    <div class="product-card fade-in">
+                    <div class="product-card scroll-element stagger-4">
                         <div class="product-image">
                             <img src="Downy.avif" alt="Downy Ultra Fabric Softener">
                         </div>
@@ -1494,7 +1526,7 @@
                         </div>
                     </div>
                     
-                    <div class="product-card fade-in">
+                    <div class="product-card scroll-element stagger-1">
                         <div class="product-image">
                             <img src="Bleach.jpg" alt="Bleach">
                         </div>
@@ -1505,7 +1537,7 @@
                         </div>
                     </div>
                     
-                    <div class="product-card fade-in">
+                    <div class="product-card scroll-element stagger-2">
                         <div class="product-image">
                             <img src="Laundry Bag.jpg" alt="Laundry Bag">
                         </div>
@@ -1522,13 +1554,13 @@
         <!-- NEW CONTENT: Clothes Section -->
         <section class="clothes">
             <div class="container">
-                <h2 class="section-title" data-translate="clothes_title">Clothes for Sale</h2>
+                <h2 class="section-title scroll-element" data-translate="clothes_title">Clothes for Sale</h2>
                 
                 <div class="clothes-content">
-                    <div class="clothes-text fade-in">
+                    <div class="clothes-text scroll-element slide-left">
                         <p data-translate="clothes_desc">We offer gently used clothing at affordable prices right at our laundromat entrance. All items are in excellent condition, having been worn only a few times.</p>
                         
-                        <div class="clothes-highlight">
+                        <div class="clothes-highlight scroll-element stagger-1">
                             <p><i class="fas fa-shopping-basket"></i> <span data-translate="basket_clothes">Clothes in the basket: Only $1 each</span></p>
                             <p><i class="fas fa-tshirt"></i> <span data-translate="rack_clothes">Clothes on the rack: Priced individually (check the stickers)</span></p>
                         </div>
@@ -1536,7 +1568,7 @@
                         <p data-translate="clothes_quality">We maintain high quality standards - if an item isn't in good condition, it won't be available for sale. Come browse our selection of quality pre-owned clothing!</p>
                     </div>
                     
-                    <div class="clothes-image fade-in">
+                    <div class="clothes-image scroll-element slide-right">
                         <img src="DEB449FD-FF31-4529-854E-670750AF47BB.PNG" alt="Clothes for sale at Washy Washy World">
                     </div>
                 </div>
@@ -1557,10 +1589,10 @@
 
         <section class="services-detailed">
             <div class="container">
-                <h2 class="section-title" data-translate="services_options">Service Options</h2>
+                <h2 class="section-title scroll-element" data-translate="services_options">Service Options</h2>
                 
                 <!-- Self-Service Card -->
-                <div class="service-detailed-card fade-in">
+                <div class="service-detailed-card scroll-element">
                     <div class="service-detailed-header">
                         <i class="fas fa-tshirt service-detailed-icon"></i>
                         <h3 data-translate="service1_title">Self-Service Laundry</h3>
@@ -1576,22 +1608,22 @@
                         <div class="pricing-section">
                             <h4 class="pricing-title" data-translate="washer_options">Washer Options</h4>
                             <div class="pricing-grid">
-                                <div class="pricing-item">
+                                <div class="pricing-item scroll-element stagger-1">
                                     <h4 data-translate="washer_20lb">20 lb Washer</h4>
                                     <p data-translate="washer_20lb_desc">Perfect for regular loads</p>
                                     <div class="price-tag">$3.00 per load</div>
                                 </div>
-                                <div class="pricing-item">
+                                <div class="pricing-item scroll-element stagger-2">
                                     <h4 data-translate="washer_30lb">30 lb Washer</h4>
                                     <p data-translate="washer_30lb_desc">Ideal for larger loads</p>
                                     <div class="price-tag">$4.00 per load</div>
                                 </div>
-                                <div class="pricing-item">
+                                <div class="pricing-item scroll-element stagger-3">
                                     <h4 data-translate="washer_40lb">40 lb Washer</h4>
                                     <p data-translate="washer_40lb_desc">Great for bulky items</p>
                                     <div class="price-tag">$6.00 per load</div>
                                 </div>
-                                <div class="pricing-item">
+                                <div class="pricing-item scroll-element stagger-4">
                                     <h4 data-translate="washer_60lb">60 lb Washer</h4>
                                     <p data-translate="washer_60lb_desc">Maximum capacity for big jobs</p>
                                     <div class="price-tag">$9.00 per load</div>
@@ -1600,13 +1632,13 @@
                             
                             <h4 class="pricing-title" data-translate="dryer_options">Dryer Options</h4>
                             <div class="pricing-grid">
-                                <div class="pricing-item">
+                                <div class="pricing-item scroll-element stagger-1">
                                     <h4 data-translate="dryer_30lb">30 lb Dryer</h4>
                                     <p data-translate="dryer_30lb_desc">Efficient drying for standard loads</p>
                                     <div class="price-tag">$0.25 for 8 minutes</div>
                                     <p data-translate="dryer_30lb_time">$1.00 gives 32 minutes of drying time</p>
                                 </div>
-                                <div class="pricing-item">
+                                <div class="pricing-item scroll-element stagger-2">
                                     <h4 data-translate="dryer_50lb">50 lb Dryer</h4>
                                     <p data-translate="dryer_50lb_desc">High-capacity drying for large loads</p>
                                     <div class="price-tag">$0.25 for 7 minutes</div>
@@ -1618,7 +1650,7 @@
                 </div>
                 
                 <!-- Drop-off Service Card -->
-                <div class="service-detailed-card fade-in">
+                <div class="service-detailed-card scroll-element">
                     <div class="service-detailed-header">
                         <i class="fas fa-truck service-detailed-icon"></i>
                         <h3 data-translate="service2_title">Drop-off Service</h3>
@@ -1633,20 +1665,20 @@
                         
                         <div class="pricing-section">
                             <div class="pricing-grid">
-                                <div class="pricing-item">
+                                <div class="pricing-item scroll-element stagger-1">
                                     <h4 data-translate="regular_laundry">Regular Laundry</h4>
                                     <p data-translate="regular_laundry_desc">Expertly washed, dried, and folded</p>
                                     <div class="price-tag">$1.50 per pound</div>
                                     <p data-translate="min_10lbs">Minimum 10 lbs</p>
                                 </div>
-                                <div class="pricing-item">
+                                <div class="pricing-item scroll-element stagger-2">
                                     <h4 data-translate="comforters">Comforters & Bulky Items</h4>
                                     <p data-translate="comforters_desc">Special care for oversized items</p>
                                     <div class="price-tag">$15.00 each</div>
                                 </div>
                             </div>
                             
-                            <div class="service-highlight">
+                            <div class="service-highlight scroll-element stagger-1">
                                 <p><i class="fas fa-star"></i> <span data-translate="same_day_service">Same day service available when dropped off before 11am</span></p>
                                 <p><i class="fas fa-star"></i> <span data-translate="customize_wash">Customize your wash with premium detergents and softeners</span></p>
                                 <p><i class="fas fa-star"></i> <span data-translate="extra_downy">Want extra Downy? You got it! Just let us know your preferences</span></p>
@@ -1656,42 +1688,41 @@
                 </div>
                 
                 <!-- Pick-up & Delivery Service Card -->
-                <div class="service-detailed-card fade-in">
+                <div class="service-detailed-card scroll-element">
                     <div class="service-detailed-header">
                         <i class="fas fa-box service-detailed-icon"></i>
                         <h3 data-translate="service3_title">Pick-up & Delivery Service</h3>
                     </div>
                     <div class="service-detailed-body">
-    <p class="service-description" data-translate="service3_full_desc">
-        Can't make it to our location? No vehicle? No problem! Our convenient pick-up and delivery 
-        service brings professional laundry care right to your doorstep. We'll collect your laundry, 
-        expertly clean and care for it at our facility, and return it to you fresh, folded, and ready 
-        to put away—all on the same day.
-    </p>
-    
-    <div class="pricing-section">
-        <div class="pricing-item" style="max-width: 400px;">
-            <h4 data-translate="premium_service">Premium Service</h4>
-            <p data-translate="premium_service_desc">We pick up, wash, dry, fold, and deliver</p>
-            <div class="price-tag">$1.50 per pound</div>
-        </div>
-        
-        <div class="service-highlight">
-            <p><i class="fas fa-truck"></i> <span data-translate="free_delivery">Free delivery for orders over $25</span></p>
-            <p><i class="fas fa-clock"></i> <span data-translate="same_day_available">Same day service available</span></p>
-            <p><i class="fas fa-calendar"></i> <span data-translate="schedule_pickups">Schedule regular pickups or one-time service</span></p>
-        </div>
-        
-        <!-- ADD THIS NEW CALL-TO-ACTION SECTION -->
-        <div class="call-to-action" style="background: white; color: #333; padding: 25px; border-radius: 10px; text-align: center; margin-top: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 2px solid #2c7ac9;">
-    <h3 style="font-size: 1.5rem; margin-bottom: 15px; color: #2c7ac9;">Call now to schedule</h3>
-    <a href="tel:774-202-1427" style="display: inline-block; background: #2c7ac9; padding: 12px 25px; border-radius: 50px; font-size: 1.5rem; font-weight: bold; margin: 10px 0; text-decoration: none; color: white; transition: all 0.3s ease;">
-        <i class="fas fa-phone"></i> (774) 202-1427
-    </a>
-    <p style="margin-top: 10px; color: #666;">Our friendly staff is ready to assist you!</p>
-</div>
-    </div>
-</div>
+                        <p class="service-description" data-translate="service3_full_desc">
+                            Can't make it to our location? No vehicle? No problem! Our convenient pick-up and delivery 
+                            service brings professional laundry care right to your doorstep. We'll collect your laundry, 
+                            expertly clean and care for it at our facility, and return it to you fresh, folded, and ready 
+                            to put away—all on the same day.
+                        </p>
+                        
+                        <div class="pricing-section">
+                            <div class="pricing-item scroll-element stagger-1" style="max-width: 400px;">
+                                <h4 data-translate="premium_service">Premium Service</h4>
+                                <p data-translate="premium_service_desc">We pick up, wash, dry, fold, and deliver</p>
+                                <div class="price-tag">$1.50 per pound</div>
+                            </div>
+                            
+                            <div class="service-highlight scroll-element stagger-1">
+                                <p><i class="fas fa-truck"></i> <span data-translate="free_delivery">Free delivery for orders over $25</span></p>
+                                <p><i class="fas fa-clock"></i> <span data-translate="same_day_available">Same day service available</span></p>
+                                <p><i class="fas fa-calendar"></i> <span data-translate="schedule_pickups">Schedule regular pickups or one-time service</span></p>
+                            </div>
+                            
+                            <!-- ADD THIS NEW CALL-TO-ACTION SECTION -->
+                            <div class="call-to-action scroll-element stagger-2" style="background: white; color: #333; padding: 25px; border-radius: 10px; text-align: center; margin-top: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 2px solid #2c7ac9;">
+                                <h3 style="font-size: 1.5rem; margin-bottom: 15px; color: #2c7ac9;">Call now to schedule</h3>
+                                <a href="tel:774-202-1427" style="display: inline-block; background: #2c7ac9; padding: 12px 25px; border-radius: 50px; font-size: 1.5rem; font-weight: bold; margin: 10px 0; text-decoration: none; color: white; transition: all 0.3s ease;">
+                                    <i class="fas fa-phone"></i> (774) 202-1427
+                                </a>
+                                <p style="margin-top: 10px; color: #666;">Our friendly staff is ready to assist you!</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1711,9 +1742,9 @@
 
         <section class="locations">
             <div class="container">
-                <h2 class="section-title" data-translate="visit_title">Visit Us</h2>
+                <h2 class="section-title scroll-element" data-translate="visit_title">Visit Us</h2>
                 <div class="location-cards">
-                    <div class="location-card fade-in">
+                    <div class="location-card scroll-element slide-left stagger-1">
                         <div class="card-header">
                             <h3 data-translate="location1_name">Purchase Street Location</h3>
                         </div>
@@ -1724,7 +1755,7 @@
                             <p><i class="fas fa-user"></i> <span data-translate="attendant_hours">Attendant on-site:</span> 9AM – 9PM</p>
                         </div>
                     </div>
-                    <div class="location-card fade-in">
+                    <div class="location-card scroll-element slide-right stagger-2">
                         <div class="card-header">
                             <h3 data-translate="location2_name">Acushnet Avenue Location</h3>
                         </div>
@@ -1740,14 +1771,14 @@
 
         <section class="hours-payment">
             <div class="container">
-                <h2 class="section-title" data-translate="hours_payment_title">Hours & Payment</h2>
+                <h2 class="section-title scroll-element" data-translate="hours_payment_title">Hours & Payment</h2>
                 <div class="info-container">
-                    <div class="info-box fade-in">
+                    <div class="info-box scroll-element slide-left stagger-1">
                         <h3 data-translate="business_hours">Business Hours</h3>
                         <p><strong data-translate="open_daily">Open Daily:</strong> 7AM – 9PM</p>
                         <p><strong data-translate="attendant_hours">Attendant on-site:</strong> 9AM – 9PM</p>
                     </div>
-                    <div class="info-box fade-in">
+                    <div class="info-box scroll-element slide-right stagger-2">
                         <h3 data-translate="payment_options">Payment Options</h3>
                         <p data-translate="payment_desc">We accept various payment methods for your convenience:</p>
                         <div class="payment-options">
@@ -1776,39 +1807,39 @@
 
         <section class="contact">
             <div class="container">
-                <h2 class="section-title" data-translate="get_in_touch">Get In Touch</h2>
+                <h2 class="section-title scroll-element" data-translate="get_in_touch">Get In Touch</h2>
                 <div class="contact-container">
                     <div class="contact-info-section">
                         <h3 data-translate="contact_info">Contact Information</h3>
-                        <div class="contact-detail fade-in">
+                        <div class="contact-detail scroll-element stagger-1">
                             <i class="fas fa-phone contact-icon"></i>
                             <div>
                                 <p><strong data-translate="phone">Phone Number</strong></p>
                                 <p>(774) 202-1427</p>
                             </div>
                         </div>
-                        <div class="contact-detail fade-in">
+                        <div class="contact-detail scroll-element stagger-2">
                             <i class="fas fa-map-marker-alt contact-icon"></i>
                             <div>
                                 <p><strong data-translate="main_location">Main Location</strong></p>
                                 <p>1877 Purchase St, New Bedford, MA</p>
                             </div>
                         </div>
-                        <div class="contact-detail fade-in">
+                        <div class="contact-detail scroll-element stagger-3">
                             <i class="fas fa-clock contact-icon"></i>
                             <div>
                                 <p><strong data-translate="business_hours">Business Hours</strong></p>
                                 <p>7AM – 9PM Daily</p>
                             </div>
                         </div>
-                        <div class="contact-detail fade-in">
+                        <div class="contact-detail scroll-element stagger-4">
                             <i class="fas fa-envelope contact-icon"></i>
                             <div>
                                 <p><strong>Email</strong></p>
                                 <p>washywashyworldlaundromat@gmail.com</p>
                             </div>
                         </div>
-                        <div class="contact-detail fade-in">
+                        <div class="contact-detail scroll-element stagger-1">
                             <i class="fab fa-facebook contact-icon"></i>
                             <div>
                                 <p><strong data-translate="facebook">Facebook Page</strong></p>
@@ -1817,7 +1848,7 @@
                         </div>
                         
                         <!-- Social Media Feed -->
-                        <div class="social-feed">
+                        <div class="social-feed scroll-element stagger-2">
                             <h3 data-translate="follow_us_social">Follow Us on Social Media</h3>
                             <div class="social-buttons" style="display: flex; gap: 15px; margin-bottom: 20px;">
                                 <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="btn" style="background: #E1306C;">
@@ -1830,20 +1861,20 @@
                         </div>
                         
                         <!-- Instagram Feed -->
-                        <div class="instagram-feed">
+                        <div class="instagram-feed scroll-element stagger-3">
                             <h3 data-translate="follow_us">Follow Us on Instagram</h3>
                             <div class="instagram-posts">
-                                <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="instagram-post fade-in">
+                                <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="instagram-post scroll-element stagger-1">
                                     <img src="Post 1.jpg" alt="Instagram post">
                                 </a>
-                                <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="instagram-post fade-in">
+                                <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="instagram-post scroll-element stagger-2">
                                     <img src="Post 2.jpg" alt="Instagram post">
                                 </a>
-                                <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="instagram-post fade-in">
+                                <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="instagram-post scroll-element stagger-3">
                                     <img src="Post 3.jpg" alt="Instagram post">
                                 </a>
                             </div>
-                            <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="instagram-link">
+                            <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="instagram-link scroll-element stagger-4">
                                 <i class="fab fa-instagram"></i>
                                 <span style="margin-left: 8px;" data-translate="view_profile">@washywashyworld</span>
                             </a>
@@ -1856,9 +1887,9 @@
         <!-- Google Reviews Section -->
         <section class="reviews">
             <div class="container">
-                <h2 class="section-title" data-translate="reviews_title">Customer Reviews</h2>
+                <h2 class="section-title scroll-element" data-translate="reviews_title">Customer Reviews</h2>
                 <div class="google-reviews">
-                    <div class="review-placeholder fade-in" style="text-align: center; padding: 30px; background: #f8f9fa; border-radius: 8px;">
+                    <div class="review-placeholder scroll-element" style="text-align: center; padding: 30px; background: #f8f9fa; border-radius: 8px;">
                         <i class="fab fa-google" style="font-size: 3rem; color: #34A853; margin-bottom: 15px;"></i>
                         <h3 data-translate="see_reviews">See what our customers are saying</h3>
                         <p data-translate="reviews_desc">Check out our reviews on Google</p>
@@ -2229,9 +2260,9 @@
             }
         }
         
-        // Scroll animations
+        // Apple-Style Scroll Animations
         function checkScroll() {
-            const elements = document.querySelectorAll('.fade-in');
+            const elements = document.querySelectorAll('.scroll-element');
             
             elements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
