@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
+        /* All your existing CSS remains the same */
         :root {
             --primary: #2c7ac9;
             --primary-light: #5a9de6;
@@ -330,6 +331,71 @@
             text-align: center;
         }
         
+        /* NEW: Call-to-Action Section */
+        .call-to-action-section {
+            background-color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-container:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+        
+        .cta-title {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .cta-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--text-light);
+        }
+        
+        .phone-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 2rem;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(44, 122, 201, 0.3);
+            transition: var(--transition);
+        }
+        
+        .phone-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(44, 122, 201, 0.4);
+        }
+        
+        .cta-note {
+            margin-top: 20px;
+            font-style: italic;
+            color: var(--text-light);
+        }
+        
         /* Locations */
         .locations {
             background-color: var(--white);
@@ -485,7 +551,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTIwMCA4MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZilleHRlcm5hbC1ocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuL2NzczI/ZmFtaWx5PUludGVyOjMwMCw0MDAsNTAwLDYwMCw3MDAmZGlzcGxheT1zd2FwIi8+PC9zdmc+');
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTIwMCA4MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTIwMCAwSDB2ODBoMTIwMFYweiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEpIi8+PHBhdGggZD0iTTEyMDAgMTYwSDB2ODBoMTIwMHYtODB6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDgpIi8+PHBhdGggZD0iTTEyMDAgMzIwSDB2ODBoMTIwMHYtODB6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDYpIi8+PHBhdGggZD0iTTEyMDAgNDgwSDB2ODBoMTIwMHYtODB6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDQpIi8+PHBhdGggZD0iTTEyMDAgNjQwSDB2ODBoMTIwMHYtODB6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDIpIi8+PC9nPjwvc3ZnPg==');
             opacity: 0.1;
         }
         
@@ -1296,6 +1362,15 @@
             .amenities-grid, .products-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .phone-cta {
+                font-size: 1.5rem;
+                padding: 15px 30px;
+            }
+            
+            .cta-title {
+                font-size: 1.8rem;
+            }
         }
         
         @media (max-width: 480px) {
@@ -1313,6 +1388,15 @@
             
             .section-title {
                 font-size: 1.8rem;
+            }
+            
+            .phone-cta {
+                font-size: 1.3rem;
+                padding: 12px 25px;
+            }
+            
+            .cta-title {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -1362,26 +1446,16 @@
             </div>
         </section>
 
-        <!-- Services Preview -->
-        <section class="services">
+        <!-- NEW: Call-to-Action Section (Replaces Services Preview) -->
+        <section class="call-to-action-section">
             <div class="container">
-                <h2 class="section-title scroll-element" data-translate="services_title">Our Services</h2>
-                <div class="services-grid">
-                    <div class="service-card scroll-element slide-left stagger-1">
-                        <i class="fas fa-tshirt service-icon"></i>
-                        <h3 data-translate="service1_title">Self-Service Laundry</h3>
-                        <p data-translate="service1_desc">State-of-the-art washers and dryers available for your use</p>
-                    </div>
-                    <div class="service-card scroll-element scale-in stagger-2">
-                        <i class="fas fa-truck service-icon"></i>
-                        <h3 data-translate="service2_title">Drop-off Service</h3>
-                        <p data-translate="service2_desc">Only $1.50/lb with same day pick-up available</p>
-                    </div>
-                    <div class="service-card scroll-element slide-right stagger-3">
-                        <i class="fas fa-box service-icon"></i>
-                        <h3 data-translate="service3_title">Pick-up & Delivery</h3>
-                        <p data-translate="service3_desc">$1.50/lb with free delivery for orders over $25</p>
-                    </div>
+                <div class="cta-container scroll-element">
+                    <h2 class="cta-title" data-translate="cta_title">Call to Schedule Your Service</h2>
+                    <p class="cta-subtitle" data-translate="cta_subtitle">Our friendly staff is ready to assist you with all your laundry needs</p>
+                    <a href="tel:774-202-1427" class="phone-cta">
+                        <i class="fas fa-phone"></i> (774) 202-1427
+                    </a>
+                    <p class="cta-note" data-translate="cta_note">Call now for pickup & delivery service or any questions about our services</p>
                 </div>
             </div>
         </section>
@@ -1471,6 +1545,13 @@
                         <h3 data-translate="laundry_vending_title">Laundry Supplies Vending</h3>
                         <p data-translate="laundry_vending_desc">Forgot your supplies? We have small bottles of detergent, bleach, softeners, and laundry bags available.</p>
                     </div>
+                    
+                    <!-- NEW: Folding Tables Amenity -->
+                    <div class="amenity-card scroll-element stagger-1">
+                        <i class="fas fa-table amenity-icon"></i>
+                        <h3 data-translate="folding_tables_title">Folding Tables</h3>
+                        <p data-translate="folding_tables_desc">Convenient folding tables available for you to fold your clothes right after drying.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1545,6 +1626,18 @@
                             <h3 data-translate="bag_title">Laundry Bag</h3>
                             <p data-translate="bag_desc">Durable bag for carrying your laundry</p>
                             <div class="product-price">$10</div>
+                        </div>
+                    </div>
+                    
+                    <!-- NEW: Plastic Bags Product -->
+                    <div class="product-card scroll-element stagger-3">
+                        <div class="product-image">
+                            <img src="plastic-bag.jpg" alt="Plastic Bags">
+                        </div>
+                        <div class="product-info">
+                            <h3 data-translate="plastic_bag_title">Plastic Bags</h3>
+                            <p data-translate="plastic_bag_desc">Convenient plastic bags for carrying your laundry</p>
+                            <div class="product-price">$1 each</div>
                         </div>
                     </div>
                 </div>
@@ -1990,6 +2083,9 @@
                 'hero_title': 'Professional Laundry Services in New Bedford',
                 'hero_subtitle': 'Fast, affordable, and convenient laundry solutions for the community',
                 'hero_button': 'Our Services',
+                'cta_title': 'Call to Schedule Your Service',
+                'cta_subtitle': 'Our friendly staff is ready to assist you with all your laundry needs',
+                'cta_note': 'Call now for pickup & delivery service or any questions about our services',
                 'services_title': 'Our Services',
                 'service1_title': 'Self-Service Laundry',
                 'service1_desc': 'State-of-the-art washers and dryers available for your use',
@@ -2020,6 +2116,8 @@
                 'snacks_desc': 'Enjoy a variety of snacks including chips, candy, chocolate bars, soda, water, energy drinks, and cookies.',
                 'laundry_vending_title': 'Laundry Supplies Vending',
                 'laundry_vending_desc': 'Forgot your supplies? We have small bottles of detergent, bleach, softeners, and laundry bags available.',
+                'folding_tables_title': 'Folding Tables',
+                'folding_tables_desc': 'Convenient folding tables available for you to fold your clothes right after drying.',
                 'products_title': 'Laundry Products for Sale',
                 'products_desc': 'Visit our front office for these larger laundry products at great prices',
                 'gain_odor_title': 'Gain Odor Defense Detergent',
@@ -2034,6 +2132,8 @@
                 'bleach_desc': '64 fl oz - For whitening and disinfecting',
                 'bag_title': 'Laundry Bag',
                 'bag_desc': 'Durable bag for carrying your laundry',
+                'plastic_bag_title': 'Plastic Bags',
+                'plastic_bag_desc': 'Convenient plastic bags for carrying your laundry',
                 'clothes_title': 'Clothes for Sale',
                 'clothes_desc': 'We offer gently used clothing at affordable prices right at our laundromat entrance. All items are in excellent condition, having been worn only a few times.',
                 'basket_clothes': 'Clothes in the basket: Only $1 each',
@@ -2110,6 +2210,9 @@
                 'hero_title': 'Servicios Profesionales de Lavandería en New Bedford',
                 'hero_subtitle': 'Soluciones de lavandería rápidas, económicas y convenientes para la comunidad',
                 'hero_button': 'Nuestros Servicios',
+                'cta_title': 'Llame para Programar Su Servicio',
+                'cta_subtitle': 'Nuestro personal amable está listo para ayudarlo con todas sus necesidades de lavandería',
+                'cta_note': 'Llame ahora para el servicio de recogida y entrega o cualquier pregunta sobre nuestros servicios',
                 'services_title': 'Nuestros Servicios',
                 'service1_title': 'Lavandería de Autoservicio',
                 'service1_desc': 'Lavadoras y secadoras de última generación disponibles para su uso',
@@ -2140,6 +2243,8 @@
                 'snacks_desc': 'Disfrute de una variedad de snacks que incluyen papas fritas, dulces, barras de chocolate, refrescos, agua, bebidas energéticas y galletas.',
                 'laundry_vending_title': 'Suministros de Lavandería en Máquinas Expendedoras',
                 'laundry_vending_desc': '¿Olvidó sus suministros? Tenemos botellas pequeñas de detergente, blanqueador, suavizantes y bolsas de lavandería disponibles.',
+                'folding_tables_title': 'Mesas para Doblar',
+                'folding_tables_desc': 'Mesas convenientes para doblar su ropa disponibles justo después del secado.',
                 'products_title': 'Productos de Lavandería en Venta',
                 'products_desc': 'Visite nuestra oficina principal para estos productos de lavandería más grandes a precios excelentes',
                 'gain_odor_title': 'Detergente Gain Odor Defense',
@@ -2154,6 +2259,8 @@
                 'bleach_desc': '64 fl oz - Para blanquear y desinfectar',
                 'bag_title': 'Bolsa de Lavandería',
                 'bag_desc': 'Bolsa duradera para transportar su lavandería',
+                'plastic_bag_title': 'Bolsas de Plástico',
+                'plastic_bag_desc': 'Bolsas de plástico convenientes para transportar su lavandería',
                 'clothes_title': 'Ropa en Venta',
                 'clothes_desc': 'Ofrecemos ropa usada en buen estado a precios asequibles justo en la entrada de nuestra lavandería. Todos los artículos están en excelentes condiciones, habiendo sido usados solo unas pocas veces.',
                 'basket_clothes': 'Ropa en la canasta: Solo $1 cada una',
