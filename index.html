@@ -3,41 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Washy Washy World Laundromat - New Bedford, MA</title>
+    <title>Washy Washy World - Premium Laundry Experience</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* All your existing CSS remains the same */
         :root {
-            --primary: #2c7ac9;
-            --primary-light: #5a9de6;
-            --primary-dark: #1a5a9e;
-            --secondary: #ff9900;
-            --secondary-light: #ffb84d;
-            --secondary-dark: #cc7a00;
-            --accent: #4ecdc4;
-            --light: #f8f9fa;
-            --light-gray: #e9ecef;
-            --dark: #343a40;
-            --success: #28a745;
-            --text: #333333;
-            --text-light: #6c757d;
+            --primary: #1d1d1f;
+            --primary-light: #424245;
+            --primary-dark: #000;
+            --accent: #0071e3;
+            --accent-light: #2997ff;
+            --light: #f5f5f7;
+            --light-gray: #d2d2d7;
+            --dark: #1d1d1f;
+            --text: #1d1d1f;
+            --text-light: #86868b;
             --white: #ffffff;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         }
         
         body {
-            background-color: #f5f7fa;
+            background-color: var(--white);
             color: var(--text);
-            line-height: 1.6;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -46,26 +44,33 @@
         
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 980px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 22px;
         }
         
-        /* Header Styles */
+        /* Header - Apple Style */
         header {
-            background-color: var(--white);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            position: sticky;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
             transition: var(--transition);
+            height: 44px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            width: 100%;
         }
         
         .logo {
@@ -75,16 +80,16 @@
         }
         
         .logo img {
-            height: 50px;
-            margin-right: 10px;
+            height: 30px;
             transition: var(--transition);
         }
         
         .logo h1 {
             color: var(--primary);
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 21px;
+            font-weight: 600;
             letter-spacing: -0.5px;
+            margin-left: 8px;
         }
         
         nav ul {
@@ -93,37 +98,38 @@
         }
         
         nav ul li {
-            margin-left: 20px;
+            margin-left: 24px;
             position: relative;
         }
         
         nav ul li a {
             text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
+            color: var(--text);
+            font-size: 12px;
+            font-weight: 400;
             transition: var(--transition);
-            padding: 8px 15px;
-            border-radius: 4px;
+            padding: 8px 0;
             position: relative;
             overflow: hidden;
+            opacity: 0.8;
         }
         
-        nav ul li a:before {
+        nav ul li a:hover, nav ul li a.active {
+            opacity: 1;
+        }
+        
+        nav ul li a:after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 0;
-            height: 2px;
+            height: 1px;
             background: var(--primary);
             transition: var(--transition);
         }
         
-        nav ul li a:hover, nav ul li a.active {
-            color: var(--primary);
-        }
-        
-        nav ul li a:hover:before, nav ul li a.active:before {
+        nav ul li a:hover:after, nav ul li a.active:after {
             width: 100%;
         }
         
@@ -140,18 +146,19 @@
             cursor: pointer;
             padding: 5px 10px;
             border-radius: 4px;
-            font-weight: 500;
+            font-weight: 400;
             color: var(--dark);
             transition: var(--transition);
+            font-size: 12px;
+            opacity: 0.7;
         }
         
         .language-btn.active {
-            color: var(--primary);
-            background-color: #f0f5ff;
+            opacity: 1;
         }
         
         .language-btn:hover {
-            color: var(--primary);
+            opacity: 1;
         }
         
         /* Mobile Menu */
@@ -163,16 +170,15 @@
         }
         
         .menu-toggle span {
-            height: 3px;
-            width: 25px;
+            height: 1px;
+            width: 17px;
             background: var(--primary);
-            margin-bottom: 5px;
-            border-radius: 2px;
+            margin-bottom: 3px;
             transition: var(--transition);
         }
         
         .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
+            transform: rotate(45deg) translate(4px, 4px);
         }
         
         .menu-toggle.active span:nth-child(2) {
@@ -180,7 +186,7 @@
         }
         
         .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -6px);
+            transform: rotate(-45deg) translate(4px, -4px);
         }
         
         /* Page Content */
@@ -195,29 +201,19 @@
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
-        /* Hero Section */
+        /* Hero Section - Apple Style */
         .hero {
-            background: linear-gradient(135deg, #1a5a9e 0%, #2c7ac9 100%), url('your-image.jpg') no-repeat center center/cover;
-            color: white; /* Keep your white text */
+            background-color: var(--light);
+            color: var(--text);
             text-align: center;
-            padding: 120px 20px;
+            padding: 120px 20px 80px;
             position: relative;
             overflow: hidden;
-        }
-        
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTIwMCA4MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTIwMCAwSDB2ODBoMTIwMFYweiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEpIi8+PHBhdGggZD0iTTEyMDAgMTYwSDB2ODBoMTIwMHYtODB6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDgpIi8+PHBhdGggZD0iTTEyMDAgMzIwSDB2ODBoMTIwMHYtODB6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDYpIi8+PHBhdGggZD0iTTEyMDAgNDgwSDB2ODBoMTIwMHYtODB6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDQpIi8+PHBhdGggZD0iTTEyMDAgNjQwSDB2ODBoMTIwMHYtODB6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDIpIi8+PC9nPjwvc3ZnPg==');
-            opacity: 0.1;
+            margin-top: 44px;
         }
         
         .hero-content {
@@ -228,79 +224,51 @@
         }
         
         .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 56px;
             font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            animation: slideInDown 1s ease;
+            line-height: 1.07143;
+            letter-spacing: -0.005em;
+            margin-bottom: 6px;
         }
         
         .hero p {
-            font-size: 1.3rem;
-            margin: 0 auto 30px;
+            font-size: 28px;
+            line-height: 1.10722;
+            font-weight: 400;
+            letter-spacing: .004em;
+            margin: 0 auto 18px;
             max-width: 600px;
-            animation: slideInUp 1s ease 0.2s both;
+            color: var(--text-light);
         }
         
         .btn {
             display: inline-block;
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
+            background: var(--accent);
             color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
+            padding: 12px 22px;
+            border-radius: 980px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 400;
             transition: var(--transition);
             border: none;
             cursor: pointer;
-            font-size: 1rem;
-            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);
+            font-size: 17px;
             position: relative;
             overflow: hidden;
-            animation: fadeIn 1s ease 0.4s both;
-        }
-        
-        .btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
         }
         
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 153, 0, 0.4);
+            background: var(--accent-light);
         }
         
-        .btn:hover:before {
-            left: 100%;
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
         }
         
-        /* Animations */
-        @keyframes slideInDown {
-            from { opacity: 0; transform: translateY(-50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes slideInUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        .btn-outline:hover {
+            background: rgba(0, 113, 227, 0.1);
         }
         
         /* Sections */
@@ -310,28 +278,19 @@
         
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             color: var(--primary);
-            position: relative;
-            font-size: 2.5rem;
+            font-size: 40px;
             font-weight: 700;
-        }
-        
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            margin: 15px auto 0;
-            border-radius: 2px;
+            line-height: 1.1;
+            letter-spacing: 0em;
         }
         
         .text-center {
             text-align: center;
         }
         
-        /* NEW: Call-to-Action Section */
+        /* Call-to-Action Section */
         .call-to-action-section {
             background-color: var(--white);
             padding: 80px 0;
@@ -342,58 +301,46 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 40px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 15px;
-            box-shadow: var(--shadow);
+            background: var(--light);
+            border-radius: 18px;
             position: relative;
             overflow: hidden;
         }
         
-        .cta-container:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-        }
-        
         .cta-title {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
+            font-size: 40px;
+            margin-bottom: 10px;
             color: var(--primary);
+            font-weight: 700;
         }
         
         .cta-subtitle {
-            font-size: 1.2rem;
+            font-size: 21px;
             margin-bottom: 30px;
             color: var(--text-light);
         }
         
         .phone-cta {
             display: inline-block;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: var(--accent);
             color: white;
-            padding: 20px 40px;
-            border-radius: 50px;
+            padding: 16px 32px;
+            border-radius: 980px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 2rem;
+            font-weight: 500;
+            font-size: 24px;
             margin: 20px 0;
-            box-shadow: 0 8px 25px rgba(44, 122, 201, 0.3);
             transition: var(--transition);
         }
         
         .phone-cta:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(44, 122, 201, 0.4);
+            background: var(--accent-light);
         }
         
         .cta-note {
             margin-top: 20px;
-            font-style: italic;
             color: var(--text-light);
+            font-size: 17px;
         }
         
         /* Locations */
@@ -410,7 +357,7 @@
         
         .location-card {
             background-color: var(--white);
-            border-radius: 12px;
+            border-radius: 18px;
             overflow: hidden;
             box-shadow: var(--shadow);
             flex: 1;
@@ -422,27 +369,16 @@
         }
         
         .location-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
         .card-header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
-            padding: 20px;
+            background: var(--light);
+            color: var(--primary);
+            padding: 30px 20px;
             position: relative;
             overflow: hidden;
-        }
-        
-        .card-header:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTIwMCA4MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTIwMCAwSDB2ODBoMTIwMFYweiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEpIi8+PHBhdGggZD0iTTEyMDAgMTYwSDB2ODBoMTIwMHYtODB6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDgpIi8+PHBhdGggZD0iTTEyMDAgMzIwSDB2ODBoMTIwMHYtODB6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDYpIi8+PHBhdGggZD0iTTEyMDAgNDgwSDB2ODBoMTIwMHYtODB6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDQpIi8+PHBhdGggZD0iTTEyMDAgNjQwSDB2ODBoMTIwMHYtODB6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDIpIi8+PC9nPjwvc3ZnPg==');
-            opacity: 0.1;
         }
         
         .card-body {
@@ -451,78 +387,31 @@
         
         .status {
             display: inline-block;
-            padding: 8px 15px;
-            border-radius: 50px;
-            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 980px;
+            font-weight: 500;
             margin-bottom: 15px;
-            font-size: 0.9rem;
+            font-size: 14px;
         }
         
         .status-open {
-            background-color: var(--success);
+            background-color: #34c759;
             color: white;
-            box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
         }
         
         .status-coming {
-            background-color: var(--secondary);
+            background-color: var(--accent);
             color: white;
-            box-shadow: 0 4px 10px rgba(255, 153, 0, 0.3);
         }
         
         /* Services */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .service-card {
-            background-color: var(--white);
-            border-radius: 12px;
-            padding: 40px 30px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-        
-        .service-icon {
-            font-size: 3.5rem;
-            color: var(--primary);
-            margin-bottom: 25px;
-            transition: var(--transition);
-        }
-        
-        .service-card:hover .service-icon {
-            animation: float 2s ease infinite;
-            color: var(--accent);
-        }
-        
-        /* Enhanced Services Section */
         .services-detailed {
             background-color: var(--white);
         }
         
         .service-detailed-card {
             background-color: var(--white);
-            border-radius: 12px;
+            border-radius: 18px;
             overflow: hidden;
             margin-bottom: 40px;
             box-shadow: var(--shadow);
@@ -531,34 +420,24 @@
         
         .service-detailed-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
         .service-detailed-header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
-            padding: 25px;
+            background: var(--light);
+            color: var(--primary);
+            padding: 30px;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
         }
         
-        .service-detailed-header:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTIwMCA4MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTIwMCAwSDB2ODBoMTIwMFYweiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEpIi8+PHBhdGggZD0iTTEyMDAgMTYwSDB2ODBoMTIwMHYtODB6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDgpIi8+PHBhdGggZD0iTTEyMDAgMzIwSDB2ODBoMTIwMHYtODB6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDYpIi8+PHBhdGggZD0iTTEyMDAgNDgwSDB2ODBoMTIwMHYtODB6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDQpIi8+PHBhdGggZD0iTTEyMDAgNjQwSDB2ODBoMTIwMHYtODB6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDIpIi8+PC9nPjwvc3ZnPg==');
-            opacity: 0.1;
-        }
-        
         .service-detailed-icon {
             font-size: 2.5rem;
             margin-right: 20px;
             z-index: 2;
+            color: var(--accent);
         }
         
         .service-detailed-body {
@@ -566,10 +445,10 @@
         }
         
         .service-description {
-            font-size: 1.1rem;
+            font-size: 19px;
             margin-bottom: 25px;
             color: var(--text-light);
-            line-height: 1.8;
+            line-height: 1.47059;
         }
         
         .pricing-section {
@@ -577,11 +456,11 @@
         }
         
         .pricing-title {
-            font-size: 1.3rem;
+            font-size: 24px;
             color: var(--primary);
             margin-bottom: 20px;
             padding-bottom: 10px;
-            border-bottom: 2px solid var(--light-gray);
+            border-bottom: 1px solid var(--light-gray);
             font-weight: 600;
         }
         
@@ -595,15 +474,12 @@
         .pricing-item {
             background-color: var(--light);
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
             transition: var(--transition);
-            border-left: 4px solid var(--primary);
         }
         
         .pricing-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
         }
         
         .pricing-item h4 {
@@ -615,31 +491,27 @@
         .pricing-item p {
             color: var(--text-light);
             margin: 0;
-            font-size: 0.95rem;
+            font-size: 17px;
         }
         
         .price-tag {
-            font-weight: bold;
-            color: var(--primary);
-            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 21px;
             margin-top: 10px;
             display: inline-block;
-            background: rgba(44, 122, 201, 0.1);
-            padding: 5px 15px;
-            border-radius: 50px;
         }
         
         .service-highlight {
-            background: linear-gradient(135deg, #fff9e6 0%, #fff0cc 100%);
+            background: var(--light);
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 12px;
             margin-top: 25px;
-            border-left: 4px solid var(--secondary);
         }
         
         .service-highlight p {
             margin: 0;
-            color: #996600;
+            color: var(--text);
             display: flex;
             align-items: center;
             margin-bottom: 10px;
@@ -650,43 +522,9 @@
         }
         
         .service-highlight i {
-            color: var(--secondary);
+            color: var(--accent);
             margin-right: 10px;
             font-size: 1.2rem;
-        }
-        
-        .contact-info {
-            background: linear-gradient(135deg, #e8f4ff 0%, #d4e9ff 100%);
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 25px;
-            display: flex;
-            align-items: center;
-            color: var(--text);
-            border-left: 4px solid var(--primary);
-        }
-        
-        .contact-info i {
-            color: var(--primary);
-            font-size: 1.8rem;
-            margin-right: 15px;
-        }
-        
-        .contact-info p {
-            margin: 0;
-            color: var(--text);
-        }
-        
-        .contact-info a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-        
-        .contact-info a:hover {
-            text-decoration: underline;
-            color: var(--primary-dark);
         }
         
         /* Hours & Payment */
@@ -701,27 +539,15 @@
             flex: 1;
             min-width: 300px;
             background-color: var(--white);
-            border-radius: 12px;
+            border-radius: 18px;
             padding: 35px;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .info-box:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
         }
         
         .info-box:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
         .payment-options {
@@ -733,17 +559,15 @@
         
         .payment-option {
             background-color: var(--light);
-            padding: 10px 15px;
-            border-radius: 50px;
-            font-weight: 500;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+            padding: 8px 16px;
+            border-radius: 980px;
+            font-weight: 400;
             transition: var(--transition);
+            font-size: 14px;
         }
         
         .payment-option:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            background-color: var(--primary);
+            background-color: var(--accent);
             color: white;
         }
         
@@ -766,20 +590,9 @@
         .contact-info-section h3 {
             margin-bottom: 25px;
             color: var(--primary);
-            font-size: 1.8rem;
+            font-size: 24px;
             position: relative;
             padding-bottom: 10px;
-        }
-        
-        .contact-info-section h3:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--primary);
-            border-radius: 2px;
         }
         
         .contact-detail {
@@ -788,18 +601,17 @@
             margin-bottom: 20px;
             padding: 15px;
             background: var(--light);
-            border-radius: 10px;
+            border-radius: 12px;
             transition: var(--transition);
         }
         
         .contact-detail:hover {
             transform: translateX(5px);
-            background: rgba(44, 122, 201, 0.05);
         }
         
         .contact-icon {
             font-size: 1.8rem;
-            color: var(--primary);
+            color: var(--accent);
             margin-right: 15px;
             min-width: 40px;
             text-align: center;
@@ -813,20 +625,9 @@
         .instagram-feed h3 {
             margin-bottom: 20px;
             color: var(--primary);
-            font-size: 1.8rem;
+            font-size: 24px;
             position: relative;
             padding-bottom: 10px;
-        }
-        
-        .instagram-feed h3:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--primary);
-            border-radius: 2px;
         }
         
         .instagram-posts {
@@ -837,28 +638,11 @@
         
         .instagram-post {
             width: calc(33.333% - 10px);
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
-        }
-        
-        .instagram-post:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            transition: var(--transition);
-            z-index: 1;
-        }
-        
-        .instagram-post:hover:before {
-            opacity: 1;
         }
         
         .instagram-post:hover {
@@ -875,28 +659,26 @@
         }
         
         .instagram-post:hover img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
         
         .instagram-link {
             display: inline-flex;
             align-items: center;
             margin-top: 20px;
-            color: var(--primary);
+            color: var(--accent);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             transition: var(--transition);
             padding: 10px 20px;
-            background: rgba(44, 122, 201, 0.1);
-            border-radius: 50px;
+            background: rgba(0, 113, 227, 0.1);
+            border-radius: 980px;
         }
         
         .instagram-link:hover {
-            background: var(--primary);
+            background: var(--accent);
             color: white;
             text-decoration: none;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(44, 122, 201, 0.3);
         }
         
         /* About Page */
@@ -915,7 +697,7 @@
         .about-image {
             flex: 1;
             min-width: 300px;
-            border-radius: 12px;
+            border-radius: 18px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
@@ -923,7 +705,7 @@
         
         .about-image:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
         .about-image img {
@@ -939,24 +721,13 @@
         
         /* Footer */
         footer {
-            background: linear-gradient(135deg, var(--dark) 0%, #2d3748 100%);
-            color: white;
+            background: var(--light);
+            color: var(--text);
             padding: 60px 0 20px;
             text-align: center;
             margin-top: auto;
             position: relative;
             overflow: hidden;
-        }
-        
-        footer:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTIwMCA4MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTIwMCAwSDB2ODBoMTIwMFYweiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjxwYXRoIGQ9Ik0xMjAwIDE2MEgwdjgwSDEyMDB2LTgweiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjxwYXRoIGQ9Ik0xMjAwIDMyMEgwdjgwSDEyMDB2LTgweiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAyKSIvPjwvZz48L3N2Zz4=');
-            opacity: 0.1;
         }
         
         .footer-content {
@@ -976,30 +747,22 @@
         
         .footer-section h3 {
             margin-bottom: 20px;
-            font-size: 1.5rem;
+            font-size: 17px;
             position: relative;
             padding-bottom: 10px;
         }
         
-        .footer-section h3:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-        
         .footer-section p {
             margin-bottom: 10px;
+            font-size: 14px;
+            color: var(--text-light);
         }
         
         .footer-section a {
-            color: #ccc;
+            color: var(--text-light);
             text-decoration: none;
             transition: var(--transition);
+            font-size: 14px;
         }
         
         .footer-section a:hover {
@@ -1017,9 +780,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
+            width: 36px;
+            height: 36px;
+            background: rgba(0, 0, 0, 0.05);
             border-radius: 50%;
             transition: var(--transition);
         }
@@ -1030,10 +793,12 @@
         }
         
         .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
             padding-top: 20px;
             position: relative;
             z-index: 2;
+            font-size: 12px;
+            color: var(--text-light);
         }
         
         /* NEW STYLES FOR ADDED CONTENT */
@@ -1053,7 +818,7 @@
         
         .amenity-card {
             background-color: var(--white);
-            border-radius: 12px;
+            border-radius: 18px;
             padding: 40px 30px;
             text-align: center;
             box-shadow: var(--shadow);
@@ -1062,43 +827,32 @@
             overflow: hidden;
         }
         
-        .amenity-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-        }
-        
         .amenity-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
         .amenity-icon {
-            font-size: 4rem;
-            color: var(--primary);
+            font-size: 3.5rem;
+            color: var(--accent);
             margin-bottom: 25px;
             transition: var(--transition);
         }
         
         .amenity-card:hover .amenity-icon {
-            animation: pulse 1.5s ease infinite;
-            color: var(--accent);
+            transform: scale(1.1);
         }
         
         .amenity-card h3 {
             margin-bottom: 15px;
             color: var(--primary);
-            font-size: 1.5rem;
+            font-size: 24px;
             font-weight: 600;
         }
         
         /* Products Section */
         .products {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            background: var(--light);
             padding: 80px 0;
         }
         
@@ -1111,26 +865,16 @@
         
         .product-card {
             background-color: var(--white);
-            border-radius: 12px;
+            border-radius: 18px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
         }
         
-        .product-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-        }
-        
         .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
         .product-image {
@@ -1160,19 +904,16 @@
         .product-info h3 {
             margin-bottom: 10px;
             color: var(--primary);
-            font-size: 1.3rem;
+            font-size: 21px;
             font-weight: 600;
         }
         
         .product-price {
-            font-weight: bold;
-            color: var(--secondary);
-            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 21px;
             margin-top: 10px;
             display: inline-block;
-            background: rgba(255, 153, 0, 0.1);
-            padding: 5px 15px;
-            border-radius: 50px;
         }
         
         /* Clothes Section */
@@ -1196,7 +937,7 @@
         .clothes-image {
             flex: 1;
             min-width: 300px;
-            border-radius: 12px;
+            border-radius: 18px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
@@ -1204,7 +945,7 @@
         
         .clothes-image:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
         .clothes-image img {
@@ -1219,16 +960,15 @@
         }
         
         .clothes-highlight {
-            background: linear-gradient(135deg, #fff9e6 0%, #fff0cc 100%);
+            background: var(--light);
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 12px;
             margin-top: 25px;
-            border-left: 4px solid var(--secondary);
         }
         
         .clothes-highlight p {
             margin: 0;
-            color: #996600;
+            color: var(--text);
             display: flex;
             align-items: center;
             margin-bottom: 10px;
@@ -1239,7 +979,7 @@
         }
         
         .clothes-highlight i {
-            color: var(--secondary);
+            color: var(--accent);
             margin-right: 10px;
             font-size: 1.2rem;
         }
@@ -1251,41 +991,9 @@
             transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
-        .scroll-element.scale-in {
-            transform: scale(0.8) translateY(50px);
-        }
-        
-        .scroll-element.slide-left {
-            transform: translateX(-100px);
-        }
-        
-        .scroll-element.slide-right {
-            transform: translateX(100px);
-        }
-        
-        .scroll-element.rotate-in {
-            transform: rotate(-5deg) translateY(50px);
-        }
-        
-        .scroll-element.stagger-1 {
-            transition-delay: 0.1s;
-        }
-        
-        .scroll-element.stagger-2 {
-            transition-delay: 0.2s;
-        }
-        
-        .scroll-element.stagger-3 {
-            transition-delay: 0.3s;
-        }
-        
-        .scroll-element.stagger-4 {
-            transition-delay: 0.4s;
-        }
-        
         .scroll-element.visible {
             opacity: 1;
-            transform: translateY(0) scale(1) rotate(0);
+            transform: translateY(0);
         }
         
         /* Responsive */
@@ -1298,8 +1006,8 @@
             .menu-toggle {
                 display: flex;
                 position: absolute;
-                top: 20px;
-                right: 20px;
+                top: 14px;
+                right: 22px;
             }
             
             nav {
@@ -1326,15 +1034,15 @@
             }
             
             .hero h2 {
-                font-size: 2.2rem;
+                font-size: 40px;
             }
             
             .hero p {
-                font-size: 1.1rem;
+                font-size: 21px;
             }
             
             .section-title {
-                font-size: 2rem;
+                font-size: 32px;
             }
             
             .instagram-post {
@@ -1364,12 +1072,12 @@
             }
             
             .phone-cta {
-                font-size: 1.5rem;
-                padding: 15px 30px;
+                font-size: 21px;
+                padding: 14px 28px;
             }
             
             .cta-title {
-                font-size: 1.8rem;
+                font-size: 32px;
             }
         }
         
@@ -1379,24 +1087,24 @@
             }
             
             .hero {
-                padding: 80px 20px;
+                padding: 100px 20px 60px;
             }
             
             .hero h2 {
-                font-size: 1.8rem;
+                font-size: 32px;
             }
             
             .section-title {
-                font-size: 1.8rem;
+                font-size: 28px;
             }
             
             .phone-cta {
-                font-size: 1.3rem;
-                padding: 12px 25px;
+                font-size: 19px;
+                padding: 12px 24px;
             }
             
             .cta-title {
-                font-size: 1.5rem;
+                font-size: 28px;
             }
         }
     </style>
@@ -1439,23 +1147,23 @@
         <section class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <h2 data-translate="hero_title">Professional Laundry Services in New Bedford</h2>
-                    <p data-translate="hero_subtitle">Fast, affordable, and convenient laundry solutions for the community</p>
-                    <a href="#" class="btn nav-link" data-page="services" data-translate="hero_button">Our Services</a>
+                    <h2 class="scroll-element" data-translate="hero_title">Washy Washy World</h2>
+                    <p class="scroll-element" data-translate="hero_subtitle">Premium laundry experience in New Bedford</p>
+                    <a href="#" class="btn nav-link scroll-element" data-page="services" data-translate="hero_button">View Services</a>
                 </div>
             </div>
         </section>
 
-        <!-- NEW: Call-to-Action Section (Replaces Services Preview) -->
+        <!-- Call-to-Action Section -->
         <section class="call-to-action-section">
             <div class="container">
                 <div class="cta-container scroll-element">
-                    <h2 class="cta-title" data-translate="cta_title">Call to Schedule Your Service</h2>
-                    <p class="cta-subtitle" data-translate="cta_subtitle">Our friendly staff is ready to assist you with all your laundry needs</p>
+                    <h2 class="cta-title" data-translate="cta_title">Schedule Your Service</h2>
+                    <p class="cta-subtitle" data-translate="cta_subtitle">Our team is ready to assist with all your laundry needs</p>
                     <a href="tel:774-202-1427" class="phone-cta">
                         <i class="fas fa-phone"></i> (774) 202-1427
                     </a>
-                    <p class="cta-note" data-translate="cta_note">Call now for pickup & delivery service or any questions about our services</p>
+                    <p class="cta-note" data-translate="cta_note">Call now for pickup & delivery or any questions</p>
                 </div>
             </div>
         </section>
@@ -1465,18 +1173,18 @@
             <div class="container">
                 <h2 class="section-title scroll-element" data-translate="locations_title">Our Locations</h2>
                 <div class="location-cards">
-                    <div class="location-card scroll-element slide-left stagger-1">
+                    <div class="location-card scroll-element">
                         <div class="card-header">
-                            <h3 data-translate="location1_name">Purchase Street Location</h3>
+                            <h3 data-translate="location1_name">Purchase Street</h3>
                         </div>
                         <div class="card-body">
                             <span class="status status-open" data-translate="status_open">Now Open</span>
                             <p><i class="fas fa-map-marker-alt"></i> <span data-translate="location1_address">1877 Purchase St, New Bedford, MA</span></p>
                         </div>
                     </div>
-                    <div class="location-card scroll-element slide-right stagger-2">
+                    <div class="location-card scroll-element">
                         <div class="card-header">
-                            <h3 data-translate="location2_name">Acushnet Avenue Location</h3>
+                            <h3 data-translate="location2_name">Acushnet Avenue</h3>
                         </div>
                         <div class="card-body">
                             <span class="status status-coming" data-translate="status_coming">Coming Soon</span>
@@ -1502,167 +1210,48 @@
         <section>
             <div class="container">
                 <div class="about-content">
-                    <div class="about-text scroll-element slide-left">
+                    <div class="about-text scroll-element">
                         <h2 class="section-title" data-translate="story_title">Our Story</h2>
-                        <p data-translate="story_p1">Washy Washy World was founded with a simple mission: to provide the New Bedford community with clean, affordable, and convenient laundry services. We understand that laundry is a chore that everyone has to do, but nobody really enjoys.</p>
-                        <p data-translate="story_p2">That's why we've created a welcoming environment with state-of-the-art equipment to make your laundry experience as pleasant and efficient as possible. Our friendly staff is always available to assist you, and we offer multiple service options to fit your busy lifestyle.</p>
-                        <p data-translate="story_p3">Whether you prefer to do your own laundry using our self-service machines, drop it off for our expert team to handle, or have us pick it up and deliver it to your doorstep, Washy Washy World is here to serve you.</p>
+                        <p data-translate="story_p1">Washy Washy World was founded with a simple mission: to provide the New Bedford community with clean, affordable, and convenient laundry services.</p>
+                        <p data-translate="story_p2">We've created a welcoming environment with state-of-the-art equipment to make your laundry experience as pleasant and efficient as possible.</p>
+                        <p data-translate="story_p3">Whether you prefer self-service, drop-off, or pick-up and delivery, Washy Washy World is here to serve you.</p>
                     </div>
-                    <div class="about-image scroll-element slide-right">
+                    <div class="about-image scroll-element">
                         <img src="about.PNG" alt="Clean laundry">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- NEW CONTENT: Amenities Section -->
+        <!-- Amenities Section -->
         <section class="amenities">
             <div class="container">
                 <h2 class="section-title scroll-element" data-translate="amenities_title">Our Amenities</h2>
-                <p class="text-center scroll-element" style="max-width: 800px; margin: 0 auto 30px;" data-translate="amenities_desc">We provide everything you need for a comfortable and convenient laundry experience</p>
+                <p class="text-center scroll-element" style="max-width: 800px; margin: 0 auto 30px;" data-translate="amenities_desc">Everything you need for a comfortable laundry experience</p>
                 
                 <div class="amenities-grid">
-                    <div class="amenity-card scroll-element stagger-1">
+                    <div class="amenity-card scroll-element">
                         <i class="fas fa-money-bill-wave amenity-icon"></i>
                         <h3 data-translate="atm_title">ATM Available</h3>
                         <p data-translate="atm_desc">Need cash? We have an ATM on-site for your convenience.</p>
                     </div>
                     
-                    <div class="amenity-card scroll-element stagger-2">
+                    <div class="amenity-card scroll-element">
                         <i class="fas fa-coins amenity-icon"></i>
                         <h3 data-translate="hoppers_title">Quarter Hoppers</h3>
-                        <p data-translate="hoppers_desc">Two hoppers available to exchange bills for quarters for our washers and dryers.</p>
+                        <p data-translate="hoppers_desc">Two hoppers available to exchange bills for quarters.</p>
                     </div>
                     
-                    <div class="amenity-card scroll-element stagger-3">
+                    <div class="amenity-card scroll-element">
                         <i class="fas fa-cookie-bite amenity-icon"></i>
-                        <h3 data-translate="snacks_title">Snack Vending Machine</h3>
-                        <p data-translate="snacks_desc">Enjoy a variety of snacks including chips, candy, chocolate bars, soda, water, energy drinks, and cookies.</p>
+                        <h3 data-translate="snacks_title">Snack Vending</h3>
+                        <p data-translate="snacks_desc">Enjoy a variety of snacks and drinks while you wait.</p>
                     </div>
                     
-                    <div class="amenity-card scroll-element stagger-4">
+                    <div class="amenity-card scroll-element">
                         <i class="fas fa-pump-soap amenity-icon"></i>
-                        <h3 data-translate="laundry_vending_title">Laundry Supplies Vending</h3>
-                        <p data-translate="laundry_vending_desc">Forgot your supplies? We have small bottles of detergent, bleach, softeners, and laundry bags available.</p>
-                    </div>
-                    
-                    <!-- NEW: Folding Tables Amenity -->
-                    <div class="amenity-card scroll-element stagger-1">
-                        <i class="fas fa-table amenity-icon"></i>
-                        <h3 data-translate="folding_tables_title">Folding Tables</h3>
-                        <p data-translate="folding_tables_desc">Convenient folding tables available for you to fold your clothes right after drying.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- NEW CONTENT: Products Section -->
-        <section class="products">
-            <div class="container">
-                <h2 class="section-title scroll-element" data-translate="products_title">Laundry Products for Sale</h2>
-                <p class="text-center scroll-element" style="max-width: 800px; margin: 0 auto 30px;" data-translate="products_desc">Visit our front office for these larger laundry products at great prices</p>
-                
-                <div class="products-grid">
-                    <div class="product-card scroll-element stagger-1">
-                        <div class="product-image">
-                            <img src="Odor defense.jpg" alt="Gain Odor Defense Detergent">
-                        </div>
-                        <div class="product-info">
-                            <h3 data-translate="gain_odor_title">Gain Odor Defense Detergent</h3>
-                            <p data-translate="gain_odor_desc">61 loads - Eliminates odors and leaves clothes fresh</p>
-                            <div class="product-price">$15</div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card scroll-element stagger-2">
-                        <div class="product-image">
-                            <img src="Gain Original.avif" alt="Gain Original Detergent">
-                        </div>
-                        <div class="product-info">
-                            <h3 data-translate="gain_original_title">Gain Original Detergent</h3>
-                            <p data-translate="gain_original_desc">61 loads - Original scent with powerful cleaning</p>
-                            <div class="product-price">$15</div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card scroll-element stagger-3">
-                        <div class="product-image">
-                            <img src="Tide Original.avif" alt="Tide Original Detergent">
-                        </div>
-                        <div class="product-info">
-                            <h3 data-translate="tide_title">Tide Original Detergent</h3>
-                            <p data-translate="tide_desc">64 loads - America's #1 trusted detergent</p>
-                            <div class="product-price">$20</div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card scroll-element stagger-4">
-                        <div class="product-image">
-                            <img src="Downy.avif" alt="Downy Ultra Fabric Softener">
-                        </div>
-                        <div class="product-info">
-                            <h3 data-translate="downy_title">Downy Ultra Fabric Softener</h3>
-                            <p data-translate="downy_desc">60 loads - Ultra-concentrated for softer clothes</p>
-                            <div class="product-price">$10</div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card scroll-element stagger-1">
-                        <div class="product-image">
-                            <img src="Bleach.jpg" alt="Bleach">
-                        </div>
-                        <div class="product-info">
-                            <h3 data-translate="bleach_title">Bleach</h3>
-                            <p data-translate="bleach_desc">64 fl oz - For whitening and disinfecting</p>
-                            <div class="product-price">$5</div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card scroll-element stagger-2">
-                        <div class="product-image">
-                            <img src="Laundry Bag.jpg" alt="Laundry Bag">
-                        </div>
-                        <div class="product-info">
-                            <h3 data-translate="bag_title">Laundry Bag</h3>
-                            <p data-translate="bag_desc">Durable bag for carrying your laundry</p>
-                            <div class="product-price">$10</div>
-                        </div>
-                    </div>
-                    
-                    <!-- NEW: Plastic Bags Product -->
-                    <div class="product-card scroll-element stagger-3">
-                        <div class="product-image">
-                            <img src="Plastic Bag.jpg" alt="Plastic Bags">
-                        </div>
-                        <div class="product-info">
-                            <h3 data-translate="plastic_bag_title">Plastic Bags</h3>
-                            <p data-translate="plastic_bag_desc">Convenient plastic bags for carrying your laundry</p>
-                            <div class="product-price">$1 each</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- NEW CONTENT: Clothes Section -->
-        <section class="clothes">
-            <div class="container">
-                <h2 class="section-title scroll-element" data-translate="clothes_title">Clothes for Sale</h2>
-                
-                <div class="clothes-content">
-                    <div class="clothes-text scroll-element slide-left">
-                        <p data-translate="clothes_desc">We offer gently used clothing at affordable prices right at our laundromat entrance. All items are in excellent condition, having been worn only a few times.</p>
-                        
-                        <div class="clothes-highlight scroll-element stagger-1">
-                            <p><i class="fas fa-shopping-basket"></i> <span data-translate="basket_clothes">Clothes in the basket: Only $1 each</span></p>
-                            <p><i class="fas fa-tshirt"></i> <span data-translate="rack_clothes">Clothes on the rack: Priced individually (check the stickers)</span></p>
-                        </div>
-                        
-                        <p data-translate="clothes_quality">We maintain high quality standards - if an item isn't in good condition, it won't be available for sale. Come browse our selection of quality pre-owned clothing!</p>
-                    </div>
-                    
-                    <div class="clothes-image scroll-element slide-right">
-                        <img src="DEB449FD-FF31-4529-854E-670750AF47BB.PNG" alt="Clothes for sale at Washy Washy World">
+                        <h3 data-translate="laundry_vending_title">Laundry Supplies</h3>
+                        <p data-translate="laundry_vending_desc">Forgot your supplies? We have detergent, bleach, and more.</p>
                     </div>
                 </div>
             </div>
@@ -1693,49 +1282,26 @@
                     <div class="service-detailed-body">
                         <p class="service-description" data-translate="service1_full_desc">
                             Take control of your laundry experience with our state-of-the-art self-service facilities. 
-                            Featuring a variety of washer and dryer sizes to accommodate any load, our user-friendly 
-                            machines make doing laundry simple and efficient. Enjoy sparkling clean results every time 
-                            in a comfortable, well-maintained environment.
+                            Featuring a variety of washer and dryer sizes to accommodate any load.
                         </p>
                         
                         <div class="pricing-section">
                             <h4 class="pricing-title" data-translate="washer_options">Washer Options</h4>
                             <div class="pricing-grid">
-                                <div class="pricing-item scroll-element stagger-1">
+                                <div class="pricing-item scroll-element">
                                     <h4 data-translate="washer_20lb">20 lb Washer</h4>
                                     <p data-translate="washer_20lb_desc">Perfect for regular loads</p>
-                                    <div class="price-tag">$3.00 per load</div>
+                                    <div class="price-tag">$3.00</div>
                                 </div>
-                                <div class="pricing-item scroll-element stagger-2">
+                                <div class="pricing-item scroll-element">
                                     <h4 data-translate="washer_30lb">30 lb Washer</h4>
                                     <p data-translate="washer_30lb_desc">Ideal for larger loads</p>
-                                    <div class="price-tag">$4.00 per load</div>
+                                    <div class="price-tag">$4.00</div>
                                 </div>
-                                <div class="pricing-item scroll-element stagger-3">
+                                <div class="pricing-item scroll-element">
                                     <h4 data-translate="washer_40lb">40 lb Washer</h4>
                                     <p data-translate="washer_40lb_desc">Great for bulky items</p>
-                                    <div class="price-tag">$6.00 per load</div>
-                                </div>
-                                <div class="pricing-item scroll-element stagger-4">
-                                    <h4 data-translate="washer_60lb">60 lb Washer</h4>
-                                    <p data-translate="washer_60lb_desc">Maximum capacity for big jobs</p>
-                                    <div class="price-tag">$9.00 per load</div>
-                                </div>
-                            </div>
-                            
-                            <h4 class="pricing-title" data-translate="dryer_options">Dryer Options</h4>
-                            <div class="pricing-grid">
-                                <div class="pricing-item scroll-element stagger-1">
-                                    <h4 data-translate="dryer_30lb">30 lb Dryer</h4>
-                                    <p data-translate="dryer_30lb_desc">Efficient drying for standard loads</p>
-                                    <div class="price-tag">$0.25 for 8 minutes</div>
-                                    <p data-translate="dryer_30lb_time">$1.00 gives 32 minutes of drying time</p>
-                                </div>
-                                <div class="pricing-item scroll-element stagger-2">
-                                    <h4 data-translate="dryer_50lb">50 lb Dryer</h4>
-                                    <p data-translate="dryer_50lb_desc">High-capacity drying for large loads</p>
-                                    <div class="price-tag">$0.25 for 7 minutes</div>
-                                    <p data-translate="dryer_50lb_time">$1.00 gives 28 minutes of drying time</p>
+                                    <div class="price-tag">$6.00</div>
                                 </div>
                             </div>
                         </div>
@@ -1750,31 +1316,22 @@
                     </div>
                     <div class="service-detailed-body">
                         <p class="service-description" data-translate="service2_full_desc">
-                            Tired of balancing laundry with your demanding workload? Let us handle your washing while 
-                            you focus on what matters most. Simply drop off your laundry and our expert team will care 
-                            for your garments with the attention they deserve. We accommodate special requests to ensure 
-                            your laundry is done exactly how you prefer.
+                            Let us handle your washing while you focus on what matters most. 
+                            Simply drop off your laundry and our expert team will care for your garments.
                         </p>
                         
                         <div class="pricing-section">
                             <div class="pricing-grid">
-                                <div class="pricing-item scroll-element stagger-1">
+                                <div class="pricing-item scroll-element">
                                     <h4 data-translate="regular_laundry">Regular Laundry</h4>
                                     <p data-translate="regular_laundry_desc">Expertly washed, dried, and folded</p>
-                                    <div class="price-tag">$1.50 per pound</div>
-                                    <p data-translate="min_10lbs">Minimum 10 lbs</p>
+                                    <div class="price-tag">$1.50/lb</div>
                                 </div>
-                                <div class="pricing-item scroll-element stagger-2">
+                                <div class="pricing-item scroll-element">
                                     <h4 data-translate="comforters">Comforters & Bulky Items</h4>
                                     <p data-translate="comforters_desc">Special care for oversized items</p>
                                     <div class="price-tag">$15.00 each</div>
                                 </div>
-                            </div>
-                            
-                            <div class="service-highlight scroll-element stagger-1">
-                                <p><i class="fas fa-star"></i> <span data-translate="same_day_service">Same day service available when dropped off before 11am</span></p>
-                                <p><i class="fas fa-star"></i> <span data-translate="customize_wash">Customize your wash with premium detergents and softeners</span></p>
-                                <p><i class="fas fa-star"></i> <span data-translate="extra_downy">Want extra Downy? You got it! Just let us know your preferences</span></p>
                             </div>
                         </div>
                     </div>
@@ -1784,36 +1341,26 @@
                 <div class="service-detailed-card scroll-element">
                     <div class="service-detailed-header">
                         <i class="fas fa-box service-detailed-icon"></i>
-                        <h3 data-translate="service3_title">Pick-up & Delivery Service</h3>
+                        <h3 data-translate="service3_title">Pick-up & Delivery</h3>
                     </div>
                     <div class="service-detailed-body">
                         <p class="service-description" data-translate="service3_full_desc">
-                            Can't make it to our location? No vehicle? No problem! Our convenient pick-up and delivery 
-                            service brings professional laundry care right to your doorstep. We'll collect your laundry, 
-                            expertly clean and care for it at our facility, and return it to you fresh, folded, and ready 
-                            to put away—all on the same day.
+                            Our convenient pick-up and delivery service brings professional laundry care right to your doorstep.
                         </p>
                         
                         <div class="pricing-section">
-                            <div class="pricing-item scroll-element stagger-1" style="max-width: 400px;">
+                            <div class="pricing-item scroll-element" style="max-width: 400px;">
                                 <h4 data-translate="premium_service">Premium Service</h4>
                                 <p data-translate="premium_service_desc">We pick up, wash, dry, fold, and deliver</p>
-                                <div class="price-tag">$1.50 per pound</div>
+                                <div class="price-tag">$1.50/lb</div>
                             </div>
                             
-                            <div class="service-highlight scroll-element stagger-1">
-                                <p><i class="fas fa-truck"></i> <span data-translate="free_delivery">Free delivery for orders over $25</span></p>
-                                <p><i class="fas fa-clock"></i> <span data-translate="same_day_available">Same day service available</span></p>
-                                <p><i class="fas fa-calendar"></i> <span data-translate="schedule_pickups">Schedule regular pickups or one-time service</span></p>
-                            </div>
-                            
-                            <!-- ADD THIS NEW CALL-TO-ACTION SECTION -->
-                            <div class="call-to-action scroll-element stagger-2" style="background: white; color: #333; padding: 25px; border-radius: 10px; text-align: center; margin-top: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 2px solid #2c7ac9;">
-                                <h3 style="font-size: 1.5rem; margin-bottom: 15px; color: #2c7ac9;">Call now to schedule</h3>
-                                <a href="tel:774-202-1427" style="display: inline-block; background: #2c7ac9; padding: 12px 25px; border-radius: 50px; font-size: 1.5rem; font-weight: bold; margin: 10px 0; text-decoration: none; color: white; transition: all 0.3s ease;">
+                            <div class="call-to-action scroll-element" style="background: white; color: #333; padding: 25px; border-radius: 12px; text-align: center; margin-top: 25px;">
+                                <h3 style="font-size: 21px; margin-bottom: 15px; color: var(--accent);">Call now to schedule</h3>
+                                <a href="tel:774-202-1427" style="display: inline-block; background: var(--accent); padding: 12px 25px; border-radius: 980px; font-size: 21px; font-weight: 500; margin: 10px 0; text-decoration: none; color: white; transition: var(--transition);">
                                     <i class="fas fa-phone"></i> (774) 202-1427
                                 </a>
-                                <p style="margin-top: 10px; color: #666;">Our friendly staff is ready to assist you!</p>
+                                <p style="margin-top: 10px; color: var(--text-light);">Our friendly staff is ready to assist you!</p>
                             </div>
                         </div>
                     </div>
@@ -1837,7 +1384,7 @@
             <div class="container">
                 <h2 class="section-title scroll-element" data-translate="visit_title">Visit Us</h2>
                 <div class="location-cards">
-                    <div class="location-card scroll-element slide-left stagger-1">
+                    <div class="location-card scroll-element">
                         <div class="card-header">
                             <h3 data-translate="location1_name">Purchase Street Location</h3>
                         </div>
@@ -1845,41 +1392,15 @@
                             <span class="status status-open" data-translate="status_open">Now Open</span>
                             <p><i class="fas fa-map-marker-alt"></i> <span data-translate="location1_address">1877 Purchase St, New Bedford, MA</span></p>
                             <p><i class="fas fa-clock"></i> <span data-translate="open_daily">Open Daily:</span> 7AM – 9PM</p>
-                            <p><i class="fas fa-user"></i> <span data-translate="attendant_hours">Attendant on-site:</span> 9AM – 9PM</p>
                         </div>
                     </div>
-                    <div class="location-card scroll-element slide-right stagger-2">
+                    <div class="location-card scroll-element">
                         <div class="card-header">
                             <h3 data-translate="location2_name">Acushnet Avenue Location</h3>
                         </div>
                         <div class="card-body">
                             <span class="status status-coming" data-translate="status_coming">Coming Soon</span>
                             <p><i class="fas fa-map-marker-alt"></i> <span data-translate="location2_address">1301 Acushnet Ave, New Bedford, MA</span></p>
-                            <p data-translate="coming_soon_msg">We're excited to announce our second location opening soon! Follow us for updates on our grand opening.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="hours-payment">
-            <div class="container">
-                <h2 class="section-title scroll-element" data-translate="hours_payment_title">Hours & Payment</h2>
-                <div class="info-container">
-                    <div class="info-box scroll-element slide-left stagger-1">
-                        <h3 data-translate="business_hours">Business Hours</h3>
-                        <p><strong data-translate="open_daily">Open Daily:</strong> 7AM – 9PM</p>
-                        <p><strong data-translate="attendant_hours">Attendant on-site:</strong> 9AM – 9PM</p>
-                    </div>
-                    <div class="info-box scroll-element slide-right stagger-2">
-                        <h3 data-translate="payment_options">Payment Options</h3>
-                        <p data-translate="payment_desc">We accept various payment methods for your convenience:</p>
-                        <div class="payment-options">
-                            <span class="payment-option">Square</span>
-                            <span class="payment-option">Apple Pay</span>
-                            <span class="payment-option">Visa</span>
-                            <span class="payment-option">Cash App</span>
-                            <span class="payment-option" data-translate="cash">Cash</span>
                         </div>
                     </div>
                 </div>
@@ -1904,45 +1425,31 @@
                 <div class="contact-container">
                     <div class="contact-info-section">
                         <h3 data-translate="contact_info">Contact Information</h3>
-                        <div class="contact-detail scroll-element stagger-1">
+                        <div class="contact-detail scroll-element">
                             <i class="fas fa-phone contact-icon"></i>
                             <div>
                                 <p><strong data-translate="phone">Phone Number</strong></p>
                                 <p>(774) 202-1427</p>
                             </div>
                         </div>
-                        <div class="contact-detail scroll-element stagger-2">
+                        <div class="contact-detail scroll-element">
                             <i class="fas fa-map-marker-alt contact-icon"></i>
                             <div>
                                 <p><strong data-translate="main_location">Main Location</strong></p>
                                 <p>1877 Purchase St, New Bedford, MA</p>
                             </div>
                         </div>
-                        <div class="contact-detail scroll-element stagger-3">
+                        <div class="contact-detail scroll-element">
                             <i class="fas fa-clock contact-icon"></i>
                             <div>
                                 <p><strong data-translate="business_hours">Business Hours</strong></p>
                                 <p>7AM – 9PM Daily</p>
                             </div>
                         </div>
-                        <div class="contact-detail scroll-element stagger-4">
-                            <i class="fas fa-envelope contact-icon"></i>
-                            <div>
-                                <p><strong>Email</strong></p>
-                                <p>washywashyworldlaundromat@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-detail scroll-element stagger-1">
-                            <i class="fab fa-facebook contact-icon"></i>
-                            <div>
-                                <p><strong data-translate="facebook">Facebook Page</strong></p>
-                                <p><a href="https://www.facebook.com/p/Washy-Washy-World-100094360937682/" target="_blank" style="color: #2c7ac9;">Washy Washy World</a></p>
-                            </div>
-                        </div>
                         
-                        <!-- Social Media Feed -->
-                        <div class="social-feed scroll-element stagger-2">
-                            <h3 data-translate="follow_us_social">Follow Us on Social Media</h3>
+                        <!-- Social Media -->
+                        <div class="social-feed scroll-element">
+                            <h3 data-translate="follow_us_social">Follow Us</h3>
                             <div class="social-buttons" style="display: flex; gap: 15px; margin-bottom: 20px;">
                                 <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="btn" style="background: #E1306C;">
                                     <i class="fab fa-instagram"></i> Instagram
@@ -1952,45 +1459,6 @@
                                 </a>
                             </div>
                         </div>
-                        
-                        <!-- Instagram Feed -->
-                        <div class="instagram-feed scroll-element stagger-3">
-                            <h3 data-translate="follow_us">Follow Us on Instagram</h3>
-                            <div class="instagram-posts">
-                                <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="instagram-post scroll-element stagger-1">
-                                    <img src="Post 1.jpg" alt="Instagram post">
-                                </a>
-                                <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="instagram-post scroll-element stagger-2">
-                                    <img src="Post 2.jpg" alt="Instagram post">
-                                </a>
-                                <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="instagram-post scroll-element stagger-3">
-                                    <img src="Post 3.jpg" alt="Instagram post">
-                                </a>
-                            </div>
-                            <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="instagram-link scroll-element stagger-4">
-                                <i class="fab fa-instagram"></i>
-                                <span style="margin-left: 8px;" data-translate="view_profile">@washywashyworld</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Google Reviews Section -->
-        <section class="reviews">
-            <div class="container">
-                <h2 class="section-title scroll-element" data-translate="reviews_title">Customer Reviews</h2>
-                <div class="google-reviews">
-                    <div class="review-placeholder scroll-element" style="text-align: center; padding: 30px; background: #f8f9fa; border-radius: 8px;">
-                        <i class="fab fa-google" style="font-size: 3rem; color: #34A853; margin-bottom: 15px;"></i>
-                        <h3 data-translate="see_reviews">See what our customers are saying</h3>
-                        <p data-translate="reviews_desc">Check out our reviews on Google</p>
-                        <a href="https://search.google.com/local/reviews?placeid=ChIJGaXIX2jl5IkRPOj-I99335Q" 
-                           target="_blank" class="btn" style="background: #34A853;">
-                            <i class="fab fa-google"></i> 
-                            <span data-translate="view_reviews">View Google Reviews</span>
-                        </a>
                     </div>
                 </div>
             </div>
@@ -2023,9 +1491,6 @@
                         <a href="https://www.facebook.com/p/Washy-Washy-World-100094360937682/" target="_blank" aria-label="Facebook">
                             <i class="fab fa-facebook"></i>
                         </a>
-                        <a href="#" aria-label="Twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
                     </div>
                 </div>
             </div>
@@ -2036,8 +1501,7 @@
     </footer>
 
     <script>
-        // Fixed JavaScript code - the issue was with the language translation system
-        // Simple JavaScript for mobile menu toggle
+        // JavaScript for mobile menu toggle
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             this.classList.toggle('active');
             document.getElementById('nav').classList.toggle('active');
@@ -2073,77 +1537,51 @@
             });
         });
         
-        // Language toggle functionality - FIXED
+        // Language toggle functionality
         const languageButtons = document.querySelectorAll('.language-btn');
         let currentLanguage = 'en';
         
-        // Language translations - FIXED: Added all missing translations
+        // Language translations
         const translations = {
             'en': {
-                'hero_title': 'Professional Laundry Services in New Bedford',
-                'hero_subtitle': 'Fast, affordable, and convenient laundry solutions for the community',
-                'hero_button': 'Our Services',
-                'cta_title': 'Call to Schedule Your Service',
-                'cta_subtitle': 'Our friendly staff is ready to assist you with all your laundry needs',
-                'cta_note': 'Call now for pickup & delivery service or any questions about our services',
+                'hero_title': 'Washy Washy World',
+                'hero_subtitle': 'Premium laundry experience in New Bedford',
+                'hero_button': 'View Services',
+                'cta_title': 'Schedule Your Service',
+                'cta_subtitle': 'Our team is ready to assist with all your laundry needs',
+                'cta_note': 'Call now for pickup & delivery or any questions',
                 'services_title': 'Our Services',
                 'service1_title': 'Self-Service Laundry',
-                'service1_desc': 'State-of-the-art washers and dryers available for your use',
                 'service2_title': 'Drop-off Service',
-                'service2_desc': 'Only $1.50/lb with same day pick-up available',
                 'service3_title': 'Pick-up & Delivery',
-                'service3_desc': '$1.50/lb with free delivery for orders over $25',
                 'locations_title': 'Our Locations',
-                'location1_name': 'Purchase Street Location',
+                'location1_name': 'Purchase Street',
                 'location1_address': '1877 Purchase St, New Bedford, MA',
-                'location2_name': 'Acushnet Avenue Location',
+                'location2_name': 'Acushnet Avenue',
                 'location2_address': '1301 Acushnet Ave, New Bedford, MA',
                 'status_open': 'Now Open',
                 'status_coming': 'Coming Soon',
                 'about_title': 'About Washy Washy World',
                 'about_subtitle': 'Your trusted laundry service in New Bedford',
                 'story_title': 'Our Story',
-                'story_p1': 'Washy Washy World was founded with a simple mission: to provide the New Bedford community with clean, affordable, and convenient laundry services. We understand that laundry is a chore that everyone has to do, but nobody really enjoys.',
-                'story_p2': "That's why we've created a welcoming environment with state-of-the-art equipment to make your laundry experience as pleasant and efficient as possible. Our friendly staff is always available to assist you, and we offer multiple service options to fit your busy lifestyle.",
-                'story_p3': 'Whether you prefer to do your own laundry using our self-service machines, drop it off for our expert team to handle, or have us pick it up and deliver it to your doorstep, Washy Washy World is here to serve you.',
+                'story_p1': 'Washy Washy World was founded with a simple mission: to provide the New Bedford community with clean, affordable, and convenient laundry services.',
+                'story_p2': "We've created a welcoming environment with state-of-the-art equipment to make your laundry experience as pleasant and efficient as possible.",
+                'story_p3': 'Whether you prefer self-service, drop-off, or pick-up and delivery, Washy Washy World is here to serve you.',
                 'amenities_title': 'Our Amenities',
-                'amenities_desc': 'We provide everything you need for a comfortable and convenient laundry experience',
+                'amenities_desc': 'Everything you need for a comfortable laundry experience',
                 'atm_title': 'ATM Available',
                 'atm_desc': 'Need cash? We have an ATM on-site for your convenience.',
                 'hoppers_title': 'Quarter Hoppers',
-                'hoppers_desc': 'Two hoppers available to exchange bills for quarters for our washers and dryers.',
-                'snacks_title': 'Snack Vending Machine',
-                'snacks_desc': 'Enjoy a variety of snacks including chips, candy, chocolate bars, soda, water, energy drinks, and cookies.',
-                'laundry_vending_title': 'Laundry Supplies Vending',
-                'laundry_vending_desc': 'Forgot your supplies? We have small bottles of detergent, bleach, softeners, and laundry bags available.',
-                'folding_tables_title': 'Folding Tables',
-                'folding_tables_desc': 'Convenient folding tables available for you to fold your clothes right after drying.',
-                'products_title': 'Laundry Products for Sale',
-                'products_desc': 'Visit our front office for these larger laundry products at great prices',
-                'gain_odor_title': 'Gain Odor Defense Detergent',
-                'gain_odor_desc': '61 loads - Eliminates odors and leaves clothes fresh',
-                'gain_original_title': 'Gain Original Detergent',
-                'gain_original_desc': '61 loads - Original scent with powerful cleaning',
-                'tide_title': 'Tide Original Detergent',
-                'tide_desc': '64 loads - America\'s #1 trusted detergent',
-                'downy_title': 'Downy Ultra Fabric Softener',
-                'downy_desc': '60 loads - Ultra-concentrated for softer clothes',
-                'bleach_title': 'Bleach',
-                'bleach_desc': '64 fl oz - For whitening and disinfecting',
-                'bag_title': 'Laundry Bag',
-                'bag_desc': 'Durable bag for carrying your laundry',
-                'plastic_bag_title': 'Plastic Bags',
-                'plastic_bag_desc': 'Convenient plastic bags for carrying your laundry',
-                'clothes_title': 'Clothes for Sale',
-                'clothes_desc': 'We offer gently used clothing at affordable prices right at our laundromat entrance. All items are in excellent condition, having been worn only a few times.',
-                'basket_clothes': 'Clothes in the basket: Only $1 each',
-                'rack_clothes': 'Clothes on the rack: Priced individually (check the stickers)',
-                'clothes_quality': 'We maintain high quality standards - if an item isn\'t in good condition, it won\'t be available for sale. Come browse our selection of quality pre-owned clothing!',
+                'hoppers_desc': 'Two hoppers available to exchange bills for quarters.',
+                'snacks_title': 'Snack Vending',
+                'snacks_desc': 'Enjoy a variety of snacks and drinks while you wait.',
+                'laundry_vending_title': 'Laundry Supplies',
+                'laundry_vending_desc': 'Forgot your supplies? We have detergent, bleach, and more.',
                 'services_subtitle': 'Multiple options to meet your laundry needs',
                 'services_options': 'Service Options',
-                'service1_full_desc': 'Take control of your laundry experience with our state-of-the-art self-service facilities. Featuring a variety of washer and dryer sizes to accommodate any load, our user-friendly machines make doing laundry simple and efficient. Enjoy sparkling clean results every time in a comfortable, well-maintained environment.',
-                'service2_full_desc': "Tired of balancing laundry with your demanding workload? Let us handle your washing while you focus on what matters most. Simply drop off your laundry and our expert team will care for your garments with the attention they deserve. We accommodate special requests to ensure your laundry is done exactly how you prefer.",
-                'service3_full_desc': "Can't make it to our location? No vehicle? No problem! Our convenient pick-up and delivery service brings professional laundry care right to your doorstep. We'll collect your laundry, expertly clean and care for it at our facility, and return it to you fresh, folded, and ready to put away—all on the same day.",
+                'service1_full_desc': 'Take control of your laundry experience with our state-of-the-art self-service facilities. Featuring a variety of washer and dryer sizes to accommodate any load.',
+                'service2_full_desc': "Let us handle your washing while you focus on what matters most. Simply drop off your laundry and our expert team will care for your garments.",
+                'service3_full_desc': "Our convenient pick-up and delivery service brings professional laundry care right to your doorstep.",
                 'washer_options': 'Washer Options',
                 'washer_20lb': '20 lb Washer',
                 'washer_20lb_desc': 'Perfect for regular loads',
@@ -2151,47 +1589,22 @@
                 'washer_30lb_desc': 'Ideal for larger loads',
                 'washer_40lb': '40 lb Washer',
                 'washer_40lb_desc': 'Great for bulky items',
-                'washer_60lb': '60 lb Washer',
-                'washer_60lb_desc': 'Maximum capacity for big jobs',
-                'dryer_options': 'Dryer Options',
-                'dryer_30lb': '30 lb Dryer',
-                'dryer_30lb_desc': 'Efficient drying for standard loads',
-                'dryer_30lb_time': '$1.00 gives 32 minutes of drying time',
-                'dryer_50lb': '50 lb Dryer',
-                'dryer_50lb_desc': 'High-capacity drying for large loads',
-                'dryer_50lb_time': '$1.00 gives 28 minutes of drying time',
                 'regular_laundry': 'Regular Laundry',
                 'regular_laundry_desc': 'Expertly washed, dried, and folded',
-                'min_10lbs': 'Minimum 10 lbs',
                 'comforters': 'Comforters & Bulky Items',
                 'comforters_desc': 'Special care for oversized items',
-                'same_day_service': 'Same day service available when dropped off before 11am',
-                'customize_wash': 'Customize your wash with premium detergents and softeners',
-                'extra_downy': 'Want extra Downy? You got it! Just let us know your preferences',
                 'premium_service': 'Premium Service',
                 'premium_service_desc': 'We pick up, wash, dry, fold, and deliver',
-                'free_delivery': 'Free delivery for orders over $25',
-                'same_day_available': 'Same day service available',
-                'schedule_pickups': 'Schedule regular pickups or one-time service',
-                'call_to_schedule': 'Call now to schedule:',
                 'locations_subtitle': 'Conveniently located throughout New Bedford',
                 'visit_title': 'Visit Us',
                 'open_daily': 'Open Daily',
-                'attendant_hours': 'Attendant on-site',
-                'coming_soon_msg': "We're excited to announce our second location opening soon! Follow us for updates on our grand opening.",
-                'hours_payment_title': 'Hours & Payment',
-                'business_hours': 'Business Hours',
-                'payment_options': 'Payment Options',
-                'payment_desc': 'We accept various payment methods for your convenience:',
-                'cash': 'Cash',
                 'contact_title': 'Contact Us',
                 'contact_subtitle': "We're here to help with all your laundry needs",
                 'get_in_touch': 'Get In Touch',
                 'contact_info': 'Contact Information',
                 'phone': 'Phone Number',
                 'main_location': 'Main Location',
-                'follow_us': 'Follow Us on Instagram',
-                'view_profile': '@washywashyworld',
+                'business_hours': 'Business Hours',
                 'footer_desc': 'Quality laundry services for the New Bedford community',
                 'quick_links': 'Quick Links',
                 'home_link': 'Home',
@@ -2199,78 +1612,47 @@
                 'services_link': 'Services',
                 'locations_link': 'Locations',
                 'contact_link': 'Contact',
-                'facebook': 'Facebook Page',
-                'follow_us_social': 'Follow Us on Social Media',
-                'reviews_title': 'Customer Reviews',
-                'see_reviews': 'See what our customers are saying',
-                'reviews_desc': 'Check out our reviews on Google',
-                'view_reviews': 'View Google Reviews'
+                'follow_us_social': 'Follow Us'
             },
             'es': {
-                'hero_title': 'Servicios Profesionales de Lavandería en New Bedford',
-                'hero_subtitle': 'Soluciones de lavandería rápidas, económicas y convenientes para la comunidad',
-                'hero_button': 'Nuestros Servicios',
-                'cta_title': 'Llame para Programar Su Servicio',
-                'cta_subtitle': 'Nuestro personal amable está listo para ayudarlo con todas sus necesidades de lavandería',
-                'cta_note': 'Llame ahora para el servicio de recogida y entrega o cualquier pregunta sobre nuestros servicios',
+                'hero_title': 'Washy Washy World',
+                'hero_subtitle': 'Experiencia premium de lavandería en New Bedford',
+                'hero_button': 'Ver Servicios',
+                'cta_title': 'Programe Su Servicio',
+                'cta_subtitle': 'Nuestro equipo está listo para ayudarlo con todas sus necesidades de lavandería',
+                'cta_note': 'Llame ahora para recogida y entrega o cualquier pregunta',
                 'services_title': 'Nuestros Servicios',
                 'service1_title': 'Lavandería de Autoservicio',
-                'service1_desc': 'Lavadoras y secadoras de última generación disponibles para su uso',
                 'service2_title': 'Servicio de Dejar y Recoger',
-                'service2_desc': 'Solo $1.50/libra con recogida el mismo día disponible',
                 'service3_title': 'Recogida y Entrega a Domicilio',
-                'service3_desc': '$1.50/libra con entrega gratuita para pedidos superiores a $25',
                 'locations_title': 'Nuestras Ubicaciones',
-                'location1_name': 'Ubicación en Purchase Street',
+                'location1_name': 'Purchase Street',
                 'location1_address': '1877 Purchase St, New Bedford, MA',
-                'location2_name': 'Ubicación en Acushnet Avenue',
+                'location2_name': 'Acushnet Avenue',
                 'location2_address': '1301 Acushnet Ave, New Bedford, MA',
                 'status_open': 'Abierto Ahora',
                 'status_coming': 'Próximamente',
                 'about_title': 'Acerca de Washy Washy World',
                 'about_subtitle': 'Su servicio de lavandería de confianza en New Bedford',
                 'story_title': 'Nuestra Historia',
-                'story_p1': 'Washy Washy World fue fundada con una misión simple: proporcionar a la comunidad de New Bedford servicios de lavandería limpios, asequibles y convenientes. Entendemos que la lavandería es una tarea que todos tienen que hacer, pero a nadie le gusta realmente.',
-                'story_p2': 'Es por eso que hemos creado un ambiente acogedor con equipos de última generación para que su experiencia de lavandería sea lo más agradable y eficiente posible. Nuestro personal amable siempre está disponible para ayudarlo y ofrecemos múltiples opciones de servicio para adaptarse a su estilo de vida ocupado.',
-                'story_p3': 'Ya sea que prefiera hacer su propia lavandería usando nuestras máquinas de autoservicio, dejarla para que nuestro equipo experto la maneje o que la recojamos y la entreguemos en su puerta, Washy Washy World está aquí para servirle.',
+                'story_p1': 'Washy Washy World fue fundada con una misión simple: proporcionar a la comunidad de New Bedford servicios de lavandería limpios, asequibles y convenientes.',
+                'story_p2': 'Hemos creado un ambiente acogedor con equipos de última generación para que su experiencia de lavandería sea lo más agradable y eficiente posible.',
+                'story_p3': 'Ya sea que prefiera el autoservicio, dejar y recoger, o recogida y entrega a domicilio, Washy Washy World está aquí para servirle.',
                 'amenities_title': 'Nuestras Comodidades',
-                'amenities_desc': 'Proporcionamos todo lo que necesita para una experiencia de lavandería cómoda y conveniente',
+                'amenities_desc': 'Todo lo que necesita para una experiencia de lavandería cómoda',
                 'atm_title': 'Cajero Automático Disponible',
                 'atm_desc': '¿Necesita efectivo? Tenemos un cajero automático en el lugar para su conveniencia.',
                 'hoppers_title': 'Cambiadores de Monedas',
-                'hoppers_desc': 'Dos cambiadores disponibles para cambiar billetes por monedas para nuestras lavadoras y secadoras.',
+                'hoppers_desc': 'Dos cambiadores disponibles para cambiar billetes por monedas.',
                 'snacks_title': 'Máquina Expendedora de Snacks',
-                'snacks_desc': 'Disfrute de una variedad de snacks que incluyen papas fritas, dulces, barras de chocolate, refrescos, agua, bebidas energéticas y galletas.',
-                'laundry_vending_title': 'Suministros de Lavandería en Máquinas Expendedoras',
-                'laundry_vending_desc': '¿Olvidó sus suministros? Tenemos botellas pequeñas de detergente, blanqueador, suavizantes y bolsas de lavandería disponibles.',
-                'folding_tables_title': 'Mesas para Doblar',
-                'folding_tables_desc': 'Mesas convenientes para doblar su ropa disponibles justo después del secado.',
-                'products_title': 'Productos de Lavandería en Venta',
-                'products_desc': 'Visite nuestra oficina principal para estos productos de lavandería más grandes a precios excelentes',
-                'gain_odor_title': 'Detergente Gain Odor Defense',
-                'gain_odor_desc': '61 cargas - Elimina olores y deja la ropa fresca',
-                'gain_original_title': 'Detergente Gain Original',
-                'gain_original_desc': '61 cargas - Aroma original con limpieza potente',
-                'tide_title': 'Detergente Tide Original',
-                'tide_desc': '64 cargas - El detergente número 1 de confianza en Estados Unidos',
-                'downy_title': 'Suavizante de Telas Downy Ultra',
-                'downy_desc': '60 cargas - Ultraconcentrado para ropa más suave',
-                'bleach_title': 'Blanqueador',
-                'bleach_desc': '64 fl oz - Para blanquear y desinfectar',
-                'bag_title': 'Bolsa de Lavandería',
-                'bag_desc': 'Bolsa duradera para transportar su lavandería',
-                'plastic_bag_title': 'Bolsas de Plástico',
-                'plastic_bag_desc': 'Bolsas de plástico convenientes para transportar su lavandería',
-                'clothes_title': 'Ropa en Venta',
-                'clothes_desc': 'Ofrecemos ropa usada en buen estado a precios asequibles justo en la entrada de nuestra lavandería. Todos los artículos están en excelentes condiciones, habiendo sido usados solo unas pocas veces.',
-                'basket_clothes': 'Ropa en la canasta: Solo $1 cada una',
-                'rack_clothes': 'Ropa en el perchero: Precios individuales (consulte las etiquetas)',
-                'clothes_quality': 'Mantenemos altos estándares de calidad: si un artículo no está en buenas condiciones, no estará disponible para la venta. ¡Venga a ver nuestra selección de ropa de segunda mano de calidad!',
+                'snacks_desc': 'Disfrute de una variedad de snacks y bebidas mientras espera.',
+                'laundry_vending_title': 'Suministros de Lavandería',
+                'laundry_vending_desc': '¿Olvidó sus suministros? Tenemos detergente, blanqueador y más.',
                 'services_subtitle': 'Múltiples opciones para satisfacer sus necesidades de lavandería',
                 'services_options': 'Opciones de Servicio',
-                'service1_full_desc': 'Tome el control de su experiencia de lavandería con nuestras instalaciones de autoservicio de última generación. Con una variedad de tamaños de lavadoras y secadoras para adaptarse a cualquier carga, nuestras máquinas fáciles de usar hacen que lavar la ropa sea simple y eficiente. Disfrute de resultados impecablemente limpios cada vez en un ambiente cómodo y bien mantenido.',
-                'service2_full_desc': '¿Cansado de equilibrar la lavandería con su exigente carga de trabajo? Permítanos encargarnos de su lavado mientras usted se concentra en lo que más importa. Simplemente deje su ropa y nuestro equipo experto cuidará sus prendas con la atención que merecen. Acomodamos solicitudes especiales para garantizar que su lavandería se haga exactamente como usted prefiere.',
-                'service3_full_desc': '¿No puede llegar a nuestra ubicación? ¿Sin vehículo? ¡No hay problema! Nuestro conveniente servicio de recogida y entrega a domicilio lleva el cuidado profesional de la lavandería directamente a su puerta. Recogeremos su ropa, la limpiaremos y cuidaremos de manera experta en nuestras instalaciones, y se la devolveremos fresca, doblada y lista para guardar, todo el mismo día.',
+                'service1_full_desc': 'Tome el control de su experiencia de lavandería con nuestras instalaciones de autoservicio de última generación. Con una variedad de tamaños de lavadoras y secadoras para adaptarse a cualquier carga.',
+                'service2_full_desc': 'Permítanos encargarnos de su lavado mientras usted se concentra en lo que más importa. Simplemente deje su ropa y nuestro equipo experto cuidará sus prendas.',
+                'service3_full_desc': 'Nuestro conveniente servicio de recogida y entrega a domicilio lleva el cuidado profesional de la lavandería directamente a su puerta.',
                 'washer_options': 'Opciones de Lavadoras',
                 'washer_20lb': 'Lavadora de 20 lb',
                 'washer_20lb_desc': 'Perfecta para cargas regulares',
@@ -2278,47 +1660,22 @@
                 'washer_30lb_desc': 'Ideal para cargas más grandes',
                 'washer_40lb': 'Lavadora de 40 lb',
                 'washer_40lb_desc': 'Excelente para artículos voluminosos',
-                'washer_60lb': 'Lavadora de 60 lb',
-                'washer_60lb_desc': 'Capacidad máxima para trabajos grandes',
-                'dryer_options': 'Opciones de Secadoras',
-                'dryer_30lb': 'Secadora de 30 lb',
-                'dryer_30lb_desc': 'Secado eficiente para cargas estándar',
-                'dryer_30lb_time': '$1.00 da 32 minutos de tiempo de secado',
-                'dryer_50lb': 'Secadora de 50 lb',
-                'dryer_50lb_desc': 'Secado de alta capacidad para cargas grandes',
-                'dryer_50lb_time': '$1.00 da 28 minutos de tiempo de secado',
                 'regular_laundry': 'Lavandería Regular',
                 'regular_laundry_desc': 'Lavada, secada y doblada profesionalmente',
-                'min_10lbs': 'Mínimo 10 lbs',
                 'comforters': 'Edredones y Artículos Voluminosos',
                 'comforters_desc': 'Cuidado especial para artículos de gran tamaño',
-                'same_day_service': 'Servicio el mismo día disponible cuando se deja antes de las 11am',
-                'customize_wash': 'Personalice su lavado con detergentes y suavizantes premium',
-                'extra_downy': '¿Quiere más Downy? ¡Lo tiene! Solo háganos saber sus preferencias',
                 'premium_service': 'Servicio Premium',
                 'premium_service_desc': 'Recogemos, lavamos, secamos, doblamos y entregamos',
-                'free_delivery': 'Entrega gratuita para pedidos superiores a $25',
-                'same_day_available': 'Servicio el mismo día disponible',
-                'schedule_pickups': 'Programe recogidas regulares o servicio puntual',
-                'call_to_schedule': 'Llame ahora para programar:',
                 'locations_subtitle': 'Convenientemente ubicado en todo New Bedford',
                 'visit_title': 'Visítenos',
                 'open_daily': 'Abierto Todos los Días',
-                'attendant_hours': 'Personal en el lugar',
-                'coming_soon_msg': '¡Estamos emocionados de anunciar que nuestra segunda ubicación abrirá pronto! Síganos para obtener actualizaciones sobre nuestra gran inauguración.',
-                'hours_payment_title': 'Horario y Pagos',
-                'business_hours': 'Horario Comercial',
-                'payment_options': 'Opciones de Pago',
-                'payment_desc': 'Aceptamos varios métodos de pago para su conveniencia:',
-                'cash': 'Efectivo',
                 'contact_title': 'Contáctenos',
                 'contact_subtitle': 'Estamos aquí para ayudar con todas sus necesidades de lavandería',
                 'get_in_touch': 'Póngase en Contacto',
                 'contact_info': 'Información de Contacto',
                 'phone': 'Número de Teléfono',
                 'main_location': 'Ubicación Principal',
-                'follow_us': 'Síganos en Instagram',
-                'view_profile': '@washywashyworld',
+                'business_hours': 'Horario Comercial',
                 'footer_desc': 'Servicios de lavandería de calidad para la comunidad de New Bedford',
                 'quick_links': 'Enlaces Rápidos',
                 'home_link': 'Inicio',
@@ -2326,12 +1683,7 @@
                 'services_link': 'Servicios',
                 'locations_link': 'Ubicaciones',
                 'contact_link': 'Contacto',
-                'facebook': 'Página de Facebook',
-                'follow_us_social': 'Síganos en Redes Sociales',
-                'reviews_title': 'Reseñas de Clientes',
-                'see_reviews': 'Vea lo que dicen nuestros clientes',
-                'reviews_desc': 'Consulte nuestras reseñas en Google',
-                'view_reviews': 'Ver Reseñas de Google'
+                'follow_us_social': 'Síganos'
             }
         };
         
