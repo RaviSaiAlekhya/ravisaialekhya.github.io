@@ -1211,6 +1211,92 @@
             font-size: 1.2rem;
         }
         
+        /* FADE-IN ANIMATIONS FOR ALL CARDS */
+        
+        /* Fade-in animation for all cards */
+        .card-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .card-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Apply fade-in animation to all card elements */
+        .location-card,
+        .service-detailed-card,
+        .amenity-card,
+        .product-card,
+        .info-box,
+        .contact-detail,
+        .instagram-post,
+        .pricing-item,
+        .about-image,
+        .about-text,
+        .clothes-image,
+        .clothes-text,
+        .review-placeholder {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .location-card.visible,
+        .service-detailed-card.visible,
+        .amenity-card.visible,
+        .product-card.visible,
+        .info-box.visible,
+        .contact-detail.visible,
+        .instagram-post.visible,
+        .pricing-item.visible,
+        .about-image.visible,
+        .about-text.visible,
+        .clothes-image.visible,
+        .clothes-text.visible,
+        .review-placeholder.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered animation delays for cards in grids */
+        .location-cards .location-card:nth-child(1) { transition-delay: 0.1s; }
+        .location-cards .location-card:nth-child(2) { transition-delay: 0.2s; }
+
+        .amenities-grid .amenity-card:nth-child(1) { transition-delay: 0.1s; }
+        .amenities-grid .amenity-card:nth-child(2) { transition-delay: 0.2s; }
+        .amenities-grid .amenity-card:nth-child(3) { transition-delay: 0.3s; }
+        .amenities-grid .amenity-card:nth-child(4) { transition-delay: 0.4s; }
+        .amenities-grid .amenity-card:nth-child(5) { transition-delay: 0.5s; }
+
+        .products-grid .product-card:nth-child(1) { transition-delay: 0.1s; }
+        .products-grid .product-card:nth-child(2) { transition-delay: 0.2s; }
+        .products-grid .product-card:nth-child(3) { transition-delay: 0.3s; }
+        .products-grid .product-card:nth-child(4) { transition-delay: 0.4s; }
+        .products-grid .product-card:nth-child(5) { transition-delay: 0.5s; }
+        .products-grid .product-card:nth-child(6) { transition-delay: 0.6s; }
+        .products-grid .product-card:nth-child(7) { transition-delay: 0.7s; }
+
+        .pricing-grid .pricing-item:nth-child(1) { transition-delay: 0.1s; }
+        .pricing-grid .pricing-item:nth-child(2) { transition-delay: 0.2s; }
+        .pricing-grid .pricing-item:nth-child(3) { transition-delay: 0.3s; }
+        .pricing-grid .pricing-item:nth-child(4) { transition-delay: 0.4s; }
+
+        .instagram-posts .instagram-post:nth-child(1) { transition-delay: 0.1s; }
+        .instagram-posts .instagram-post:nth-child(2) { transition-delay: 0.2s; }
+        .instagram-posts .instagram-post:nth-child(3) { transition-delay: 0.3s; }
+
+        .info-container .info-box:nth-child(1) { transition-delay: 0.1s; }
+        .info-container .info-box:nth-child(2) { transition-delay: 0.2s; }
+
+        .contact-container .contact-detail:nth-child(1) { transition-delay: 0.1s; }
+        .contact-container .contact-detail:nth-child(2) { transition-delay: 0.2s; }
+        .contact-container .contact-detail:nth-child(3) { transition-delay: 0.3s; }
+        .contact-container .contact-detail:nth-child(4) { transition-delay: 0.4s; }
+        .contact-container .contact-detail:nth-child(5) { transition-delay: 0.5s; }
+        
         /* Apple-Style Scroll Animations */
         .scroll-element {
             opacity: 0;
@@ -1993,7 +2079,31 @@
             document.getElementById('nav').classList.toggle('active');
         });
         
-        // Multi-page navigation
+        // Update the existing checkScroll function to handle card animations
+        function checkScroll() {
+            const elements = document.querySelectorAll('.scroll-element');
+            const cards = document.querySelectorAll('.location-card, .service-detailed-card, .amenity-card, .product-card, .info-box, .contact-detail, .instagram-post, .pricing-item, .about-image, .about-text, .clothes-image, .clothes-text, .review-placeholder');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+            
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (cardTop < windowHeight - 100) {
+                    card.classList.add('visible');
+                }
+            });
+        }
+
+        // Update the navigation function to reset and trigger animations on page change
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -2021,8 +2131,16 @@
                 // Scroll to top
                 window.scrollTo(0, 0);
                 
-                // Trigger scroll animations for the new page
-                setTimeout(checkScroll, 100);
+                // Reset card animations for the new page
+                setTimeout(() => {
+                    const cards = document.querySelectorAll('.location-card, .service-detailed-card, .amenity-card, .product-card, .info-box, .contact-detail, .instagram-post, .pricing-item, .about-image, .about-text, .clothes-image, .clothes-text, .review-placeholder');
+                    cards.forEach(card => {
+                        card.classList.remove('visible');
+                    });
+                    
+                    // Trigger scroll animations for the new page after a short delay
+                    setTimeout(checkScroll, 300);
+                }, 100);
             });
         });
         
@@ -2367,20 +2485,6 @@
                     shootingStar.remove();
                 }, 1000);
             }, 100);
-        }
-        
-        // Apple-Style Scroll Animations
-        function checkScroll() {
-            const elements = document.querySelectorAll('.scroll-element');
-            
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementTop < windowHeight - 100) {
-                    element.classList.add('visible');
-                }
-            });
         }
         
         // Initialize page
