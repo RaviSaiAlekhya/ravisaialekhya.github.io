@@ -44,196 +44,196 @@
         }
         
         /* Enhanced Galaxy Background */
-.galaxy-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: hidden;
-    background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 30%, #0f3460 70%, #0a0a1a 100%);
-}
+        .galaxy-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 30%, #0f3460 70%, #0a0a1a 100%);
+        }
 
-.stars {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-}
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+        }
 
-.star {
-    position: absolute;
-    background-color: white;
-    border-radius: 50%;
-    animation: twinkle 3s infinite;
-    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
-}
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+        }
 
-@keyframes twinkle {
-    0%, 100% { 
-        opacity: 0.3; 
-        transform: scale(0.8);
-    }
-    50% { 
-        opacity: 1; 
-        transform: scale(1.2);
-        box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.9);
-    }
-}
+        @keyframes twinkle {
+            0%, 100% { 
+                opacity: 0.3; 
+                transform: scale(0.8);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.2);
+                box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.9);
+            }
+        }
 
-.shooting-star {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: white;
-    border-radius: 50%;
-    box-shadow: 0 0 15px 4px white;
-    opacity: 0;
-}
+        .shooting-star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 15px 4px white;
+            opacity: 0;
+        }
 
-/* Planets */
-.planet {
-    position: absolute;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
-}
+        /* Planets */
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+        }
 
-/* Moon */
-.planet-1 {
-    width: 120px;
-    height: 120px;
-    top: 10%;
-    right: 5%;
-    animation: float 30s infinite linear;
-    background: 
-        radial-gradient(circle at 30% 30%, #e6e6e6, #b8b8b8, #8a8a8a),
-        radial-gradient(circle at 70% 60%, rgba(200, 200, 200, 0.5) 5%, transparent 15%),
-        radial-gradient(circle at 20% 80%, rgba(180, 180, 180, 0.6) 8%, transparent 18%);
-}
+        /* Moon */
+        .planet-1 {
+            width: 120px;
+            height: 120px;
+            top: 10%;
+            right: 5%;
+            animation: float 30s infinite linear;
+            background: 
+                radial-gradient(circle at 30% 30%, #e6e6e6, #b8b8b8, #8a8a8a),
+                radial-gradient(circle at 70% 60%, rgba(200, 200, 200, 0.5) 5%, transparent 15%),
+                radial-gradient(circle at 20% 80%, rgba(180, 180, 180, 0.6) 8%, transparent 18%);
+        }
 
-.planet-1::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 40% 20%, rgba(0, 0, 0, 0.4) 5%, transparent 15%),
-        radial-gradient(circle at 70% 40%, rgba(0, 0, 0, 0.3) 8%, transparent 18%),
-        radial-gradient(circle at 20% 70%, rgba(0, 0, 0, 0.5) 10%, transparent 20%),
-        radial-gradient(circle at 60% 80%, rgba(0, 0, 0, 0.4) 6%, transparent 16%),
-        radial-gradient(circle at 80% 30%, rgba(0, 0, 0, 0.3) 7%, transparent 17%);
-    border-radius: 50%;
-}
+        .planet-1::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 40% 20%, rgba(0, 0, 0, 0.4) 5%, transparent 15%),
+                radial-gradient(circle at 70% 40%, rgba(0, 0, 0, 0.3) 8%, transparent 18%),
+                radial-gradient(circle at 20% 70%, rgba(0, 0, 0, 0.5) 10%, transparent 20%),
+                radial-gradient(circle at 60% 80%, rgba(0, 0, 0, 0.4) 6%, transparent 16%),
+                radial-gradient(circle at 80% 30%, rgba(0, 0, 0, 0.3) 7%, transparent 17%);
+            border-radius: 50%;
+        }
 
-/* Saturn with rings */
-.planet-2 {
-    width: 180px;
-    height: 180px;
-    bottom: 15%;
-    left: 5%;
-    background: 
-        radial-gradient(circle at 30% 30%, #ffcc99, #ff9966, #cc6633),
-        radial-gradient(circle at 70% 60%, #ffaa66, transparent 30%),
-        radial-gradient(circle at 20% 80%, #ff8844, transparent 20%);
-    animation: float 40s infinite linear reverse;
-}
+        /* Saturn with rings */
+        .planet-2 {
+            width: 180px;
+            height: 180px;
+            bottom: 15%;
+            left: 5%;
+            background: 
+                radial-gradient(circle at 30% 30%, #ffcc99, #ff9966, #cc6633),
+                radial-gradient(circle at 70% 60%, #ffaa66, transparent 30%),
+                radial-gradient(circle at 20% 80%, #ff8844, transparent 20%);
+            animation: float 40s infinite linear reverse;
+        }
 
-.planet-2::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 40% 20%, rgba(0, 0, 0, 0.3) 5%, transparent 15%),
-        radial-gradient(circle at 70% 40%, rgba(0, 0, 0, 0.2) 8%, transparent 18%),
-        radial-gradient(circle at 20% 70%, rgba(0, 0, 0, 0.4) 10%, transparent 20%),
-        radial-gradient(circle at 60% 80%, rgba(0, 0, 0, 0.3) 6%, transparent 16%),
-        radial-gradient(circle at 80% 30%, rgba(0, 0, 0, 0.2) 7%, transparent 17%),
-        radial-gradient(circle at 30% 50%, rgba(0, 0, 0, 0.3) 4%, transparent 14%),
-        radial-gradient(circle at 50% 10%, rgba(0, 0, 0, 0.2) 6%, transparent 16%);
-    border-radius: 50%;
-}
+        .planet-2::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 40% 20%, rgba(0, 0, 0, 0.3) 5%, transparent 15%),
+                radial-gradient(circle at 70% 40%, rgba(0, 0, 0, 0.2) 8%, transparent 18%),
+                radial-gradient(circle at 20% 70%, rgba(0, 0, 0, 0.4) 10%, transparent 20%),
+                radial-gradient(circle at 60% 80%, rgba(0, 0, 0, 0.3) 6%, transparent 16%),
+                radial-gradient(circle at 80% 30%, rgba(0, 0, 0, 0.2) 7%, transparent 17%),
+                radial-gradient(circle at 30% 50%, rgba(0, 0, 0, 0.3) 4%, transparent 14%),
+                radial-gradient(circle at 50% 10%, rgba(0, 0, 0, 0.2) 6%, transparent 16%);
+            border-radius: 50%;
+        }
 
-/* Saturn's rings */
-.planet-2::after {
-    content: '';
-    position: absolute;
-    width: 240px;
-    height: 40px;
-    background: linear-gradient(to right, 
-        rgba(255, 204, 153, 0.8) 0%, 
-        rgba(255, 153, 102, 0.9) 20%, 
-        rgba(204, 102, 51, 0.8) 50%, 
-        rgba(255, 153, 102, 0.9) 80%, 
-        rgba(255, 204, 153, 0.8) 100%);
-    border-radius: 20px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(15deg);
-    z-index: -1;
-    box-shadow: 0 0 20px rgba(255, 153, 102, 0.5);
-}
+        /* Saturn's rings */
+        .planet-2::after {
+            content: '';
+            position: absolute;
+            width: 240px;
+            height: 40px;
+            background: linear-gradient(to right, 
+                rgba(255, 204, 153, 0.8) 0%, 
+                rgba(255, 153, 102, 0.9) 20%, 
+                rgba(204, 102, 51, 0.8) 50%, 
+                rgba(255, 153, 102, 0.9) 80%, 
+                rgba(255, 204, 153, 0.8) 100%);
+            border-radius: 20px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(15deg);
+            z-index: -1;
+            box-shadow: 0 0 20px rgba(255, 153, 102, 0.5);
+        }
 
-/* Mars */
-.planet-3 {
-    width: 100px;
-    height: 100px;
-    top: 60%;
-    right: 15%;
-    background: 
-        radial-gradient(circle at 30% 30%, #ff6666, #cc3333, #990000),
-        radial-gradient(circle at 60% 70%, #ff5555, transparent 30%),
-        radial-gradient(circle at 80% 20%, #ff4444, transparent 20%);
-    animation: float 25s infinite linear;
-}
+        /* Mars */
+        .planet-3 {
+            width: 100px;
+            height: 100px;
+            top: 60%;
+            right: 15%;
+            background: 
+                radial-gradient(circle at 30% 30%, #ff6666, #cc3333, #990000),
+                radial-gradient(circle at 60% 70%, #ff5555, transparent 30%),
+                radial-gradient(circle at 80% 20%, #ff4444, transparent 20%);
+            animation: float 25s infinite linear;
+        }
 
-.planet-3::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 30% 40%, rgba(0, 0, 0, 0.3) 5%, transparent 15%),
-        radial-gradient(circle at 70% 30%, rgba(0, 0, 0, 0.2) 8%, transparent 18%),
-        radial-gradient(circle at 50% 70%, rgba(0, 0, 0, 0.4) 6%, transparent 16%),
-        radial-gradient(circle at 10% 20%, rgba(0, 0, 0, 0.3) 4%, transparent 14%);
-    border-radius: 50%;
-}
+        .planet-3::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 40%, rgba(0, 0, 0, 0.3) 5%, transparent 15%),
+                radial-gradient(circle at 70% 30%, rgba(0, 0, 0, 0.2) 8%, transparent 18%),
+                radial-gradient(circle at 50% 70%, rgba(0, 0, 0, 0.4) 6%, transparent 16%),
+                radial-gradient(circle at 10% 20%, rgba(0, 0, 0, 0.3) 4%, transparent 14%);
+            border-radius: 50%;
+        }
 
-/* Jupiter */
-.planet-4 {
-    width: 200px;
-    height: 200px;
-    top: 20%;
-    left: 10%;
-    background: 
-        radial-gradient(circle at 30% 30%, #ffcc99, #cc9966, #996633),
-        radial-gradient(circle at 70% 60%, #e6b380, transparent 30%),
-        radial-gradient(circle at 20% 80%, #d9a366, transparent 20%);
-    animation: float 35s infinite linear reverse;
-}
+        /* Jupiter */
+        .planet-4 {
+            width: 200px;
+            height: 200px;
+            top: 20%;
+            left: 10%;
+            background: 
+                radial-gradient(circle at 30% 30%, #ffcc99, #cc9966, #996633),
+                radial-gradient(circle at 70% 60%, #e6b380, transparent 30%),
+                radial-gradient(circle at 20% 80%, #d9a366, transparent 20%);
+            animation: float 35s infinite linear reverse;
+        }
 
-.planet-4::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 50% 30%, rgba(0, 0, 0, 0.3) 5%, transparent 15%),
-        radial-gradient(circle at 30% 70%, rgba(0, 0, 0, 0.2) 8%, transparent 18%),
-        radial-gradient(circle at 70% 10%, rgba(0, 0, 0, 0.4) 6%, transparent 16%),
-        radial-gradient(circle at 10% 50%, rgba(0, 0, 0, 0.3) 4%, transparent 14%);
-    border-radius: 50%;
-}
+        .planet-4::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 50% 30%, rgba(0, 0, 0, 0.3) 5%, transparent 15%),
+                radial-gradient(circle at 30% 70%, rgba(0, 0, 0, 0.2) 8%, transparent 18%),
+                radial-gradient(circle at 70% 10%, rgba(0, 0, 0, 0.4) 6%, transparent 16%),
+                radial-gradient(circle at 10% 50%, rgba(0, 0, 0, 0.3) 4%, transparent 14%);
+            border-radius: 50%;
+        }
 
-@keyframes float {
-    0% { transform: rotate(0deg) translateX(20px) rotate(0deg); }
-    100% { transform: rotate(360deg) translateX(20px) rotate(-360deg); }
-}
+        @keyframes float {
+            0% { transform: rotate(0deg) translateX(20px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(20px) rotate(-360deg); }
+        }
         
         .container {
             width: 100%;
@@ -268,23 +268,36 @@
             width: 100%;
         }
         
+        /* Updated Logo Styles */
         .logo {
             display: flex;
             align-items: center;
             transition: var(--transition);
         }
-        
-        .logo img {
-            height: 30px;
-            transition: var(--transition);
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            margin-right: 12px;
+            background: linear-gradient(135deg, #4da6ff, #0066cc);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
         }
-        
+
+        .logo-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
         .logo h1 {
             color: var(--white);
             font-size: 24px; /* Increased from 21px */
             font-weight: 600;
             letter-spacing: -0.5px;
-            margin-left: 8px;
         }
         
         nav ul {
@@ -1307,6 +1320,17 @@
             .logo h1 {
                 font-size: 21px; /* Slightly smaller on mobile */
             }
+            
+            .logo-icon {
+                width: 30px;
+                height: 30px;
+                margin-right: 10px;
+            }
+            
+            .logo-icon svg {
+                width: 16px;
+                height: 16px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -1352,7 +1376,12 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                <img src="logo.png" alt="Washy Washy World Logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M8.54,14.53L6.41,12.4L5.35,13.46L8.54,16.65L17.65,7.54L16.59,6.47L8.54,14.53Z" />
+                        <path d="M12,20A7,7 0 0,1 5,13A7,7 0 0,1 12,6A7,7 0 0,1 19,13A7,7 0 0,1 12,20M12,4A9,9 0 0,0 3,13A9,9 0 0,0 12,22A9,9 0 0,0 21,13A9,9 0 0,0 12,4Z" />
+                    </svg>
+                </div>
                 <h1>Washy Washy World</h1>
             </div>
             
@@ -2307,59 +2336,59 @@
         }
         
         // Enhanced Galaxy Background Creation
-function createGalaxy() {
-    const starsContainer = document.getElementById('stars');
-    
-    // Create larger, brighter stars
-    for (let i = 0; i < 150; i++) {
-        const star = document.createElement('div');
-        star.classList.add('star');
-        
-        // Random position and size (larger stars)
-        const size = Math.random() * 4 + 1; // Stars between 1px and 5px
-        star.style.width = `${size}px`;
-        star.style.height = `${size}px`;
-        star.style.left = `${Math.random() * 100}%`;
-        star.style.top = `${Math.random() * 100}%`;
-        
-        // Random animation delay
-        star.style.animationDelay = `${Math.random() * 3}s`;
-        
-        starsContainer.appendChild(star);
-    }
-    
-    // Create shooting stars
-    setInterval(() => {
-        createShootingStar();
-    }, 2000);
-}
+        function createGalaxy() {
+            const starsContainer = document.getElementById('stars');
+            
+            // Create larger, brighter stars
+            for (let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random position and size (larger stars)
+                const size = Math.random() * 4 + 1; // Stars between 1px and 5px
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation delay
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                
+                starsContainer.appendChild(star);
+            }
+            
+            // Create shooting stars
+            setInterval(() => {
+                createShootingStar();
+            }, 2000);
+        }
 
-function createShootingStar() {
-    const galaxy = document.querySelector('.galaxy-bg');
-    const shootingStar = document.createElement('div');
-    shootingStar.classList.add('shooting-star');
-    
-    // Random start position
-    const startX = Math.random() * 100;
-    const startY = Math.random() * 50;
-    
-    shootingStar.style.left = `${startX}%`;
-    shootingStar.style.top = `${startY}%`;
-    
-    galaxy.appendChild(shootingStar);
-    
-    // Animate shooting star
-    setTimeout(() => {
-        shootingStar.style.opacity = '1';
-        shootingStar.style.transform = `translate(${100 - startX}vw, ${100 - startY}vh)`;
-        shootingStar.style.transition = 'all 1s linear';
-        
-        // Remove after animation
-        setTimeout(() => {
-            shootingStar.remove();
-        }, 1000);
-    }, 100);
-}
+        function createShootingStar() {
+            const galaxy = document.querySelector('.galaxy-bg');
+            const shootingStar = document.createElement('div');
+            shootingStar.classList.add('shooting-star');
+            
+            // Random start position
+            const startX = Math.random() * 100;
+            const startY = Math.random() * 50;
+            
+            shootingStar.style.left = `${startX}%`;
+            shootingStar.style.top = `${startY}%`;
+            
+            galaxy.appendChild(shootingStar);
+            
+            // Animate shooting star
+            setTimeout(() => {
+                shootingStar.style.opacity = '1';
+                shootingStar.style.transform = `translate(${100 - startX}vw, ${100 - startY}vh)`;
+                shootingStar.style.transition = 'all 1s linear';
+                
+                // Remove after animation
+                setTimeout(() => {
+                    shootingStar.remove();
+                }, 1000);
+            }, 100);
+        }
         
         // Apple-Style Scroll Animations
         function checkScroll() {
