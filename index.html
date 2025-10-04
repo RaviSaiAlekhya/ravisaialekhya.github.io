@@ -1,5 +1,3 @@
-Finale code
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1074,7 +1072,130 @@ Finale code
             color: transparent;
             -webkit-text-fill-color: transparent;
         }
-        
+
+                /* Photo Gallery Slideshow */
+        .photo-gallery {
+            background-color: rgba(10, 10, 26, 0.7);
+            padding: 80px 0;
+        }
+
+        .slideshow-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .featured-photo {
+            margin-bottom: 30px;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .featured-photo img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .slideshow-photos {
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .slideshow-track {
+            display: flex;
+            gap: 20px;
+            animation: slideShow 15s infinite;
+        }
+
+        .slideshow-track img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            flex-shrink: 0;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .slideshow-track img:hover {
+            transform: scale(1.05);
+        }
+
+        .slideshow-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .slideshow-prev,
+        .slideshow-next {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .slideshow-prev:hover,
+        .slideshow-next:hover {
+            background: var(--accent-light);
+            border-color: var(--accent-light);
+        }
+
+        .slideshow-dots {
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            background: var(--accent-light);
+        }
+
+        .dot:hover {
+            background: var(--accent-light);
+        }
+
+        @keyframes slideShow {
+            0%, 33% {
+                transform: translateX(0);
+            }
+            33.333%, 66% {
+                transform: translateX(-320px);
+            }
+            66.666%, 100% {
+                transform: translateX(-640px);
+            }
+        }
+
+        /* Pause animation on hover */
+        .slideshow-track:hover {
+            animation-play-state: paused;
+        }
         /* NEW STYLES FOR ADDED CONTENT */
         
         /* Amenities Section */
@@ -1613,6 +1734,47 @@ Finale code
                     </div>
                     <div class="about-image scroll-element">
                         <img src="about.PNG" alt="Clean laundry">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+                <!-- Photo Gallery Slideshow -->
+        <section class="photo-gallery">
+            <div class="container">
+                <h2 class="section-title scroll-element">Our Laundromat</h2>
+                <p class="text-center scroll-element" style="max-width: 800px; margin: 0 auto 40px; color: rgba(255, 255, 255, 0.8);">
+                    Take a look inside our clean, modern facility
+                </p>
+                
+                <div class="slideshow-container scroll-element">
+                    <!-- Main featured photo -->
+                    <div class="featured-photo">
+                        <img src="photo 1.png" alt="Washy Washy World Laundromat Interior" class="slideshow-image active">
+                    </div>
+                    
+                    <!-- Slideshow photos -->
+                    <div class="slideshow-photos">
+                        <div class="slideshow-track">
+                            <img src="photo 2.png" alt="Laundromat Interior View 1" class="slideshow-image">
+                            <img src="photo 3.png" alt="Laundromat Interior View 2" class="slideshow-image">
+                            <!-- Add more photos if you have them -->
+                        </div>
+                    </div>
+                    
+                    <!-- Slideshow navigation -->
+                    <div class="slideshow-nav">
+                        <button class="slideshow-prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="slideshow-dots">
+                            <span class="dot active" data-slide="0"></span>
+                            <span class="dot" data-slide="1"></span>
+                            <span class="dot" data-slide="2"></span>
+                        </div>
+                        <button class="slideshow-next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -2604,6 +2766,75 @@ Finale code
             
             // Add scroll event listener
             window.addEventListener('scroll', checkScroll);
+        });
+                // Photo Slideshow Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const slideshowTrack = document.querySelector('.slideshow-track');
+            const dots = document.querySelectorAll('.dot');
+            const prevBtn = document.querySelector('.slideshow-prev');
+            const nextBtn = document.querySelector('.slideshow-next');
+            const featuredPhoto = document.querySelector('.featured-photo img');
+            const slideImages = document.querySelectorAll('.slideshow-track img');
+            
+            let currentSlide = 0;
+            const totalSlides = slideImages.length;
+            
+            // Update slideshow position
+            function updateSlideshow() {
+                slideshowTrack.style.transform = `translateX(-${currentSlide * 320}px)`;
+                
+                // Update dots
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+                
+                // Update featured photo
+                featuredPhoto.src = slideImages[currentSlide].src;
+                featuredPhoto.alt = slideImages[currentSlide].alt;
+            }
+            
+            // Next slide
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateSlideshow();
+            }
+            
+            // Previous slide
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateSlideshow();
+            }
+            
+            // Auto-advance slides
+            let slideshowInterval = setInterval(nextSlide, 5000);
+            
+            // Pause auto-advance on hover
+            slideshowTrack.addEventListener('mouseenter', () => {
+                clearInterval(slideshowInterval);
+            });
+            
+            slideshowTrack.addEventListener('mouseleave', () => {
+                slideshowInterval = setInterval(nextSlide, 5000);
+            });
+            
+            // Event listeners
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateSlideshow();
+                });
+            });
+            
+            // Click on small images to set as featured
+            slideImages.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateSlideshow();
+                });
+            });
         });
     </script>
 </body>
