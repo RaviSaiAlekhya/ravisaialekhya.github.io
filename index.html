@@ -1,3 +1,5 @@
+Finale code
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1038,29 +1040,6 @@
             font-size: 12px;
             color: rgba(255, 255, 255, 0.8);
         }
-                /* Wavy Dividers */
-        .wave-divider {
-            display: block;
-            height: 100px;
-            overflow: hidden;
-            line-height: 0;
-            background: transparent;
-        }
-
-        .wave-divider svg {
-            display: block;
-            width: 100%;
-            height: 100px;
-        }
-
-        .wave-divider-top {
-            margin-bottom: -1px;
-        }
-
-        .wave-divider-bottom {
-            margin-top: -1px;
-            transform: rotate(180deg);
-        }
         /* ===== FIXES FOR BUTTONS AND LOGOS ===== */
 
         /* Fix for Instagram and Facebook buttons */
@@ -1095,87 +1074,7 @@
             color: transparent;
             -webkit-text-fill-color: transparent;
         }
-
-                /* Photo Gallery Slideshow - SIMPLIFIED */
-.photo-gallery {
-    background-color: rgba(10, 10, 26, 0.7);
-    padding: 80px 0;
-}
-
-.slideshow-container {
-    max-width: 900px;
-    margin: 0 auto;
-    position: relative;
-}
-
-.featured-photo {
-    margin-bottom: 30px;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.featured-photo img {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-    display: block;
-    transition: var(--transition);
-}
-
-.slideshow-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
-
-.slideshow-prev,
-.slideshow-next {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: var(--transition);
-    font-size: 1.2rem;
-}
-
-.slideshow-prev:hover,
-.slideshow-next:hover {
-    background: var(--accent-light);
-    border-color: var(--accent-light);
-}
-
-.slideshow-dots {
-    display: flex;
-    gap: 10px;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.dot.active {
-    background: var(--accent-light);
-}
-
-.dot:hover {
-    background: var(--accent-light);
-}
+        
         /* NEW STYLES FOR ADDED CONTENT */
         
         /* Amenities Section */
@@ -1719,52 +1618,6 @@
             </div>
         </section>
 
-        <!-- Wavy Divider -->
-        <div class="wave-divider wave-divider-top">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M0,60 C300,120 900,0 1200,60 L1200,120 L0,120 Z" fill="#0a0a1a"></path>
-            </svg>
-        </div>
-        
-        <!-- Photo Gallery Slideshow - SIMPLIFIED -->
-<section class="photo-gallery">
-    <div class="container">
-        <h2 class="section-title scroll-element">Our Laundromat</h2>
-        <p class="text-center scroll-element" style="max-width: 800px; margin: 0 auto 40px; color: rgba(255, 255, 255, 0.8);">
-            Take a look inside our clean, modern facility
-        </p>
-        
-        <div class="slideshow-container scroll-element">
-            <!-- Main featured photo only - no thumbnails -->
-            <div class="featured-photo">
-                <img src="Photo 1.jpeg" alt="Washy Washy World Laundromat Interior" class="slideshow-image active">
-            </div>
-            
-            <!-- Slideshow navigation -->
-            <div class="slideshow-nav">
-                <button class="slideshow-prev">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <div class="slideshow-dots">
-                    <span class="dot active" data-slide="0"></span>
-                    <span class="dot" data-slide="1"></span>
-                    <span class="dot" data-slide="2"></span>
-                </div>
-                <button class="slideshow-next">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-</section>
-        
-        <!-- Wavy Divider -->
-        <div class="wave-divider wave-divider-bottom">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M0,60 C300,120 900,0 1200,60 L1200,120 L0,120 Z" fill="#0a0a1a"></path>
-            </svg>
-        </div>
-        
         <!-- Amenities Section -->
         <section class="amenities">
             <div class="container">
@@ -2751,76 +2604,6 @@
             
             // Add scroll event listener
             window.addEventListener('scroll', checkScroll);
-        });
-                // Photo Slideshow Functionality - SIMPLIFIED
-        document.addEventListener('DOMContentLoaded', function() {
-            const dots = document.querySelectorAll('.dot');
-            const prevBtn = document.querySelector('.slideshow-prev');
-            const nextBtn = document.querySelector('.slideshow-next');
-            const featuredPhoto = document.querySelector('.featured-photo img');
-            
-            const photos = [
-                'Photo 1.jpeg',
-                'Photo 2.jpeg', 
-                'Photo 3.jpeg'
-            ];
-            
-            const altTexts = [
-                'Washy Washy World Laundromat Interior',
-                'Laundromat Interior View 1',
-                'Laundromat Interior View 2'
-            ];
-            
-            let currentSlide = 0;
-            const totalSlides = photos.length;
-            
-            // Update slideshow
-            function updateSlideshow() {
-                featuredPhoto.src = photos[currentSlide];
-                featuredPhoto.alt = altTexts[currentSlide];
-                
-                // Update dots
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentSlide);
-                });
-            }
-            
-            // Next slide
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                updateSlideshow();
-            }
-            
-            // Previous slide
-            function prevSlide() {
-                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                updateSlideshow();
-            }
-            
-            // Auto-advance slides
-            let slideshowInterval = setInterval(nextSlide, 5000);
-            
-            // Event listeners
-            nextBtn.addEventListener('click', () => {
-                clearInterval(slideshowInterval);
-                nextSlide();
-                slideshowInterval = setInterval(nextSlide, 5000);
-            });
-            
-            prevBtn.addEventListener('click', () => {
-                clearInterval(slideshowInterval);
-                prevSlide();
-                slideshowInterval = setInterval(nextSlide, 5000);
-            });
-            
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    clearInterval(slideshowInterval);
-                    currentSlide = index;
-                    updateSlideshow();
-                    slideshowInterval = setInterval(nextSlide, 5000);
-                });
-            });
         });
     </script>
 </body>
