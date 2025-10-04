@@ -1,3 +1,5 @@
+Finale code
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -392,7 +394,6 @@
             display: none;
             animation: fadeIn 0.8s ease;
             flex: 1;
-            width: 100%;
         }
         
         .page-content.active {
@@ -967,7 +968,6 @@
             margin-top: auto;
             position: relative;
             overflow: hidden;
-            width: 100%;
         }
         
         .footer-content {
@@ -1074,130 +1074,7 @@
             color: transparent;
             -webkit-text-fill-color: transparent;
         }
-
-                /* Photo Gallery Slideshow */
-        .photo-gallery {
-            background-color: rgba(10, 10, 26, 0.7);
-            padding: 80px 0;
-        }
-
-        .slideshow-container {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .featured-photo {
-            margin-bottom: 30px;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .featured-photo img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            display: block;
-            transition: var(--transition);
-        }
-
-        .slideshow-photos {
-            margin-bottom: 30px;
-            overflow: hidden;
-        }
-
-        .slideshow-track {
-            display: flex;
-            gap: 20px;
-            animation: slideShow 15s infinite;
-        }
-
-        .slideshow-track img {
-            width: 300px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 12px;
-            flex-shrink: 0;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .slideshow-track img:hover {
-            transform: scale(1.05);
-        }
-
-        .slideshow-nav {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .slideshow-prev,
-        .slideshow-next {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 1.2rem;
-        }
-
-        .slideshow-prev:hover,
-        .slideshow-next:hover {
-            background: var(--accent-light);
-            border-color: var(--accent-light);
-        }
-
-        .slideshow-dots {
-            display: flex;
-            gap: 10px;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .dot.active {
-            background: var(--accent-light);
-        }
-
-        .dot:hover {
-            background: var(--accent-light);
-        }
-
-        @keyframes slideShow {
-            0%, 33% {
-                transform: translateX(0);
-            }
-            33.333%, 66% {
-                transform: translateX(-320px);
-            }
-            66.666%, 100% {
-                transform: translateX(-640px);
-            }
-        }
-
-        /* Pause animation on hover */
-        .slideshow-track:hover {
-            animation-play-state: paused;
-        }
+        
         /* NEW STYLES FOR ADDED CONTENT */
         
         /* Amenities Section */
@@ -1632,7 +1509,7 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                <img src="https://via.placeholder.com/150x50/0071e3/ffffff?text=Washy+Washy" alt="Washy Washy World Logo">
+                <img src="logo.png" alt="Washy Washy World Logo">
                 <h1>Washy Washy World</h1>
             </div>
             
@@ -1735,48 +1612,7 @@
                         <p data-translate="story_p3">Whether you prefer to do your own laundry using our self-service machines, drop it off for our expert team to handle, or have us pick it up and deliver it to your doorstep, Washy Washy World is here to serve you.</p>
                     </div>
                     <div class="about-image scroll-element">
-                        <img src="https://via.placeholder.com/600x400/1a1a2e/ffffff?text=Clean+Laundry" alt="Clean laundry">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-                <!-- Photo Gallery Slideshow -->
-        <section class="photo-gallery">
-            <div class="container">
-                <h2 class="section-title scroll-element">Our Laundromat</h2>
-                <p class="text-center scroll-element" style="max-width: 800px; margin: 0 auto 40px; color: rgba(255, 255, 255, 0.8);">
-                    Take a look inside our clean, modern facility
-                </p>
-                
-                <div class="slideshow-container scroll-element">
-                    <!-- Main featured photo -->
-                    <div class="featured-photo">
-                        <img src="https://via.placeholder.com/900x500/16213e/ffffff?text=Laundromat+Interior" alt="Washy Washy World Laundromat Interior" class="slideshow-image active">
-                    </div>
-                    
-                    <!-- Slideshow photos -->
-                    <div class="slideshow-photos">
-                        <div class="slideshow-track">
-                            <img src="https://via.placeholder.com/300x200/0f3460/ffffff?text=View+1" alt="Laundromat Interior View 1" class="slideshow-image">
-                            <img src="https://via.placeholder.com/300x200/16213e/ffffff?text=View+2" alt="Laundromat Interior View 2" class="slideshow-image">
-                            <!-- Add more photos if you have them -->
-                        </div>
-                    </div>
-                    
-                    <!-- Slideshow navigation -->
-                    <div class="slideshow-nav">
-                        <button class="slideshow-prev">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <div class="slideshow-dots">
-                            <span class="dot active" data-slide="0"></span>
-                            <span class="dot" data-slide="1"></span>
-                            <span class="dot" data-slide="2"></span>
-                        </div>
-                        <button class="slideshow-next">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
+                        <img src="about.PNG" alt="Clean laundry">
                     </div>
                 </div>
             </div>
@@ -1837,7 +1673,7 @@
                 <div class="products-grid">
                     <div class="product-card scroll-element">
                         <div class="product-image">
-                            <img src="https://via.placeholder.com/150x150/0071e3/ffffff?text=Gain+Odor" alt="Gain Odor Defense Detergent">
+                            <img src="Odor Defense.png" alt="Gain Odor Defense Detergent">
                         </div>
                         <div class="product-info">
                             <h3 data-translate="gain_odor_title">Gain Odor Defense Detergent</h3>
@@ -1848,7 +1684,7 @@
                     
                     <div class="product-card scroll-element">
                         <div class="product-image">
-                            <img src="https://via.placeholder.com/150x150/0071e3/ffffff?text=Gain+Orig" alt="Gain Original Detergent">
+                            <img src="Gain Original.png" alt="Gain Original Detergent">
                         </div>
                         <div class="product-info">
                             <h3 data-translate="gain_original_title">Gain Original Detergent</h3>
@@ -1859,7 +1695,7 @@
                     
                     <div class="product-card scroll-element">
                         <div class="product-image">
-                            <img src="https://via.placeholder.com/150x150/0071e3/ffffff?text=Tide+Orig" alt="Tide Original Detergent">
+                            <img src="Tide Original.png" alt="Tide Original Detergent">
                         </div>
                         <div class="product-info">
                             <h3 data-translate="tide_title">Tide Original Detergent</h3>
@@ -1870,7 +1706,7 @@
 
                     <div class="product-card scroll-element">
                         <div class="product-image">
-                            <img src="https://via.placeholder.com/150x150/0071e3/ffffff?text=Tide+Downy" alt="Tide Downy Detergent">
+                            <img src="Tide Downy.png" alt="Tide Downy Detergent">
                         </div>
                         <div class="product-info">
                             <h3 data-translate="tidedowny_title">Tide Downy Detergent</h3>
@@ -1881,7 +1717,7 @@
                     
                     <div class="product-card scroll-element">
                         <div class="product-image">
-                            <img src="https://via.placeholder.com/150x150/0071e3/ffffff?text=Downy" alt="Downy Ultra Fabric Softener">
+                            <img src="Downy.png" alt="Downy Ultra Fabric Softener">
                         </div>
                         <div class="product-info">
                             <h3 data-translate="downy_title">Downy Ultra Fabric Softener</h3>
@@ -1892,7 +1728,7 @@
                     
                     <div class="product-card scroll-element">
                         <div class="product-image">
-                            <img src="https://via.placeholder.com/150x150/0071e3/ffffff?text=Bleach" alt="Bleach">
+                            <img src="Bleach.png" alt="Bleach">
                         </div>
                         <div class="product-info">
                             <h3 data-translate="bleach_title">Bleach</h3>
@@ -1903,7 +1739,7 @@
                     
                     <div class="product-card scroll-element">
                         <div class="product-image">
-                            <img src="https://via.placeholder.com/150x150/0071e3/ffffff?text=Bag" alt="Laundry Bag">
+                            <img src="Laundry Bag.png" alt="Laundry Bag">
                         </div>
                         <div class="product-info">
                             <h3 data-translate="bag_title">Laundry Bag</h3>
@@ -1914,7 +1750,7 @@
 
                     <div class="product-card scroll-element">
                         <div class="product-image">
-                            <img src="https://via.placeholder.com/150x150/0071e3/ffffff?text=Lint+Roller" alt="Lint Roller">
+                            <img src="Lint Roller.png" alt="Lint Roller">
                         </div>
                         <div class="product-info">
                             <h3 data-translate="roller_title">Lint Roller</h3>
@@ -1925,7 +1761,7 @@
                     
                     <div class="product-card scroll-element">
                         <div class="product-image">
-                            <img src="https://via.placeholder.com/150x150/0071e3/ffffff?text=Plastic+Bags" alt="Plastic Bags">
+                            <img src="Plastic Bag.png" alt="Plastic Bags">
                         </div>
                         <div class="product-info">
                             <h3 data-translate="plastic_bag_title">Plastic Bags</h3>
@@ -1955,7 +1791,7 @@
                     </div>
                     
                     <div class="clothes-image scroll-element">
-                        <img src="https://via.placeholder.com/600x400/1a1a2e/ffffff?text=Clothes+for+Sale" alt="Clothes for sale at Washy Washy World">
+                        <img src="DEB449FD-FF31-4529-854E-670750AF47BB.PNG" alt="Clothes for sale at Washy Washy World">
                     </div>
                 </div>
             </div>
@@ -2253,13 +2089,13 @@
                             <h3 data-translate="follow_us">Follow Us on Instagram</h3>
                             <div class="instagram-posts">
                                 <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="instagram-post scroll-element">
-                                    <img src="https://via.placeholder.com/300x200/1a1a2e/ffffff?text=Post+1" alt="Instagram post">
+                                    <img src="Post 1.jpg" alt="Instagram post">
                                 </a>
                                 <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="instagram-post scroll-element">
-                                    <img src="https://via.placeholder.com/300x200/16213e/ffffff?text=Post+2" alt="Instagram post">
+                                    <img src="Post 2.jpg" alt="Instagram post">
                                 </a>
                                 <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="instagram-post scroll-element">
-                                    <img src="https://via.placeholder.com/300x200/0f3460/ffffff?text=Post+3" alt="Instagram post">
+                                    <img src="Post 3.jpg" alt="Instagram post">
                                 </a>
                             </div>
                             <a href="https://www.instagram.com/washywashyworld/" target="_blank" class="instagram-link scroll-element">
@@ -2768,75 +2604,6 @@
             
             // Add scroll event listener
             window.addEventListener('scroll', checkScroll);
-        });
-                // Photo Slideshow Functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const slideshowTrack = document.querySelector('.slideshow-track');
-            const dots = document.querySelectorAll('.dot');
-            const prevBtn = document.querySelector('.slideshow-prev');
-            const nextBtn = document.querySelector('.slideshow-next');
-            const featuredPhoto = document.querySelector('.featured-photo img');
-            const slideImages = document.querySelectorAll('.slideshow-track img');
-            
-            let currentSlide = 0;
-            const totalSlides = slideImages.length;
-            
-            // Update slideshow position
-            function updateSlideshow() {
-                slideshowTrack.style.transform = `translateX(-${currentSlide * 320}px)`;
-                
-                // Update dots
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentSlide);
-                });
-                
-                // Update featured photo
-                featuredPhoto.src = slideImages[currentSlide].src;
-                featuredPhoto.alt = slideImages[currentSlide].alt;
-            }
-            
-            // Next slide
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                updateSlideshow();
-            }
-            
-            // Previous slide
-            function prevSlide() {
-                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                updateSlideshow();
-            }
-            
-            // Auto-advance slides
-            let slideshowInterval = setInterval(nextSlide, 5000);
-            
-            // Pause auto-advance on hover
-            slideshowTrack.addEventListener('mouseenter', () => {
-                clearInterval(slideshowInterval);
-            });
-            
-            slideshowTrack.addEventListener('mouseleave', () => {
-                slideshowInterval = setInterval(nextSlide, 5000);
-            });
-            
-            // Event listeners
-            nextBtn.addEventListener('click', nextSlide);
-            prevBtn.addEventListener('click', prevSlide);
-            
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    currentSlide = index;
-                    updateSlideshow();
-                });
-            });
-            
-            // Click on small images to set as featured
-            slideImages.forEach((img, index) => {
-                img.addEventListener('click', () => {
-                    currentSlide = index;
-                    updateSlideshow();
-                });
-            });
         });
     </script>
 </body>
