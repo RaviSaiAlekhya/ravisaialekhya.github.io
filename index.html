@@ -1038,6 +1038,40 @@
             font-size: 12px;
             color: rgba(255, 255, 255, 0.8);
         }
+        /* ===== FIXES FOR BUTTONS AND LOGOS ===== */
+
+        /* Fix for Instagram and Facebook buttons */
+        .social-buttons .btn {
+            background: transparent !important;
+            color: white !important;
+            border: 1px solid var(--accent-light) !important;
+        }
+
+        .social-buttons .btn:hover {
+            background: var(--accent-light) !important;
+            color: white !important;
+        }
+
+        /* Fix for Google Reviews button */
+        .google-reviews .btn {
+            background: #34A853 !important;
+            color: white !important;
+            border: none !important;
+        }
+
+        .google-reviews .btn:hover {
+            background: #2e8b47 !important;
+            color: white !important;
+        }
+
+        /* Fix for Google logo */
+        .google-reviews .fab.fa-google {
+            background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 0 0/100% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+        }
         
         /* NEW STYLES FOR ADDED CONTENT */
         
