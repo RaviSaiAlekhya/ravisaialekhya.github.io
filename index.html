@@ -1038,40 +1038,6 @@
             font-size: 12px;
             color: rgba(255, 255, 255, 0.8);
         }
-        /* ===== FIXES FOR BUTTONS AND LOGOS ===== */
-
-        /* Fix for Instagram and Facebook buttons */
-        .social-buttons .btn {
-            background: transparent !important;
-            color: white !important;
-            border: 1px solid var(--accent-light) !important;
-        }
-
-        .social-buttons .btn:hover {
-            background: var(--accent-light) !important;
-            color: white !important;
-        }
-
-        /* Fix for Google Reviews button */
-        .google-reviews .btn {
-            background: #34A853 !important;
-            color: white !important;
-            border: none !important;
-        }
-
-        .google-reviews .btn:hover {
-            background: #2e8b47 !important;
-            color: white !important;
-        }
-
-        /* Fix for Google logo */
-        .google-reviews .fab.fa-google {
-            background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 0 0/100% 100%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            -webkit-text-fill-color: transparent;
-        }
         
         /* NEW STYLES FOR ADDED CONTENT */
         
@@ -2001,12 +1967,9 @@
                         <h3 data-translate="payment_options">Payment Options</h3>
                         <p data-translate="payment_desc">We accept various payment methods for your convenience:</p>
                         <div class="payment-options">
-                            <span class="payment-option">Master Card</span>
-                            <span class="payment-option">Visa</span>
-                            <span class="payment-option">American Express</span>
-                            <span class="payment-option">Discover</span>
+                            <span class="payment-option">Square</span>
                             <span class="payment-option">Apple Pay</span>
-                            <span class="payment-option">Google Pay</span>
+                            <span class="payment-option">Visa</span>
                             <span class="payment-option">Cash App</span>
                             <span class="payment-option" data-translate="cash">Cash</span>
                         </div>
@@ -2107,22 +2070,24 @@
         </section>
 
         <!-- Google Reviews Section -->
-       <section class="reviews">
-    <div class="container">
-        <h2 class="section-title scroll-element" data-translate="reviews_title">Customer Reviews</h2>
-        <div class="google-reviews">
-            <div class="review-placeholder scroll-element" style="text-align: center; padding: 30px; background: rgba(255, 255, 255, 0.1); border-radius: 12px;">
-                <i class="fab fa-google" style="font-size: 3rem; color: #34A853; margin-bottom: 15px;"></i>
-                <h3 data-translate="see_reviews">See what our customers are saying</h3>
-                <p data-translate="reviews_desc">Check out our reviews on Google</p>
-                <a href="https://search.google.com/local/reviews?placeid=ChIJGaXIX2jl5IkRPOj-I99335Q" 
-                   target="_blank" class="btn" style="background: #34A853;">
-                    <span data-translate="view_reviews">View Google Reviews</span>
-                </a>
+        <section class="reviews">
+            <div class="container">
+                <h2 class="section-title scroll-element" data-translate="reviews_title">Customer Reviews</h2>
+                <div class="google-reviews">
+                    <div class="review-placeholder scroll-element" style="text-align: center; padding: 30px; background: rgba(255, 255, 255, 0.1); border-radius: 12px;">
+                        <i class="fab fa-google" style="font-size: 3rem; color: #34A853; margin-bottom: 15px;"></i>
+                        <h3 data-translate="see_reviews">See what our customers are saying</h3>
+                        <p data-translate="reviews_desc">Check out our reviews on Google</p>
+                        <a href="https://search.google.com/local/reviews?placeid=ChIJGaXIX2jl5IkRPOj-I99335Q" 
+                           target="_blank" class="btn" style="background: #34A853;">
+                            <i class="fab fa-google"></i> 
+                            <span data-translate="view_reviews">View Google Reviews</span>
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
     </div>
-</section>
 
     <!-- Footer -->
     <footer>
