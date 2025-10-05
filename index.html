@@ -102,16 +102,17 @@
             box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
         }
 
-        /* Floating Astronaut Styles */
+        /* Background Floating Astronaut */
 .astronaut-container {
     position: fixed;
-    z-index: 5;
-    filter: drop-shadow(0 0 15px rgba(0, 113, 227, 0.4));
+    z-index: 1; /* Behind planets but above stars */
+    filter: drop-shadow(0 0 10px rgba(0, 113, 227, 0.3));
     pointer-events: none;
+    opacity: 0.7; /* Subtle appearance */
 }
 
 .astronaut-image {
-    width: 120px;
+    width: 100px;
     height: auto;
     display: block;
 }
@@ -119,23 +120,23 @@
 /* Slow Floating Animation */
 @keyframes slowFloat {
     0%, 100% {
-        transform: translateY(0) rotate(0deg) scale(1);
+        transform: translateY(0) rotate(0deg);
     }
     25% {
-        transform: translateY(-12px) rotate(1.5deg) scale(1.01);
+        transform: translateY(-10px) rotate(1deg);
     }
     50% {
-        transform: translateY(-6px) rotate(0deg) scale(1);
+        transform: translateY(-5px) rotate(0deg);
     }
     75% {
-        transform: translateY(-15px) rotate(-1.5deg) scale(0.99);
+        transform: translateY(-12px) rotate(-1deg);
     }
 }
 
 /* Mobile responsive */
 @media (max-width: 768px) {
     .astronaut-image {
-        width: 80px;
+        width: 70px;
     }
 }
 
@@ -1541,7 +1542,7 @@
         <div class="planet planet-4"></div>
     </div>
 
-    <!-- Astronaut Mascot -->
+   <!-- Background Astronaut Mascot -->
 <div id="astronaut" class="astronaut-container">
     <img src="Mascot.png" alt="Washy Washy World Astronaut" class="astronaut-image">
 </div>
@@ -2630,7 +2631,7 @@
             }, 100);
         }
         
-        // Initialize page
+       // Initialize page
 document.addEventListener('DOMContentLoaded', function() {
     // Create galaxy background
     createGalaxy();
@@ -2644,47 +2645,35 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add scroll event listener
     window.addEventListener('scroll', checkScroll);
     
-    // ===== ADD ASTRONAUT CODE STARTING HERE =====
-    // Floating Astronaut Functionality
+    // ===== SIMPLE BACKGROUND ASTRONAUT CODE =====
     const astronaut = document.getElementById('astronaut');
     let animationId;
-    let isMoving = true; // Start moving automatically
-    const moveSpeed = 0.8; // Fixed slow speed
-    let rotationEnabled = true;
+    let isMoving = true;
+    const moveSpeed = 0.6; // Even slower for background
 
-    // Movement properties
     let currentX, currentY;
     let velocityX, velocityY;
 
-    // Initialize astronaut movement
     function initializeAstronaut() {
-        // Wait for page to fully load
         setTimeout(() => {
             const maxX = window.innerWidth - astronaut.offsetWidth;
             const maxY = window.innerHeight - astronaut.offsetHeight;
             
-            // Start at random position
             currentX = Math.floor(Math.random() * maxX);
             currentY = Math.floor(Math.random() * maxY);
             
             astronaut.style.left = `${currentX}px`;
             astronaut.style.top = `${currentY}px`;
             
-            // Set initial random velocity (slow)
             setRandomVelocity();
-            
-            // Add slow floating animation
-            astronaut.style.animation = 'slowFloat 6s infinite ease-in-out';
-            
-            // Start moving
+            astronaut.style.animation = 'slowFloat 8s infinite ease-in-out'; // Slower animation
             continuousMove();
-        }, 500);
+        }, 1000);
     }
 
     function setRandomVelocity() {
-        // Random direction with slow speed
         const angle = Math.random() * Math.PI * 2;
-        const speed = 0.3 + Math.random() * 0.4; // Very slow speed
+        const speed = 0.2 + Math.random() * 0.3; // Very slow for background
         
         velocityX = Math.cos(angle) * speed;
         velocityY = Math.sin(angle) * speed;
@@ -2696,11 +2685,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const maxX = window.innerWidth - astronaut.offsetWidth;
         const maxY = window.innerHeight - astronaut.offsetHeight;
         
-        // Update position based on velocity (slow movement)
         currentX += velocityX * moveSpeed;
         currentY += velocityY * moveSpeed;
         
-        // Boundary checking with smooth direction change
         if (currentX <= 0 || currentX >= maxX) {
             velocityX *= -1;
             currentX = Math.max(0, Math.min(maxX, currentX));
@@ -2711,26 +2698,16 @@ document.addEventListener('DOMContentLoaded', function() {
             currentY = Math.max(0, Math.min(maxY, currentY));
         }
         
-        // Very occasionally change direction randomly
-        if (Math.random() < 0.002) {
+        if (Math.random() < 0.001) { // Rare direction changes
             setRandomVelocity();
         }
         
-        // Apply rotation if enabled
-        if (rotationEnabled) {
-            const rotation = Math.atan2(velocityY, velocityX) * (180 / Math.PI);
-            astronaut.style.transform = `rotate(${rotation}deg)`;
-        }
-        
-        // Update position
         astronaut.style.left = `${currentX}px`;
         astronaut.style.top = `${currentY}px`;
         
-        // Continue animation
         animationId = requestAnimationFrame(continuousMove);
     }
 
-    // Handle window resize
     window.addEventListener('resize', () => {
         const maxX = window.innerWidth - astronaut.offsetWidth;
         const maxY = window.innerHeight - astronaut.offsetHeight;
@@ -2742,7 +2719,6 @@ document.addEventListener('DOMContentLoaded', function() {
         astronaut.style.top = `${currentY}px`;
     });
 
-    // Initialize astronaut
     initializeAstronaut();
     // ===== ASTRONAUT CODE ENDS HERE =====
 });
